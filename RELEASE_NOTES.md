@@ -33,7 +33,7 @@ Gridea Android 是一款专为 Android 设计的静态博客写作客户端。�
 ## 致谢
 
 - [Gridea](https://github.com/getgridea/gridea) 原项目作者 EryouHao
-- [Gridea Pro](https://github.com/vegaaltair/gridea-pro) Pro 版本作者 Vega
+- [Gridea Pro](https://github.com/vegaaltair/gridea-pro) Pro 版本作者 Tespera
 
 ## 许可证
 
