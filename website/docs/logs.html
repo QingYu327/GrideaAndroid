@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日志管理 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 日志管理：AppLogger 分级日志（INFO/WARN/ERROR/ACTION/DEBUG），覆盖渲染、预览、主题、WebView 全流程，一键打包脱敏反馈。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html" class="active">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html" class="active">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>日志管理</h1>
+      <p class="doc-lead">Gridea Android 内置 AppLogger 分级日志系统，覆盖渲染、预览、主题、WebView 全流程。出问题时无需 logcat，在应用内即可定位原因，并一键打包脱敏后通过反馈通道提交。</p>
+
+      <h2 id="levels">日志分级</h2>
+      <p>AppLogger 采用五级日志，便于过滤与定位：</p>
+      <table>
+        <thead><tr><th>级别</th><th>用途</th><th>示例</th></tr></thead>
+        <tbody>
+          <tr><td><code>INFO</code></td><td>常规流程信息</td><td>「开始构建」「部署完成」</td></tr>
+          <tr><td><code>WARN</code></td><td>非致命异常</td><td>「主题缺少 friends.peb，跳过友链页」</td></tr>
+          <tr><td><code>ERROR</code></td><td>错误</td><td>「部署失败：401 Unauthorized」</td></tr>
+          <tr><td><code>ACTION</code></td><td>用户操作记录</td><td>「切换主题 → ink」「保存文章」</td></tr>
+          <tr><td><code>DEBUG</code></td><td>调试细节</td><td>「渲染耗时 328ms」「上传 23 个文件」</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="scope">覆盖范围</h2>
+      <p>日志覆盖以下四个关键环节：</p>
+      <ul>
+        <li><strong>渲染日志</strong>：Pebble 模板渲染过程，记录渲染耗时、生成的页面数、模板错误。</li>
+        <li><strong>预览日志</strong>：WebView 加载事件，含 JS Bridge 回传的点击、console、资源加载失败、404。</li>
+        <li><strong>主题日志</strong>：主题切换、配置变更、资源注入情况。</li>
+        <li><strong>WebView 日志</strong>：页面控制台输出、加载进度、外链拦截。</li>
+      </ul>
+
+      <h2 id="view">查看日志</h2>
+      <p>在「设置 → 日志」可查看实时日志面板：</p>
+      <ul>
+        <li>按级别过滤（INFO / WARN / ERROR / ACTION / DEBUG）。</li>
+        <li>按关键词搜索。</li>
+        <li>按时间范围筛选。</li>
+        <li>清空当前日志。</li>
+      </ul>
+      <p>日志默认按时间倒序排列，最新事件置顶。ERROR 级别会以醒目颜色标注。</p>
+
+      <h2 id="feedback">一键反馈</h2>
+      <p>遇到问题想提交给开发者时，使用「设置 → 问题反馈」：</p>
+      <ol>
+        <li>App 自动收集最近一段时间的日志（含渲染、预览、主题、WebView）。</li>
+        <li>打包前自动<strong>脱敏</strong>：Token、私钥、密码等敏感字段仅保留前缀，其余以 <code>***</code> 替代。</li>
+        <li>生成一个 <code>.zip</code> 反馈包。</li>
+        <li>通过系统分享面板发送给开发者（邮件、IM、GitHub Issue 附件等）。</li>
+      </ol>
+      <div class="callout tip">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><strong>脱敏保证：</strong>反馈包不会包含你的完整 Token 或私钥。例如 <code>ghp_xxxxABCD1234</code> 会被处理为 <code>ghp_x***</code>。</p>
+      </div>
+
+      <h2 id="diagnose">常见问题排查</h2>
+      <h3>部署失败</h3>
+      <p>在日志面板过滤 <code>ERROR</code>，常见的部署错误：</p>
+      <ul>
+        <li><code>401 Unauthorized</code>：Token 错误或过期，重新生成。</li>
+        <li><code>404 Not Found</code>：仓库不存在或仓库名拼写错误。</li>
+        <li><code>403 Rate Limit</code>：GitHub 限流，稍后重试（App 已做 1 秒间隔，但仍可能触发）。</li>
+      </ul>
+      <h3>主题资源 404</h3>
+      <p>预览日志中的「资源加载失败」会记录具体路径。常见原因是 <code>theme.json</code> 声明了资源但 <code>assets</code> 目录缺失对应文件，或模板中引用路径错误。</p>
+      <h3>页面空白</h3>
+      <p>若预览页空白，多为 <code>base.peb</code> 语法错误导致渲染失败。查看渲染日志的 <code>ERROR</code> 条目，会标注出错模板与行号。</p>
+
+      <nav class="doc-nav">
+        <a href="backup.html"><span class="lbl">← 上一章</span><span class="ttl">备份与恢复</span></a>
+        <a class="next" href="faq.html"><span class="lbl">下一章 →</span><span class="ttl">常见问题</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

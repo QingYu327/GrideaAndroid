@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章管理 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 文章管理：创建编辑、Markdown 语法、标签、封面图、草稿、回收站、版本历史。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html" class="active">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html" class="active">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>文章管理</h1>
+      <p class="doc-lead">文章是博客的核心。Gridea Android 提供完整的文章生命周期管理：创建、编辑、标签、封面图、草稿、回收站与版本历史，全部在手机本地完成。</p>
+
+      <h2 id="create">创建与编辑</h2>
+      <p>在「文章」标签页点击右下角 FAB 按钮新建文章。编辑器基于 Markwon 引擎，支持完整的 Markdown 语法与多项扩展。</p>
+
+      <h3>支持的 Markdown 语法</h3>
+      <ul>
+        <li><strong>基础语法</strong>：标题、粗体、斜体、删除线、引用、有序 / 无序列表、链接、图片、分割线、表格。</li>
+        <li><strong>代码</strong>：行内代码与围栏代码块，支持语法高亮。</li>
+        <li><strong>任务列表</strong>：<code>- [ ]</code> 与 <code>- [x]</code>。</li>
+        <li><strong>上下标</strong>：<code>H~2~O</code>、<code>x^2^</code>。</li>
+        <li><strong>高亮标记</strong>：<code>==高亮文字==</code>。</li>
+        <li><strong>数学公式</strong>：通过主题配置开启。</li>
+      </ul>
+
+      <pre><code>## 一段示例
+
+普通段落，含 **粗体**、*斜体*、~~删除线~~、==高亮==。
+
+- [x] 已完成事项
+- [ ] 待办事项
+
+行内代码 `print("hello")`，代码块：
+
+```python
+def greet(name):
+    return f"Hello, {name}!"
+```</code></pre>
+
+      <h3>自动保存与手动保存</h3>
+      <p>编辑器在你停笔 2 秒后自动保存到 Room 数据库；离开编辑页面时，会用 <code>NonCancellable</code> 协程兜底，确保最后一个字也不会丢失。顶部保存按钮可随时手动触发保存。</p>
+
+      <h2 id="find-replace">查找替换</h2>
+      <p>编辑器内置 IDE 风格的查找替换面板：</p>
+      <ul>
+        <li>所有匹配项以<strong>浅黄背景</strong>高亮。</li>
+        <li>当前匹配项用<strong>深黄背景 + 斜体</strong>突出显示。</li>
+        <li>切换匹配时编辑器自动滚动定位。</li>
+        <li>输入采用 220ms 防抖，避免长文章卡顿。</li>
+      </ul>
+
+      <h2 id="cover">封面图</h2>
+      <p>点击编辑器顶部工具栏的封面图按钮，可从相册选取图片作为文章封面。封面图会随文章一起部署，并在支持封面的主题（如瀑布流、杂志）首页以卡片形式展示。</p>
+      <div class="callout tip">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><strong>建议：</strong>封面图推荐 16:9 或 3:2 比例，体积控制在 500KB 以内以加快加载。</p>
+      </div>
+
+      <h2 id="tags">标签</h2>
+      <p>标签用于组织文章，每篇文章可挂多个标签。在编辑页的标签栏输入并回车即可创建或选用已有标签。标签页会自动聚合所有文章，主题中的 <code>tags.peb</code> 与 <code>tag.peb</code> 模板负责渲染标签云与标签下的文章列表。</p>
+      <ul>
+        <li>新建标签：在标签栏直接输入名称回车。</li>
+        <li>管理标签：在「标签」标签页可重命名或删除标签。</li>
+        <li>删除标签不会删除文章，只是解除关联。</li>
+      </ul>
+
+      <h2 id="draft-trash">草稿与回收站</h2>
+      <p>文章有三种状态：<strong>已发布</strong>、<strong>草稿</strong>、<strong>已删除</strong>。</p>
+      <table>
+        <thead><tr><th>状态</th><th>是否部署</th><th>是否计入统计</th></tr></thead>
+        <tbody>
+          <tr><td>已发布</td><td>是</td><td>是</td></tr>
+          <tr><td>草稿</td><td>否</td><td>否</td></tr>
+          <tr><td>已删除（回收站）</td><td>否</td><td>否</td></tr>
+        </tbody>
+      </table>
+      <p>在文章列表左滑或长按可将文章移入回收站。回收站中的文章可恢复或彻底删除。彻底删除后不可恢复（但若已开启备份，可从备份中还原，见 <a href="backup.html">备份与恢复</a>）。</p>
+
+      <h2 id="version">版本历史</h2>
+      <p>编辑器每 2 分钟为文章生成一次版本快照。在文章详情页可查看全部历史版本，并随时回滚到任意历史版本。版本数据独立存储，回滚不会丢失当前内容（会作为新版本保留）。</p>
+
+      <h2 id="stats">写作统计</h2>
+      <p>每篇文章会自动记录写作时长，配合字数目标进度条量化输出节奏。在「统计」标签页可查看：</p>
+      <ul>
+        <li>写作热力图：按日展示写作活跃度。</li>
+        <li>字数统计：总字数、平均字数、最长文章。</li>
+        <li>文章分析：按标签、按月份的分布。</li>
+      </ul>
+
+      <nav class="doc-nav">
+        <a href="index.html"><span class="lbl">← 上一章</span><span class="ttl">快速开始</span></a>
+        <a class="next" href="themes.html"><span class="lbl">下一章 →</span><span class="ttl">主题系统</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础主题 -->
+    <style name="Theme.GrideaAndroid" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- 启动屏主题：使用纯色背景，避免冷启动白屏 -->
+    <style name="Theme.GrideaAndroid.Splash" parent="Theme.GrideaAndroid">
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+</resources>

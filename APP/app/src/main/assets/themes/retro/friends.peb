@@ -1,0 +1,27 @@
+{# 05-Retro 友链页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="friend-links-page">
+    <h1 class="page-title">友情链接<span class="typewriter-cursor">_</span></h1>
+    <div class="friend-links-list">
+        {% if friendLinks is not empty %}
+        {% for link in friendLinks %}
+        <a href="{{ link.url | https_upgrade }}" class="friend-link-card" target="_blank" rel="noopener noreferrer">
+            {% if link.avatar %}
+            <img src="{{ link.avatar | https_upgrade }}" alt="{{ link.name }}" class="friend-link-avatar" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            {% endif %}
+            <div class="friend-link-info">
+                <span class="friend-link-name">{{ link.name }}</span>
+                {% if link.description %}
+                <p class="friend-link-desc">{{ link.description }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="empty">--- 暂无友链 ---</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

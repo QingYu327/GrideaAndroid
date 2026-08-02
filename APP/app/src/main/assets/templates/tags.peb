@@ -1,0 +1,22 @@
+{# 标签汇总页，对应 TemplateEngine.renderTagsPage #}
+{# 输出路径：tags/index.html，baseUrl="../" #}
+{# 注意：不传 themePackConfig（与 tag 详情页不同） #}
+{% extends "base" %}
+
+{% block content %}
+<div class="tags-page">
+    <h1 class="page-title">标签</h1>
+    <div class="tags-cloud">
+        {% if tags is not empty %}
+        {% for tag in tags %}
+        <a href="{{ tag.link }}" class="tag-card">
+            <span class="tag-name">{{ tag.name }}</span>
+            <span class="tag-count">{{ tag.count }} 篇文章</span>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="empty">暂无标签</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{# 08-Terminal 友链页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="friend-links-page">
+    <p class="page-path"><span class="prompt-dollar">$</span> cat ./friends.txt</p>
+    <h1 class="page-title"><span class="title-prefix">&gt;</span> 友情链接</h1>
+    <div class="friend-links-list">
+        {% if friendLinks is not empty %}
+        {% for link in friendLinks %}
+        <a href="{{ link.url | https_upgrade }}" class="friend-link-card" target="_blank" rel="noopener noreferrer">
+            {% if link.avatar %}
+            <img src="{{ link.avatar | https_upgrade }}" alt="{{ link.name }}" class="friend-link-avatar" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            {% endif %}
+            <div class="friend-link-info">
+                <span class="friend-link-name"><span class="prompt-dollar">@</span> {{ link.name }}</span>
+                {% if link.description %}
+                <p class="friend-link-desc"><span class="comment"># </span>{{ link.description }}</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="empty"><span class="prompt-dollar">$</span> echo "暂无友链"<span class="cursor-blink">_</span></div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

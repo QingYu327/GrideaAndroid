@@ -1,0 +1,25 @@
+{# 03-Magazine 归档页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="archives-page">
+    <h1 class="page-title">归档</h1>
+    {% if archivesByYear is not empty %}
+    {% for year in archivesByYear %}
+    <div class="archive-year">
+        <h2 class="archive-year-title">{{ year.year }}</h2>
+        <ul class="archive-list">
+            {% for post in year.posts %}
+            <li class="archive-item">
+                <span class="archive-date">{{ post.date }}</span>
+                <a href="{{ post.link }}" class="archive-title">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="empty">暂无文章</div>
+    {% endif %}
+</div>
+{% endblock %}

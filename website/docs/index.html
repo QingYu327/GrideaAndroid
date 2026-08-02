@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文档 — Gridea Android</title>
+<meta name="description" content="Gridea Android 官方文档：快速开始、写作、主题系统、部署、设置与常见问题。一部手机完成静态博客的写作、预览与部署。">
+<meta name="theme-color" content="#059669">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../css/style.css?v=20260803">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+<div class="navbar-inner">
+<a class="navbar-brand" href="../index.html">
+<img src="../assets/icons/app-icon.png" alt="Gridea Android" class="nav-brand-icon"> Gridea Android
+</a>
+<button class="menu-toggle" aria-label="菜单" aria-expanded="false"><span></span></button>
+<div class="navbar-links">
+<a class="navbar-link" href="../index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
+<a class="navbar-link" href="../themes.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>主题</a>
+<a class="navbar-link active" href="index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>文档</a>
+<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndriod"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+</div>
+<div class="navbar-actions">
+<button class="theme-toggle" aria-label="切换主题">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a>
+</div>
+</div>
+</nav>
+
+<!-- Docs Layout -->
+<main>
+<div class="container">
+
+<!-- 目录开关按钮 -->
+<button class="docs-toc-toggle" id="docsTocToggle" aria-label="打开文档目录" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+<span>文档目录</span>
+</button>
+
+<!-- 遮罩层 -->
+<div class="docs-toc-overlay" id="docsTocOverlay"></div>
+
+<div class="docs-layout">
+
+<!-- 左侧边栏（抽屉） -->
+<aside class="docs-sidebar" id="docsSidebar">
+<div class="docs-sidebar-header">
+<span>文档目录</span>
+<button class="docs-sidebar-close" id="docsSidebarClose" aria-label="关闭目录">&times;</button>
+</div>
+<div class="docs-sidebar-body">
+<h4>快速开始</h4>
+<ul>
+<li><a href="#intro">简介</a></li>
+<li><a href="#install">安装指南</a></li>
+<li><a href="#first-config">首次配置</a></li>
+</ul>
+<h4>写作</h4>
+<ul>
+<li><a href="#markdown-editor">Markdown 编辑器</a></li>
+<li><a href="#autosave">自动保存与版本历史</a></li>
+<li><a href="#find-replace">查找替换</a></li>
+<li><a href="#stats">写作统计</a></li>
+</ul>
+<h4>主题</h4>
+<ul>
+<li><a href="#theme-system">主题系统</a></li>
+<li><a href="#theme-json">theme.json 配置</a></li>
+<li><a href="#theme-dev">主题开发指南</a></li>
+</ul>
+<h4 id="deploy">部署</h4>
+<ul>
+<li><a href="#github">GitHub Pages</a></li>
+<li><a href="#github-oauth">GitHub OAuth 登录</a></li>
+<li><a href="#gitee">Gitee + EdgeOne</a></li>
+<li><a href="#sftp">SFTP</a></li>
+<li><a href="#netlify">Netlify</a></li>
+<li><a href="#vercel">Vercel</a></li>
+</ul>
+<h4>设置</h4>
+<ul>
+<li><a href="#site-config">站点配置</a></li>
+<li><a href="#comments">评论系统</a></li>
+<li><a href="#appearance">外观与主题</a></li>
+<li><a href="#backup">数据备份</a></li>
+</ul>
+<h4>其他</h4>
+<ul>
+<li><a href="#widgets">桌面小部件</a></li>
+<li><a href="#debug">调试模式</a></li>
+<li><a href="#faq">常见问题</a></li>
+</ul>
+</div>
+</aside>
+
+<!-- 右侧内容区 -->
+<article class="docs-content">
+
+<h1>Gridea Android 文档</h1>
+<p>欢迎使用 Gridea Android。这是一款专为 Android 设计的静态博客写作客户端——无需电脑、无需服务器，一部手机即可完成「写作 → 预览 → 部署」的全流程。本文档将带你了解应用的安装、写作、主题、部署与各项设置，帮助你把静态博客装进口袋。</p>
+
+<h2 id="quickstart">快速开始</h2>
+
+<h3 id="intro">简介</h3>
+<p>Gridea Android 是开源静态博客工具 <a href="https://github.com/getgridea/gridea">Gridea</a> 的 Android 原生实现。它在原有理念的基础上，针对移动平台从底层重新设计：采用 100% Jetpack Compose 构建 UI，内置 Markwon Markdown 编辑器、Pebble 模板引擎，以及直连 GitHub Pages、Gitee、SFTP、Netlify、Vercel 五大平台的部署能力。</p>
+<p>所有数据存储在应用沙箱内，不上传任何服务器。你拥有对自己内容的完全控制权——从写作到发布，整条链路都在你的手机上完成。</p>
+<ul>
+<li><strong>纯本地</strong>：文章、配置、主题全部存储在应用沙箱，离线可用。</li>
+<li><strong>无后端</strong>：部署直连你自己的代码托管平台，不经过任何中间服务器。</li>
+<li><strong>开箱即用</strong>：图形化界面，无需命令行，无需配置 Node.js 或 Git 环境。</li>
+</ul>
+
+<h3 id="install">安装指南</h3>
+<p>Gridea Android 通过 GitHub Releases 分发 APK 安装包，暂未上架 Google Play。请按以下步骤完成安装：</p>
+<ol>
+<li>前往 <a href="https://github.com/QingYu327/GrideaAndriod/releases">GitHub Releases</a> 页面，下载最新版本的 <code>app-release.apk</code>。</li>
+<li>在手机上点击下载好的 APK，系统会提示「为了你的安全……」——这是因为应用未经过 Play 商店签名，选择「仍然安装」。</li>
+<li>若系统要求开启「允许安装未知来源应用」，请在系统设置中为浏览器或文件管理器开启该权限，再返回重试。</li>
+<li>安装完成后打开应用，即可看到欢迎引导。</li>
+</ol>
+<blockquote>
+<p><strong>系统要求：</strong>Android 7.0（API 24）及以上。应用支持亮色 / 暗色 / 跟随系统三种主题模式，Android 12+ 可启用动态取色。</p>
+</blockquote>
+
+<h3 id="first-config">首次配置</h3>
+<p>首次打开 App 后，会进入引导流程，带你完成站点的基础设置。这些信息会写入你的博客站点，并保存在本地 DataStore 中。</p>
+<h4>引导流程</h4>
+<ol>
+<li>欢迎页介绍应用的核心能力与隐私承诺。</li>
+<li>填写站点基础信息（站点名称、描述、作者）。</li>
+<li>从内置主题中选择一款作为初始主题。</li>
+<li>完成引导，进入主界面开始写作。</li>
+</ol>
+<h4>配置站点信息</h4>
+<ul>
+<li><strong>站点名称</strong>：显示在浏览器标签和博客首页，例如「我的博客」。</li>
+<li><strong>站点描述</strong>：一句话介绍你的站点，用于 SEO 与 RSS。</li>
+<li><strong>作者</strong>：展示在文章作者栏与友链页。</li>
+</ul>
+<h4>选择主题</h4>
+<p>应用内置 7 套主题，可在「主题」页面随时切换。每套主题都为手机端做了响应式适配。建议先用默认主题跑通流程，再慢慢挑选喜欢的风格。详见 <a href="#theme-system">主题系统</a>。</p>
+<blockquote>
+<p><strong>提示：</strong>站点 URL（部署地址）可在正式部署前再填写。如果暂时没有地址，先留空即可，部署前记得回来改成真实地址，否则文章永久链接会指向错误位置。</p>
+</blockquote>
+
+<h2 id="writing">写作</h2>
+
+<h3 id="markdown-editor">Markdown 编辑器</h3>
+<p>Gridea Android 内置基于 Markwon 引擎的 Markdown 编辑器，支持完整的 Markdown 语法以及丰富的扩展能力，让你在手机上也能拥有接近桌面端的写作体验。</p>
+<ul>
+<li><strong>基础语法</strong>：标题、粗体、斜体、删除线、引用、链接、图片、有序 / 无序列表、表格、分割线。</li>
+<li><strong>代码高亮</strong>：支持常见编程语言的语法高亮，可编写行内代码与围栏代码块。</li>
+<li><strong>任务列表</strong>：使用 <code>- [ ]</code> / <code>- [x]</code> 创建可勾选任务项。</li>
+<li><strong>上下标</strong>：支持 <code>~下标~</code> 与 <code>^上标^</code> 语法，便于书写数学与化学公式。</li>
+<li><strong>高亮标记</strong>：使用 <code>==高亮==</code> 标记重点内容。</li>
+<li><strong>工具栏快捷操作</strong>：顶部工具栏提供加粗、斜体、列表、链接、图片等常用操作的快捷按钮，避免在手机键盘上反复输入符号。</li>
+</ul>
+<p>编辑器还支持封面图设置、标签管理、草稿状态切换。文件名会根据标题自动生成 URL 友好的 slug。</p>
+
+<h3 id="autosave">自动保存与版本历史</h3>
+<p>为了让你专注于内容、无惧修改，编辑器提供了完善的自动保存与版本历史机制。</p>
+<ul>
+<li><strong>2 秒自动保存</strong>：每次停笔 2 秒后，编辑器会自动将当前内容写入本地数据库。你也可以随时手动点击保存按钮。</li>
+<li><strong>每 2 分钟生成版本快照</strong>：在写作过程中，应用每隔 2 分钟为文章生成一个版本快照，记录当时的完整内容。</li>
+<li><strong>回滚到任意历史版本</strong>：在文章的「版本历史」面板中，你可以浏览所有快照，预览任意历史版本的内容，并一键回滚到该版本。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong>版本快照存储在本地，不会随部署上传。如果你更换设备，记得通过「数据备份」导出文章数据。</p>
+</blockquote>
+
+<h3 id="find-replace">查找替换</h3>
+<p>编辑器内置 IDE 风格的查找替换面板，便于在长文中快速定位与批量修改内容。</p>
+<ul>
+<li><strong>查找与替换</strong>：支持输入关键词查找，并替换为指定文本，可选择「替换当前」或「全部替换」。</li>
+<li><strong>匹配项高亮</strong>：所有匹配项会在编辑区实时高亮，当前定位项以不同颜色突出显示。</li>
+<li><strong>上一个 / 下一个</strong>：在多个匹配项之间快速跳转，匹配数量实时统计。</li>
+</ul>
+
+<h3 id="stats">写作统计</h3>
+<p>应用会记录你的写作行为，并用可视化的方式呈现，帮助你养成持续创作的习惯。</p>
+<ul>
+<li><strong>写作时长记录</strong>：自动统计你在编辑器中的累计写作时长。</li>
+<li><strong>字数目标进度条</strong>：可设置每日字数目标，进度条实时显示当日完成情况。</li>
+<li><strong>文章热力图</strong>：以热力图形式展示过去一段时间内的写作活跃度，颜色深浅对应当天字数。</li>
+</ul>
+
+<h2 id="theme">主题</h2>
+
+<h3 id="theme-system">主题系统</h3>
+<p>Gridea Android 使用 Pebble 模板引擎渲染站点，通过 <code>theme.json</code> 在应用与主题之间建立配置通信契约。主题系统具备以下特性：</p>
+<ul>
+<li><strong>内置 7 款主题</strong>：涵盖杂志、复古、终端、马卡龙、水墨、侧边栏等多种风格，开箱即用。</li>
+<li><strong>.zip 主题包导入</strong>：将第三方主题打包为 <code>.zip</code>，在「主题」页面导入即可使用。</li>
+<li><strong>即时预览</strong>：修改主题配置后，预览页面会立即重新渲染，无需重新部署即可看到效果。</li>
+<li><strong>三端响应式</strong>：所有主题均适配手机、平板、电脑三种屏幕尺寸。</li>
+</ul>
+
+<h3 id="theme-json">theme.json 配置</h3>
+<p><code>theme.json</code> 是主题与应用之间的通信契约。它声明主题支持哪些可配置项，应用据此在设置界面生成对应的配置控件，并将用户填写的值回传给模板渲染。</p>
+<h4>customConfig 数组</h4>
+<p>主题的所有可配置项都放在 <code>customConfig</code> 数组中，每一项定义一个配置控件。</p>
+<h4>5 种控件类型</h4>
+<ul>
+<li><strong>text</strong>：单行文本输入，适用于标题、副标题、自定义文案等。</li>
+<li><strong>switch</strong>：开关，适用于布尔型选项，如是否显示某个模块。</li>
+<li><strong>slider</strong>：滑块，适用于数值范围调节，如列数、字号缩放。</li>
+<li><strong>code</strong>：多行代码输入，适用于自定义 CSS / JS 注入。</li>
+<li><strong>multiselect</strong>：多选，适用于从预设选项中选择多个值，如启用的社交图标。</li>
+</ul>
+<h4>统计字段</h4>
+<p>主题可声明以下统计代码字段，用户填写对应 ID 后即可接入第三方统计：</p>
+<ul>
+<li><strong>ga</strong>：Google Analytics。</li>
+<li><strong>baidu</strong>：百度统计。</li>
+<li><strong>tencent</strong>：腾讯统计。</li>
+<li><strong>view</strong>：自定义访问统计脚本。</li>
+</ul>
+<h4>theme.json 示例</h4>
+<pre><code>{
+  "name": "Magazine",
+  "version": "1.0.0",
+  "author": "Gridea Android",
+  "description": "大图封面、网格布局的杂志风格主题",
+  "customConfig": [
+    {
+      "name": "siteSubTitle",
+      "label": "站点副标题",
+      "type": "text",
+      "value": "用文字记录生活"
+    },
+    {
+      "name": "showAuthor",
+      "label": "显示作者信息",
+      "type": "switch",
+      "value": true
+    },
+    {
+      "name": "postColumns",
+      "label": "首页文章列数",
+      "type": "slider",
+      "value": 2,
+      "min": 1,
+      "max": 4
+    },
+    {
+      "name": "customCss",
+      "label": "自定义 CSS",
+      "type": "code",
+      "value": "/* 在此注入自定义样式 */"
+    },
+    {
+      "name": "socialIcons",
+      "label": "启用的社交图标",
+      "type": "multiselect",
+      "value": ["github", "rss"],
+      "options": ["github", "twitter", "rss", "email"]
+    }
+  ],
+  "stats": {
+    "ga": "",
+    "baidu": "",
+    "tencent": "",
+    "view": ""
+  }
+}</code></pre>
+
+<h3 id="theme-dev">主题开发指南</h3>
+<p>如果你想开发自己的主题，需要遵循以下规范。</p>
+<h4>主题包结构</h4>
+<p>一个完整的主题包（<code>.zip</code>）应包含以下文件结构：</p>
+<pre><code>my-theme/
+├── theme.json              # 主题配置契约
+├── config.json             # 主题默认配置
+├── templates/              # Pebble 模板
+│   ├── index.html          # 首页
+│   ├── post.html           # 文章页
+│   ├── archive.html        # 归档页
+│   ├── tag.html            # 标签页
+│   └── partials/           # 公共片段
+│       ├── header.html
+│       └── footer.html
+└── assets/                 # 静态资源
+    ├── css/
+    ├── js/
+    └── images/</code></pre>
+<h4>Pebble 模板语法要点</h4>
+<ul>
+<li><strong>变量输出</strong>：<code>{{ post.title }}</code> 输出变量值。</li>
+<li><strong>继承与块</strong>：使用 <code>{% extends "partials/header.html" %}</code> 与 <code>{% block content %}...{% endblock %}</code> 实现模板复用。</li>
+<li><strong>循环</strong>：<code>{% for post in posts %}...{% endfor %}</code> 遍历文章列表。</li>
+<li><strong>条件判断</strong>：<code>{% if post.cover %}...{% endif %}</code> 控制内容显隐。</li>
+<li><strong>过滤器</strong>：使用 <code>{{ post.date | date("YYYY-MM-DD") }}</code> 格式化日期等。</li>
+<li><strong>配置引用</strong>：通过 <code>{{ customConfig.xxx }}</code> 读取用户在应用中填写的主题配置值。</li>
+</ul>
+<h4>响应式要求</h4>
+<ul>
+<li>必须适配手机、平板、电脑三端屏幕，建议使用流式布局与媒体查询。</li>
+<li>图片应使用 <code>max-width: 100%</code> 避免溢出。</li>
+<li>交互元素（链接、按钮）的点击区域应足够大，便于手机触控。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong>开发完成后，将主题目录打包为 <code>.zip</code>（直接压缩目录内容，不要嵌套一层父目录），然后在应用「主题」页面导入即可测试。</p>
+</blockquote>
+
+<h2 id="deploy-section">部署</h2>
+<p>Gridea Android 提供五条直连部署通道：GitHub Pages、Gitee + EdgeOne、SFTP、Netlify、Vercel。部署在后台 Service 中执行，支持中断、进度通知、失败重试，完成后自动写入部署历史。各通道的配置相互隔离，互不影响。</p>
+
+<h3 id="github">GitHub Pages</h3>
+<p>最常用的部署方式。你的博客会托管在 <code>yourname.github.io</code> 仓库下。</p>
+<ol>
+<li><strong>创建仓库</strong>：在 GitHub 创建仓库，命名为 <code>&lt;用户名&gt;.github.io</code>（例如 <code>limengrid.github.io</code>）。</li>
+<li><strong>创建 Personal Access Token</strong>：前往 <a href="https://github.com/settings/tokens">GitHub Settings → Developer settings → Personal access tokens</a>，生成一个 Classic Token，至少勾选 <code>repo</code> 权限。</li>
+<li><strong>填写配置</strong>：在「设置 → 部署 → GitHub Pages」中填写：用户名（仓库拥有者）、仓库名、分支（默认 <code>master</code> 或 <code>main</code>）、Token。</li>
+<li><strong>部署</strong>：点击「部署」，应用通过 Contents API 逐文件 PUT 上传，文件间间隔 1 秒以防触发限流。完成后访问 <code>https://yourname.github.io</code> 即可看到博客。</li>
+</ol>
+<blockquote>
+<p><strong>Token 安全：</strong>Token 保存在本地 DataStore 中，不上传任何服务器。反馈日志打包时会自动脱敏，仅保留前缀。</p>
+</blockquote>
+
+<h3 id="github-oauth">GitHub OAuth 登录</h3>
+<p>除了使用 Personal Access Token，应用还支持通过 <strong>GitHub OAuth Device Flow（设备流）</strong> 授权登录，免去手动创建和管理 Token 的繁琐流程。Device Flow 是 OAuth 2.0 为移动端和嵌入式设备设计的授权流程，无需 Client Secret，安全性更高。</p>
+<h4>Device Flow 工作原理</h4>
+<p>与传统 OAuth 回调流不同，Device Flow 不需要应用嵌入浏览器或注册回调 URL。流程如下：</p>
+<ol>
+<li>应用向 GitHub 请求一个<strong>设备码</strong>（Device Code），同时获得一个<strong>用户码</strong>（User Code）和验证网址。</li>
+<li>应用显示用户码和验证网址（<code>https://github.com/login/device</code>）。</li>
+<li>你在<strong>任意设备</strong>（手机浏览器、电脑浏览器均可）打开该网址，登录 GitHub 并输入用户码。</li>
+<li>应用在后台按固定间隔<strong>轮询</strong> GitHub 的 Token 接口，一旦你完成授权，应用自动获取 Access Token。</li>
+<li>Token 写入本地 DataStore，后续部署直接复用，无需再手动填写。</li>
+</ol>
+<blockquote>
+<p><strong>安全说明：</strong>整个过程中应用无法获取你的 GitHub 密码，Client Secret 也不需要（Device Flow 不使用）。Token 仅存储在本地，不上传任何服务器。授权范围仅限 <code>repo</code>（仓库读写）与 <code>user</code>（读取用户资料），不会请求超出部署所需的权限。</p>
+</blockquote>
+<h4>配置步骤</h4>
+<ol>
+<li><strong>创建 OAuth App</strong>：前往 <a href="https://github.com/settings/applications/new">GitHub Settings → Developer settings → OAuth Apps → New OAuth App</a>。</li>
+<li><strong>填写应用信息</strong>：
+<ul>
+<li><strong>Application name</strong>：自定义，如 <code>Gridea Android</code>。</li>
+<li><strong>Homepage URL</strong>：填你的博客地址或任意有效 URL。</li>
+<li><strong>Authorization callback URL</strong>：填任意有效 URL（如 <code>http://localhost:8080</code>），Device Flow 不实际使用回调。</li>
+</ul>
+</li>
+<li><strong>启用 Device Flow</strong>：创建完成后，进入 OAuth App 详情页，找到 <strong>「Enable Device Flow」</strong> 选项并勾选。这一步<strong>必须开启</strong>，否则登录会失败。</li>
+<li><strong>记录 Client ID</strong>：在 OAuth App 详情页复制 <code>Client ID</code>（20 位十六进制字符串）。<strong>不需要</strong>生成 Client Secret。</li>
+<li><strong>应用内填写</strong>：打开 App →「设置 → 账户」，在 OAuth App 配置卡片中填入 Client ID。</li>
+<li><strong>开始登录</strong>：点击「使用 GitHub 登录」按钮，应用会显示一个<strong>用户码</strong>（如 <code>WDJB-MJHT</code>）和验证网址。</li>
+<li><strong>浏览器授权</strong>：点击验证网址（<code>github.com/login/device</code>）用系统浏览器打开，登录 GitHub 并输入用户码，点击 Authorize 授权。</li>
+<li><strong>完成</strong>：应用轮询到 Token 后自动拉取你的 GitHub 账户信息（头像、用户名、仓库数等），界面切换到「已登录」状态，提示「登录成功」。</li>
+</ol>
+<blockquote>
+<p><strong>提示：</strong>登录成功后，在部署配置页（GitHub Pages）的 Token 输入框下方，会出现「使用已登录账户的 Token」按钮，点击即可一键复用 OAuth Token，无需再手动创建 Personal Access Token。</p>
+</blockquote>
+<h4>Token 方式 vs OAuth 方式</h4>
+<table class="comparison-table">
+<thead><tr><th>对比项</th><th>Personal Access Token</th><th>OAuth Device Flow</th></tr></thead>
+<tbody>
+<tr><td>获取方式</td><td>手动在 Settings 页面创建</td><td>应用内一键发起，浏览器输入用户码</td></tr>
+<tr><td>需要 Client Secret</td><td>不需要</td><td>不需要（Device Flow 特性）</td></tr>
+<tr><td>Token 有效期</td><td>可选永久或自定义过期</td><td>由 GitHub 管理，可随时撤销</td></tr>
+<tr><td>权限范围</td><td>Classic Token 范围较广</td><td>精确到 repo + user scope</td></tr>
+<tr><td>撤销方式</td><td>需手动在 Token 列表删除</td><td>OAuth App 页面一键撤销</td></tr>
+<tr><td>适用场景</td><td>长期自动化部署</td><td>个人用户快速接入</td></tr>
+</tbody>
+</table>
+<p>两种方式可随时切换，互不影响。如果你倾向于「一次授权、长期使用」的便捷体验，推荐使用 OAuth；如果需要更精细的权限控制或用于自动化场景，Token 方式更合适。</p>
+
+<h3 id="gitee">Gitee + EdgeOne 静态托管</h3>
+<p>面向国内用户的部署方案。注意：<strong>Gitee Pages 服务已关闭</strong>，不再提供静态网站托管。当前方案为：应用通过 Gitee API 将静态文件推送到 Gitee 仓库，再通过腾讯云 EdgeOne 的<strong>静态托管</strong>服务接入该仓库完成站点托管。Gitee 仓库仅作为文件存储，真正的站点托管由 EdgeOne 完成。Gitee 凭证与 GitHub 完全隔离，可同时部署到两个平台。</p>
+<h4>第一步：Gitee 仓库与令牌配置</h4>
+<ol>
+<li><strong>创建仓库</strong>：在 <a href="https://gitee.com">Gitee</a> 创建仓库，命名自定义（如 <code>my-blog</code>）。仓库可以是公开或私有，EdgeOne 均可接入。</li>
+<li><strong>创建私人令牌</strong>：进入 Gitee「设置 → 私人令牌」，生成新令牌，勾选 <code>projects</code> 权限。令牌仅显示一次，请妥善保存。</li>
+<li><strong>应用内配置</strong>：在「设置 → 部署 → Gitee」中填写 Gitee 用户名、仓库名、分支（默认 <code>master</code>）与私人令牌。</li>
+<li><strong>部署</strong>：点击「部署」，应用通过 Gitee Contents API 逐文件上传（Base64 编码），采用 PUT + DELETE 策略同步删除已移除的文件。每次上传间隔 1 秒以防触发限流。部署完成后，文件即存储在 Gitee 仓库中。</li>
+</ol>
+<blockquote>
+<p><strong>说明：</strong>应用仅负责将文件推送到 Gitee 仓库，不涉及 Gitee Pages 服务。仓库中的文件需要通过下方 EdgeOne 静态托管才能作为网站访问。</p>
+</blockquote>
+<h4>第二步：配置腾讯云 EdgeOne 静态托管</h4>
+<p>EdgeOne 提供 Pages 类型的静态站点托管服务，可以接入 Git 仓库自动部署。每次应用向 Gitee 仓库推送新内容后，EdgeOne 会自动检测到仓库更新并触发重新部署。</p>
+<ol>
+<li><strong>注册腾讯云账号</strong>：前往 <a href="https://pages.edgeone.ai/zh">EdgeOne Pages</a>，注册并完成实名认证。</li>
+<li><strong>创建 EdgeOne 站点</strong>：在 EdgeOne 控制台点击「新建站点」，输入你的自定义域名（如 <code>blog.example.com</code>），选择「接入 EdgeOne」。</li>
+<li><strong>接入方式</strong>：选择「CNAME 接入」。EdgeOne 会生成一个 CNAME 地址（如 <code>xxx.cdn.dnsv1.com</code>），将其记录下来。</li>
+<li><strong>配置 DNS 解析</strong>：在你的域名 DNS 管理处，添加一条 CNAME 记录：
+<ul>
+<li>主机记录：<code>blog</code>（或你使用的子域名前缀）</li>
+<li>记录类型：<code>CNAME</code></li>
+<li>记录值：EdgeOne 提供的 CNAME 地址</li>
+</ul>
+</li>
+<li><strong>创建静态托管</strong>：在 EdgeOne 控制台找到「站点加速 → 静态托管」或「Pages」服务，创建新的托管项目。</li>
+<li><strong>接入 Gitee 仓库</strong>：在托管项目中，选择「Git 仓库接入」，授权并选择你的 Gitee 仓库与分支。EdgeOne 会自动拉取仓库内容进行托管。</li>
+<li><strong>配置构建规则</strong>（可选）：如果你的静态文件直接在仓库根目录，无需构建命令，指定输出目录为根目录（<code>/</code>）即可。</li>
+<li><strong>申请 SSL 证书</strong>：在「站点加速 → 域名管理 → HTTPS 配置」中，选择「免费证书」，EdgeOne 会自动申请并部署 Let's Encrypt 证书，开启强制 HTTPS 跳转。</li>
+<li><strong>验证访问</strong>：DNS 生效后（通常 5-10 分钟），通过自定义域名访问博客，确认页面正常加载且证书有效。</li>
+</ol>
+<h4>第三步：在应用中更新站点域名</h4>
+<p>托管配置完成后，回到应用「设置 → 站点信息 → 域名」，将地址更新为 EdgeOne 托管后的自定义域名（如 <code>https://blog.example.com</code>），确保文章永久链接与 RSS 指向正确地址。</p>
+<blockquote>
+<p><strong>提示：</strong>每次在应用中重新部署后，Gitee 仓库内容会更新，EdgeOne 会自动检测到仓库变更并重新部署。如需立即刷新缓存，可在 EdgeOne 控制台「缓存配置 → 刷新预热」中手动刷新 URL。</p>
+</blockquote>
+
+
+<h3 id="sftp">SFTP</h3>
+<p>SFTP 适合自建服务器场景，支持密码认证。底层使用 JSch（mwiede fork，修复了旧版安全漏洞）。</p>
+<ul>
+<li><strong>服务器要求</strong>：需提供可用的 SFTP 服务（默认端口 22），并拥有目标目录的读写权限。</li>
+</ul>
+<h4>配置项</h4>
+<ul>
+<li><strong>服务器地址</strong>：如 <code>ftp.example.com</code> 或 IP。</li>
+<li><strong>端口</strong>：默认 22。</li>
+<li><strong>SFTP 用户名</strong>：登录用户名。</li>
+<li><strong>密码</strong>：登录密码。</li>
+<li><strong>远程路径</strong>：站点根目录，例如 <code>/var/www/blog</code>。</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong>SFTP 配置与 GitHub 完全隔离，切换部署平台不会互相干扰。SFTP 采用全量替换策略，部署时会清空目标目录后重新上传全部文件，请确保填写的根目录只用于博客，避免误删其他站点文件。</p>
+</blockquote>
+
+<h3 id="netlify">Netlify</h3>
+<p>Netlify 通过 SHA1 增量上传，只推送缺失或变更的文件，适合文章量大时加速部署。</p>
+<ol>
+<li>在 <a href="https://app.netlify.com/">Netlify</a> 创建站点并记录 Site ID。</li>
+<li>在「User Settings → Applications」生成 Personal Access Token。</li>
+<li>在「设置 → 部署 → Netlify」中填写 Site ID 与 Access Token。</li>
+<li>部署时应用计算每个文件 SHA1，仅上传远端不存在的文件，实现增量部署。</li>
+</ol>
+
+<h3 id="vercel">Vercel</h3>
+<p>Vercel 采用 SHA 去重策略，上传时自动跳过未变更文件，适合频繁部署场景。</p>
+<ol>
+<li>在 <a href="https://vercel.com/account/tokens">Vercel Account → Tokens</a> 生成 Access Token。</li>
+<li>创建项目并记录 Project ID（所属 Team ID，个人账户可留空）。</li>
+<li>在应用中填写上述信息后部署。应用会对文件做 SHA 去重，避免重复上传。</li>
+</ol>
+
+<h2 id="settings">设置</h2>
+
+<h3 id="site-config">站点配置</h3>
+<p>在「设置 → 站点信息」中配置站点的全局属性，这些信息会影响博客的展示与 SEO。</p>
+<ul>
+<li><strong>站点名称、描述、作者</strong>：展示在首页、浏览器标签与 RSS 中。</li>
+<li><strong>域名</strong>：博客最终部署的访问地址，如 <code>https://yourname.github.io</code>。务必填写准确，它会影响文章永久链接与 RSS 生成。</li>
+<li><strong>CNAME</strong>：若使用自定义域名，可在此填写 CNAME 记录，部署时会自动写入仓库根目录。</li>
+<li><strong>文章分页</strong>：设置首页每页显示的文章数量。</li>
+<li><strong>URL 格式</strong>：选择文章永久链接的格式（如默认、日期型、可读型）。</li>
+<li><strong>日期格式</strong>：自定义文章日期的展示格式。</li>
+</ul>
+
+<h3 id="comments">评论系统</h3>
+<p>应用支持接入主流的评论系统，让你在静态博客上也能拥有互动能力。支持以下六种：</p>
+<ul>
+<li><strong>Gitalk</strong>：基于 GitHub Issue 的评论系统。</li>
+<li><strong>Giscus</strong>：基于 GitHub Discussions 的评论系统。</li>
+<li><strong>Disqus</strong>：国际通用的评论系统。</li>
+<li><strong>Valine</strong>：基于 LeanCloud 的无后端评论系统。</li>
+<li><strong>Twikoo</strong>：私有部署的评论系统。</li>
+<li><strong>Waline</strong>：具备完整后端的评论系统。</li>
+</ul>
+<h4>配置方法</h4>
+<ol>
+<li>在对应评论系统的官方平台完成注册与初始化，获取所需的 ID、密钥或仓库信息。</li>
+<li>在「设置 → 评论」中选择使用的评论系统。</li>
+<li>按页面提示填写对应字段（如 GitHub 仓库、Client ID、LeanCloud AppID 等）。</li>
+<li>保存后预览站点，评论组件会自动加载到文章页底部。</li>
+</ol>
+<blockquote>
+<p><strong>提示：</strong>部分评论系统（如 Disqus）在国内访问可能不稳定，建议国内用户优先考虑 Twikoo、Waline 或 Giscus。</p>
+</blockquote>
+
+<h3 id="appearance">外观与主题</h3>
+<p>在「设置 → 外观」中个性化你的应用与站点外观。</p>
+<ul>
+<li><strong>主题模式</strong>：亮色 / 暗色 / 跟随系统，三种模式自由切换。</li>
+<li><strong>动态取色</strong>：Android 12+ 可启用 Material You 动态取色，应用主色随壁纸自动变化。</li>
+<li><strong>自定义强调色</strong>：手动指定应用的主题强调色。</li>
+<li><strong>字体大小缩放</strong>：调节应用内字体大小，适配不同视力需求。</li>
+<li><strong>语言</strong>：中文 / 英文 / 跟随系统，三种语言选项。</li>
+</ul>
+
+<h3 id="backup">数据备份</h3>
+<p>为防止数据丢失，应用提供完善的备份与恢复机制。</p>
+<ul>
+<li><strong>自动备份</strong>：应用会定期自动备份文章与配置数据到本地。</li>
+<li><strong>手动备份与恢复</strong>：在「设置 → 数据备份」中可手动导出完整数据备份包，也可从备份包恢复数据到应用，便于更换设备或归档留存。</li>
+</ul>
+<blockquote>
+<p><strong>建议：</strong>定期将备份包复制到云盘或电脑，避免因设备丢失或卸载应用导致数据丢失。</p>
+</blockquote>
+
+<h2 id="others">其他</h2>
+
+<h3 id="widgets">桌面小部件</h3>
+<p>应用提供两款桌面小部件，让你无需打开 App 即可快速操作。</p>
+<ul>
+<li><strong>1×1 新建文章小部件</strong>：点击即可跳转到编辑器新建一篇文章，捕捉转瞬即逝的灵感。</li>
+<li><strong>4×1 写作统计小部件</strong>：在桌面展示当日字数目标进度与累计写作时长，时刻激励自己持续创作。</li>
+</ul>
+<h4>添加方法</h4>
+<p>长按桌面空白处 → 选择「小部件」→ 找到「Gridea Android」→ 将对应小部件拖到桌面即可。</p>
+
+<h3 id="debug">调试模式</h3>
+<p>调试模式面向进阶用户与主题开发者，默认隐藏，需手动解锁。</p>
+<ul>
+<li><strong>解锁方式</strong>：进入「关于」页面，连续点击版本号 5 次即可解锁调试模式。</li>
+<li><strong>WebView 远程调试</strong>：开启后，可用 Chrome DevTools 远程审查预览页面的 DOM、网络与控制台，便于调试主题。</li>
+<li><strong>详细日志</strong>：开启后会记录更详细的运行日志，便于排查部署失败等问题。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong>调试日志可能包含敏感信息（如 Token 前缀）。分享日志前，应用会自动脱敏处理，但仍建议你检查一遍再分享。</p>
+</blockquote>
+
+<h3 id="faq">常见问题</h3>
+
+<h4>打开应用后白屏怎么办？</h4>
+<p>白屏通常与 WebView 加载失败或主题渲染异常有关。可尝试：清除应用缓存后重启；切换为默认主题后重新预览；若仍无效，开启「调试模式 → WebView 远程调试」用 Chrome DevTools 查看控制台报错定位问题。</p>
+
+<h4>GitHub Pages 部署后页面空白？</h4>
+<p>常见原因是站点 URL 配置错误，导致资源路径指向错误位置。请检查「设置 → 站点信息 → 域名」是否与实际访问地址完全一致（含 <code>https://</code> 前缀，末尾无多余斜杠）。另外确认仓库已开启 Pages 服务且分支选择正确。</p>
+
+<h4>主题预览不生效？</h4>
+<p>修改主题配置后预览未更新，通常是预览缓存未刷新。请尝试在预览页面下拉刷新或重新进入预览。若导入的是自定义主题，检查 <code>theme.json</code> 格式是否正确、模板文件是否齐全。</p>
+
+<h4>SFTP 部署失败？</h4>
+<p>请依次排查：服务器地址与端口是否正确；用户名密码是否准确；远程路径是否存在且具备读写权限；服务器 SSH 服务是否正常运行。SFTP 采用全量替换策略，若根目录权限不足会导致清空失败。可在「调试模式 → 详细日志」中查看具体错误信息。</p>
+
+<h4>如何在不同设备间同步文章数据？</h4>
+<p>应用目前不提供云同步功能，所有数据存储在本地。如需在设备间迁移，请在旧设备的「设置 → 数据备份」中导出完整备份包，将备份文件传输到新设备后，在同一页面选择「恢复数据」即可。备份包含所有文章、配置、主题设置与版本历史。建议将备份包同时保存到云盘，以防设备丢失。</p>
+
+</article>
+
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div class="footer-brand">
+<a class="navbar-brand" href="../index.html"><img src="../assets/icons/app-icon.png" alt="Gridea Android" class="nav-brand-icon"> Gridea Android</a>
+<p>把静态博客装进口袋。一款专为 Android 设计的静态博客写作客户端。</p>
+</div>
+<div class="footer-col">
+<h4>产品</h4>
+<ul>
+<li><a href="../index.html">首页</a></li>
+<li><a href="../themes.html">主题</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>文档</h4>
+<ul>
+<li><a href="index.html">快速开始</a></li>
+<li><a href="index.html#deploy">部署指南</a></li>
+<li><a href="index.html#theme">主题开发</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>社区</h4>
+<ul>
+<li><a href="https://github.com/QingYu327/GrideaAndriod">GitHub</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndriod/issues">问题反馈</a></li>
+<li><a href="https://github.com/getgridea/gridea">原项目</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span><span class="sep">·</span><span>致敬 Gridea 原项目作者 EryouHao</span></p>
+</div>
+</div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// 文档目录抽屉
+(function() {
+    var toggle = document.getElementById('docsTocToggle');
+    var sidebar = document.getElementById('docsSidebar');
+    var overlay = document.getElementById('docsTocOverlay');
+    var closeBtn = document.getElementById('docsSidebarClose');
+    if (!toggle || !sidebar || !overlay) return;
+
+    function openDrawer() {
+        sidebar.classList.add('open');
+        overlay.classList.add('visible');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('visible');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', function() {
+        if (sidebar.classList.contains('open')) closeDrawer();
+        else openDrawer();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    sidebar.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            setTimeout(closeDrawer, 150);
+        });
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) closeDrawer();
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gridea</string>
+
+    <!-- App shortcuts -->
+    <string name="shortcut_new_post">New Post</string>
+    <string name="shortcut_new_post_long">New Post</string>
+    <string name="shortcut_new_post_disabled">Cannot create post</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_articles">Posts</string>
+    <string name="nav_tags">Tags</string>
+    <string name="nav_setting">Settings</string>
+
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="confirm">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="preview">Preview</string>
+    <string name="edit">Edit</string>
+    <string name="search">Search</string>
+    <string name="clear">Clear</string>
+    <string name="loading">Loading…</string>
+
+    <!-- Home -->
+    <string name="home_title">Gridea</string>
+    <string name="home_search_hint">Search posts (title/content/tags)</string>
+    <string name="home_new_post">New Post</string>
+    <string name="home_empty_title">No posts yet</string>
+    <string name="home_empty_subtitle">Tap the button below to start writing</string>
+    <string name="home_stat_total">Total</string>
+    <string name="home_stat_published">Published</string>
+    <string name="home_stat_draft">Drafts</string>
+    <string name="home_stat_tags">Tags</string>
+    <string name="home_stat_continuous_days">Streak</string>
+    <string name="home_delete_title">Delete Post</string>
+    <string name="home_delete_message">Are you sure you want to delete this post? This action cannot be undone.</string>
+    <string name="home_sort_date_desc">Date ↓</string>
+    <string name="home_sort_date_asc">Date ↑</string>
+    <string name="home_sort_title">Title</string>
+    <string name="home_filter_all">All</string>
+    <string name="home_filter_published">Published</string>
+    <string name="home_filter_draft">Drafts</string>
+    <string name="home_archive">Archive</string>
+    <string name="home_pinned">Pinned</string>
+    <string name="home_draft_badge">Draft</string>
+    <string name="home_published_badge">Published</string>
+    <string name="home_hidden_badge">Hidden</string>
+    <string name="home_unnamed_post">Untitled Post</string>
+    <string name="home_no_match_title">No matching posts found</string>
+    <string name="home_no_match_subtitle">Try other keywords</string>
+
+    <!-- Batch management (multi-select delete for posts/tags) -->
+    <string name="batch_selected_count">%1$d selected</string>
+    <string name="batch_select_all">Select all</string>
+    <string name="batch_deselect_all">Deselect all</string>
+    <string name="batch_exit_selection">Exit selection</string>
+    <string name="batch_delete_posts_title">Delete Posts</string>
+    <string name="batch_delete_posts_message">Are you sure you want to delete the %1$d selected posts? This action cannot be undone.</string>
+    <string name="batch_delete_tags_title">Delete Tags</string>
+    <string name="batch_delete_tags_message">Are you sure you want to delete the %1$d selected tags? Tags in use will be removed from related posts automatically. This action cannot be undone.</string>
+    <string name="batch_delete_menus_title">Delete Menus</string>
+    <string name="batch_delete_menus_message">Are you sure you want to delete the %1$d selected menus? This action cannot be undone.</string>
+    <string name="batch_delete_friend_links_title">Delete Friend Links</string>
+    <string name="batch_delete_friend_links_message">Are you sure you want to delete the %1$d selected friend links? This action cannot be undone.</string>
+    <string name="batch_delete">Batch delete</string>
+
+    <!-- Editor -->
+    <string name="editor_new_post">New Post</string>
+    <string name="editor_edit_post">Edit Post</string>
+    <string name="editor_title_label">Title</string>
+    <string name="editor_tags_label">Tags (comma separated)</string>
+    <string name="editor_content_placeholder">Start writing…</string>
+    <string name="editor_tab_edit">Edit</string>
+    <string name="editor_tab_preview">Preview</string>
+    <string name="editor_publish">Publish</string>
+    <string name="editor_top">Pin</string>
+    <string name="editor_hide">Hide</string>
+    <string name="editor_save">Save</string>
+    <string name="editor_export">Export Markdown</string>
+    <string name="editor_export_success">Export succeeded</string>
+    <string name="editor_export_fail">Export failed</string>
+    <string name="editor_export_title_empty">Title is empty, cannot export</string>
+    <string name="editor_export_unknown_error">Unknown error</string>
+    <string name="editor_export_cannot_write">Cannot write to file</string>
+    <string name="editor_word_count_format">%1$d words · ~%2$d min read</string>
+    <string name="editor_autosave_saving">Saving…</string>
+    <string name="editor_autosave_saved">Auto-saved</string>
+    <string name="editor_autosave_failed">Auto-save failed</string>
+    <string name="editor_date_label">Date: %1$s</string>
+    <string name="editor_search">Find &amp; Replace</string>
+    <string name="editor_find">Find</string>
+    <string name="editor_replace">Replace with</string>
+    <string name="editor_replace_btn">Replace</string>
+    <string name="editor_replace_all">Replace All</string>
+    <string name="editor_prev">Previous</string>
+    <string name="editor_next">Next</string>
+    <string name="editor_version_history">Version History</string>
+    <string name="editor_more">More</string>
+    <string name="editor_version_loading">Loading…</string>
+    <string name="editor_version_empty">No versions yet</string>
+    <string name="editor_version_untitled">Untitled</string>
+    <string name="editor_version_restore">Restore</string>
+    <string name="editor_version_delete_title">Delete Version</string>
+    <string name="editor_version_delete_message">Are you sure you want to delete this version? This action cannot be undone.</string>
+    <string name="editor_paste_image">Paste Image</string>
+    <string name="editor_paste_image_empty">No image in clipboard</string>
+    <string name="editor_paste_image_failed">Failed to paste image</string>
+
+    <!-- Editor: snippet templates -->
+    <string name="editor_template">Templates</string>
+    <string name="editor_template_code_block">Code Block</string>
+    <string name="editor_template_table_3x3">Table 3×3</string>
+    <string name="editor_template_table_4x4">Table 4×4</string>
+    <string name="editor_template_quote">Quote Block</string>
+    <string name="editor_template_task_list">Task List</string>
+    <string name="editor_template_math">Math Formula</string>
+    <string name="editor_template_warning">Warning Box</string>
+    <string name="editor_template_select_language">Select Language</string>
+
+    <!-- Editor: word count goal -->
+    <string name="editor_word_count_goal_progress">%1$d / %2$d words</string>
+    <string name="editor_word_count_goal_reached">🎉 Congrats! Word count goal %1$d reached</string>
+    <string name="editor_autosave_unsaved">Unsaved</string>
+    <string name="editor_autosave_saved_label">Saved</string>
+
+    <!-- Image library -->
+    <string name="image_insert_title">Insert Image</string>
+    <string name="image_select_from_album">Select from Album</string>
+    <string name="image_import_batch">Batch Import</string>
+    <string name="image_library_count">Image Library (%1$d)</string>
+    <string name="image_library_empty">Image library is empty, select from album or batch import</string>
+    <string name="image_long_press_hint">Long press image to rename or delete</string>
+    <string name="image_rename">Rename</string>
+    <string name="image_rename_title">Rename Image</string>
+    <string name="image_rename_hint">Enter new file name</string>
+    <string name="image_rename_empty">File name cannot be empty</string>
+    <string name="image_rename_failed">Rename failed, name may already exist</string>
+    <string name="image_delete_title">Delete Image</string>
+    <string name="image_delete_message">Are you sure you want to delete image \"%1$s\"? This action cannot be undone.</string>
+    <string name="image_import_progress">Importing %1$d/%2$d</string>
+    <string name="image_import_done">Imported %1$d images</string>
+    <string name="image_import_partial">Total %1$d, succeeded %2$d</string>
+
+    <!-- Tags -->
+    <string name="tags_title">Tags</string>
+    <string name="tags_empty_title">No tags yet</string>
+    <string name="tags_empty_subtitle">Tags added to posts will appear here, or tap the button below to create one</string>
+    <string name="tags_post_count_format">%1$d posts</string>
+    <string name="tags_delete_title">Delete Tag</string>
+    <string name="tags_delete_used_message">Tag \"%1$s\" is used by %2$d posts. Deleting it will remove the tag from these posts. Are you sure?</string>
+    <string name="tags_delete_unused_message">Are you sure you want to delete tag \"%1$s\"?</string>
+    <string name="tags_create_title">New Tag</string>
+    <string name="tags_create_hint">Enter tag name</string>
+    <string name="tags_create_exists">Tag already exists</string>
+    <string name="tags_create_empty">Tag name cannot be empty</string>
+    <string name="tags_new">New Tag</string>
+
+    <!-- Settings home -->
+    <string name="setting_title">Settings</string>
+    <string name="setting_search_hint">Search settings</string>
+    <string name="setting_search_empty">No matching items</string>
+    <string name="setting_general">General</string>
+    <string name="setting_general_subtitle">Language, appearance, font size, word count goal</string>
+    <string name="setting_deploy">Deploy Platform</string>
+    <string name="setting_deploy_subtitle">GitHub / Gitee / SFTP / Netlify / Vercel</string>
+    <string name="setting_comment">Comments</string>
+    <string name="setting_comment_subtitle">Gitalk / Giscus / Disqus / Valine / Twikoo / Waline</string>
+    <string name="setting_account">Account</string>
+    <string name="setting_account_subtitle">GitHub login</string>
+    <string name="setting_data">Data</string>
+    <string name="setting_data_subtitle">Output dir, backup &amp; restore</string>
+    <string name="setting_about">About</string>
+    <string name="setting_about_subtitle">Version info, tech stack</string>
+    <string name="setting_update_feedback">Update &amp; Feedback</string>
+    <string name="setting_update_feedback_subtitle">Check updates, collect logs</string>
+    <string name="update_check">Check for Updates</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_latest">Already up to date</string>
+    <string name="update_available">New version %1$s available</string>
+    <string name="update_release_notes">Release Notes</string>
+    <string name="update_download">Download</string>
+    <string name="update_downloading">Downloading…%1$d%%</string>
+    <string name="update_download_complete">Download complete, tap to install</string>
+    <string name="update_download_failed">Download failed: %1$s</string>
+    <string name="update_check_failed">Check failed: %1$s</string>
+    <string name="update_install">Install</string>
+    <string name="feedback_section">Feedback</string>
+    <string name="feedback_collect_logs">Collect Logs</string>
+    <string name="feedback_collect_logs_subtitle">Package logs + device info + config snapshot (sanitized)</string>
+    <string name="feedback_collecting">Collecting…</string>
+    <string name="feedback_collect_success">Logs packaged: %1$s</string>
+    <string name="feedback_collect_failed">Collect failed: %1$s</string>
+    <string name="setting_debug">Debug</string>
+    <string name="setting_debug_subtitle">Debug switches, runtime monitoring</string>
+    <string name="setting_debug_webview">WebView Debug</string>
+    <string name="setting_debug_webview_subtitle">Allow Chrome DevTools remote debugging</string>
+    <string name="setting_debug_verbose_log">Verbose Log</string>
+    <string name="setting_debug_verbose_log_subtitle">Output debug-level logs to log manager</string>
+
+    <!-- General settings -->
+    <string name="setting_section_appearance">Appearance</string>
+    <string name="setting_theme_system">System</string>
+    <string name="setting_theme_light">Light</string>
+    <string name="setting_theme_dark">Dark</string>
+    <string name="setting_dynamic_color">Dynamic Color</string>
+    <string name="setting_dynamic_color_hint">Generate palette from wallpaper colors (Android 12+)</string>
+    <string name="setting_app_accent_color">App Accent Color</string>
+    <string name="setting_app_accent_color_default">Default (Light Purple)</string>
+    <string name="setting_app_accent_color_reset">Reset</string>
+    <string name="setting_section_font_size">Font Size</string>
+    <string name="setting_font_size_scale_format">Font size: %1$d%%</string>
+    <string name="setting_font_size_hint">Adjust text size across the app</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_language_system">System</string>
+    <string name="setting_language_zh">中文</string>
+    <string name="setting_language_en">English</string>
+    <string name="language_restart_title">Change Language</string>
+    <string name="language_restart_message">Changing language requires restarting the app to take effect. Restart now?</string>
+    <string name="language_restart_button">Restart</string>
+    <string name="setting_section_basic">Basic Info</string>
+    <string name="setting_site_name">Site Name</string>
+    <string name="setting_site_description">Site Description</string>
+    <string name="setting_footer_info">Footer Info</string>
+    <string name="setting_html_supported">HTML tags supported</string>
+    <string name="setting_site_author">Site Author</string>
+    <string name="setting_site_avatar">Site Avatar URL</string>
+    <string name="setting_site_avatar_hint">Shown above site name in header. Leave empty to hide.</string>
+    <string name="setting_site_favicon">Favicon URL</string>
+    <string name="setting_site_favicon_hint">Browser tab icon. Leave empty to use browser default.</string>
+    <string name="setting_section_post">Post Settings</string>
+    <string name="setting_post_page_size">Posts per page</string>
+    <string name="setting_date_format">Date format</string>
+    <string name="setting_show_feature_image">Show post cover image</string>
+
+    <!-- Site Information Page -->
+    <string name="setting_site_info_title">Site Information</string>
+    <string name="setting_site_info_subtitle">Site name, URL &amp; theme appearance</string>
+    <string name="setting_section_basic_info">Basic info</string>
+    <string name="setting_section_site_identity">Site identity</string>
+    <string name="setting_section_url_path">URL &amp; paths</string>
+    <string name="setting_section_content_display">Content display</string>
+    <string name="setting_section_theme_appearance">Theme appearance</string>
+    <string name="setting_site_url_format">URL Format</string>
+    <string name="setting_site_url_format_slug">SLUG</string>
+    <string name="setting_site_url_format_default">Default</string>
+    <string name="setting_site_post_path">Post path</string>
+    <string name="setting_site_tag_path">Tag path</string>
+    <string name="setting_site_archives_path">Archives path</string>
+    <string name="setting_site_post_path_hint">URL sub-path for posts, e.g. post</string>
+    <string name="setting_site_tag_path_hint">URL sub-path for tags, e.g. tag</string>
+    <string name="setting_site_archives_path_hint">URL sub-path for archives, e.g. archives</string>
+    <string name="setting_site_feed_count">RSS feed count</string>
+    <string name="setting_site_feed_full_text">RSS full text</string>
+    <string name="setting_site_font_system">System</string>
+    <string name="setting_site_font_serif">Serif</string>
+    <string name="setting_site_font_monospace">Monospace</string>
+    <string name="setting_site_content_width">Content width (dp)</string>
+    <string name="setting_site_border_radius">Border radius (dp)</string>
+    <string name="setting_site_primary_color">Primary color</string>
+    <string name="setting_site_text_color">Text color</string>
+    <string name="setting_site_background_color">Background color</string>
+    <string name="setting_site_color_unset">Not set (use default)</string>
+    <string name="setting_site_domain_note">Site domain is configured in the Deploy section</string>
+
+    <!-- Blog Theme Management -->
+    <string name="setting_theme_manage_title">Blog Theme</string>
+    <string name="setting_theme_manage_subtitle">Switch themes, import theme packs</string>
+    <string name="theme_builtin">Built-in</string>
+    <string name="theme_user">User Imported</string>
+    <string name="theme_enable">Enable</string>
+    <string name="theme_enabled">Enabled</string>
+    <string name="theme_config">Configure</string>
+    <string name="theme_import">Import Theme</string>
+    <string name="theme_delete">Delete</string>
+    <string name="theme_delete_confirm">Delete this theme?</string>
+    <string name="theme_import_success">Theme imported successfully</string>
+    <string name="theme_import_failed">Import failed: %1$s</string>
+    <string name="theme_config_saved">Configuration saved</string>
+    <string name="theme_switched">Theme switched</string>
+    <string name="theme_no_preview">No preview</string>
+    <string name="theme_config_group_appearance">Appearance</string>
+    <string name="theme_config_group_layout">Layout</string>
+    <string name="theme_config_group_typography">Typography</string>
+
+    <!-- Site Preview -->
+    <string name="preview_title">Site Preview</string>
+    <string name="preview_refresh">Refresh</string>
+    <string name="preview_loading">Loading…</string>
+    <string name="preview_error">Page failed to load</string>
+    <string name="preview_info">%1$d posts · %2$d tags</string>
+
+    <!-- Editor settings -->
+    <string name="setting_section_editor">Editor</string>
+    <string name="setting_word_count_goal">Word Count Goal</string>
+    <string name="setting_word_count_goal_hint">You will be reminded when the goal is reached</string>
+
+    <!-- Deploy settings -->
+    <string name="setting_section_platform">Deploy Platform</string>
+    <string name="setting_site_domain">Site domain (with https://)</string>
+    <string name="setting_site_domain_hint">Used to generate absolute URLs and RSS feed, e.g. https://example.com</string>
+    <string name="setting_test_connection">Test Connection</string>
+    <string name="setting_publish_site">Publish Site</string>
+    <string name="setting_deploying">Deploying…</string>
+    <string name="setting_uploading_format">Uploading %1$d/%2$d: %3$s</string>
+    <string name="setting_deploy_success">Deploy succeeded</string>
+    <string name="setting_deploy_fail">Deploy failed</string>
+    <string name="setting_git_config">GitHub Config</string>
+    <string name="setting_repo_name">Repository</string>
+    <string name="setting_repo_name_hint">Repo name only, e.g. blog (no username prefix)</string>
+    <string name="setting_branch">Branch</string>
+    <string name="setting_branch_hint">Usually master or main, default master</string>
+    <string name="setting_username">GitHub Username</string>
+    <string name="setting_email">Git Commit Email</string>
+    <string name="setting_token">Personal Access Token</string>
+    <string name="setting_token_hint">Create at GitHub Settings → Developer settings → Personal access tokens with repo scope. If logged in via OAuth, click the button below to auto-fill.</string>
+    <string name="setting_cname">CNAME Custom Domain</string>
+    <string name="setting_cname_hint">For custom domain, e.g. mydomain.com (leave empty to use username.github.io/repo)</string>
+    <!-- Gitee Config (independent fields, isolated from GitHub) -->
+    <string name="setting_gitee_config">Gitee Config</string>
+    <string name="setting_gitee_repo_name">Repository</string>
+    <string name="setting_gitee_repo_name_hint">Repo name only, e.g. blog (no username prefix)</string>
+    <string name="setting_gitee_branch">Branch</string>
+    <string name="setting_gitee_branch_hint">Usually master or main, default master</string>
+    <string name="setting_gitee_username">Gitee Username</string>
+    <string name="setting_gitee_token">Personal Access Token</string>
+    <string name="setting_gitee_token_hint">Create at Gitee → Settings → Private Tokens with projects scope. EdgeOne will auto-deploy on push.</string>
+    <string name="setting_use_oauth_token">Use Token from Logged-in Account</string>
+    <string name="setting_use_oauth_token_hint">Auto-fill token from GitHub OAuth login, no manual creation needed</string>
+    <string name="setting_oauth_not_logged_in">Please log in with GitHub in the Account page first</string>
+    <string name="setting_sftp_config">SFTP Config</string>
+    <string name="setting_sftp_username">SFTP Username</string>
+    <string name="setting_server">Server Address</string>
+    <string name="setting_server_hint">SFTP server IP or domain, e.g. 192.168.1.1 or sftp.example.com</string>
+    <string name="setting_port">Port</string>
+    <string name="setting_port_hint">SFTP default port 22</string>
+    <string name="setting_password">Password</string>
+    <string name="setting_remote_path">Remote Path</string>
+    <string name="setting_remote_path_hint">Deploy directory on server, e.g. /var/www/blog</string>
+    <string name="setting_netlify_config">Netlify Config</string>
+    <string name="setting_netlify_site_id">Site ID</string>
+    <string name="setting_netlify_site_id_hint">Find in Netlify Site Settings → General → Site details</string>
+    <string name="setting_netlify_token">Access Token</string>
+    <string name="setting_netlify_token_hint">Create at Netlify User Settings → Applications → Personal access tokens</string>
+    <string name="setting_vercel_config">Vercel Config</string>
+    <string name="setting_vercel_project_id">Project Name / ID</string>
+    <string name="setting_vercel_project_id_hint">Find in Vercel Project Settings → General</string>
+    <string name="setting_vercel_token">Access Token</string>
+    <string name="setting_vercel_token_hint">Create at Vercel Account Settings → Tokens</string>
+
+    <!-- Comment settings -->
+    <string name="setting_show_comment">Show comments</string>
+    <string name="setting_gitalk_config">Gitalk Config</string>
+    <string name="setting_gitalk_client_id">Client ID</string>
+    <string name="setting_gitalk_client_secret">Client Secret</string>
+    <string name="setting_gitalk_repo">Repository</string>
+    <string name="setting_gitalk_owner">Owner</string>
+    <string name="setting_giscus_config">Giscus Config</string>
+    <string name="setting_giscus_repo">Repository (owner/repo)</string>
+    <string name="setting_giscus_repo_id">Repository ID</string>
+    <string name="setting_giscus_category">Category</string>
+    <string name="setting_giscus_category_id">Category ID</string>
+    <string name="setting_giscus_mapping">Mapping</string>
+    <string name="setting_giscus_theme">Theme</string>
+    <string name="setting_disqus_config">DisqusJS Config</string>
+    <string name="setting_disqus_shortname">Shortname</string>
+    <string name="setting_disqus_apikey">API Key</string>
+    <string name="setting_disqus_api">API URL</string>
+    <string name="setting_valine_config">Valine Config</string>
+    <string name="setting_valine_app_id">App ID</string>
+    <string name="setting_valine_app_key">App Key</string>
+    <string name="setting_twikoo_config">Twikoo Config</string>
+    <string name="setting_twikoo_env_id">Environment ID</string>
+    <string name="setting_waline_config">Waline Config</string>
+    <string name="setting_waline_server_url">Server URL</string>
+
+    <!-- Account settings -->
+    <string name="setting_current_account">Current Account</string>
+    <string name="setting_view_github">View GitHub profile in browser</string>
+    <string name="setting_logout">Log out</string>
+    <string name="setting_oauth_config">OAuth App Config</string>
+    <string name="setting_oauth_hint">Sign in with GitHub Device Flow (no Client Secret needed, secure).\n\nFirst create an OAuth App on GitHub:\ngithub.com/settings/apps\n\nCheck \"Enable Device Flow\" when creating, then paste the Client ID below.\n\nAfter login, you can deploy to GitHub Pages with one click without manually entering a Token.</string>
+    <string name="setting_oauth_client_id">OAuth App Client ID</string>
+    <string name="setting_oauth_client_id_placeholder">20-char hex string</string>
+    <string name="setting_waiting_auth">Waiting for authorization</string>
+    <string name="setting_auth_hint">Visit the URL below in any browser and enter the user code to authorize:</string>
+    <string name="setting_waiting_browser">Waiting for you to complete authorization in browser…</string>
+    <string name="setting_login_github">Sign in with GitHub</string>
+    <string name="setting_requesting">Requesting…</string>
+    <string name="setting_need_client_id">Please enter Client ID first</string>
+
+    <!-- Data settings -->
+    <string name="setting_section_generate">Site Generation</string>
+    <string name="setting_generate_hint">Render all published posts into a static HTML site. After generation, you can preview or deploy to a remote server.</string>
+    <string name="setting_generate_site">Generate Static Site</string>
+    <string name="setting_generating">Generating…</string>
+    <string name="setting_section_output">Site Output Directory</string>
+    <string name="setting_current_path">Current: %1$s</string>
+    <string name="setting_select_dir">Select Directory</string>
+    <string name="setting_restore_default">Restore Default</string>
+    <string name="setting_output_no_permission">Storage permission not granted, cannot output to public directory</string>
+    <string name="setting_grant_permission">Grant Storage Permission</string>
+    <string name="setting_existing_files">Scanned %1$d files, total %2$s</string>
+    <string name="setting_scan_files">Scan Files</string>
+    <string name="setting_clear_output">Clear Directory</string>
+    <string name="setting_clear_output_confirm_title">Confirm Clear Output Directory</string>
+    <string name="setting_clear_output_confirm_msg">This will delete all files (HTML, CSS, images, etc.) in the site output directory. This action cannot be undone. Continue?</string>
+    <string name="setting_section_backup">Data Backup</string>
+    <string name="setting_export_data">Export Data</string>
+    <string name="setting_import_data">Import Data</string>
+    <string name="setting_export_success">Exported: %1$d posts</string>
+    <string name="setting_import_success">Imported: %1$d posts</string>
+    <string name="setting_backup_fail">Failed: %1$s</string>
+    <string name="setting_render_result">Generation Result</string>
+
+    <!-- About -->
+    <string name="about_app_name">Gridea Android</string>
+    <string name="about_app_desc">Gridea Android is an open-source static blog writing app, aiming to help you build and manage blogs or any static sites more easily, letting you focus on writing itself, just like using a local app.</string>
+    <string name="about_version_info">Version Info</string>
+    <string name="about_version_name">Version</string>
+    <string name="about_version_code">Version Code</string>
+    <string name="about_software_version">Build Type</string>
+    <string name="about_build_type">Build Type</string>
+    <string name="debug_unlock_enabled">Debug mode enabled</string>
+    <string name="debug_unlock_disabled">Debug mode disabled</string>
+    <string name="debug_unlock_not_needed">This is a Debug build, no need to enable this feature</string>
+    <string name="about_tech_stack">Tech Stack</string>
+    <string name="about_tech_stack_content">Kotlin + Jetpack Compose\nRoom + Hilt + DataStore\nPebble + Markwon + commonmark-java\nCoil + OkHttp + Navigation Compose</string>
+    <string name="about_open_source">Open Source</string>
+    <string name="about_open_source_content">Rebuilt from open-source project Gridea 0.9.3\nThis project: github.com/QingYu327/GrideaAndroid\nOriginal: github.com/getgridea/gridea\nMIT License</string>
+    <string name="about_acknowledgement">Acknowledgements</string>
+    <string name="about_acknowledgement_content">Thanks to EryouHao, original Gridea project author\nThanks to all open-source contributors\nThanks to Jetpack Compose for the modern UI framework</string>
+    <string name="about_developers">Developers</string>
+    <string name="about_developer_xiuhong_role">Project Founder / Product Design</string>
+    <string name="about_developer_ai_role">Code Implementation / Architecture Design</string>
+    <string name="about_repo_link">View original project repository</string>
+    <string name="about_repo_link_this">View this project repository</string>
+    <string name="about_open_source_licenses">Open Source Licenses</string>
+    <string name="feedback_email_section">Email Feedback</string>
+    <string name="feedback_email_desc">Send the collected log file above as an attachment to the email below to help the developer locate the issue quickly.</string>
+    <string name="feedback_email_address_label">Developer Email</string>
+    <string name="feedback_email_address">xiuhong0327@163.com</string>
+    <string name="feedback_email_subject_label">Suggested Email Subject</string>
+    <string name="feedback_email_subject">[Gridea Feedback] Issue description + Device info</string>
+    <string name="feedback_email_attach_hint">Please attach the collected log file above when sending</string>
+    <string name="feedback_copy">Copy</string>
+    <string name="feedback_copied">Copied to clipboard</string>
+
+    <!-- Widgets -->
+    <string name="widget_new_post">New Post</string>
+    <string name="widget_stats_title">Article Statistics</string>
+
+    <!-- Writing Statistics Dashboard -->
+    <string name="statistics_title">Writing Statistics</string>
+    <string name="statistics_view_detail">View Detailed Statistics</string>
+    <string name="statistics_section_word_count">Word Count</string>
+    <string name="statistics_total_words">Total Words</string>
+    <string name="statistics_weekly_words">This Week</string>
+    <string name="statistics_monthly_words">This Month</string>
+    <string name="statistics_section_overview">Overview</string>
+    <string name="statistics_streak_days">Writing Streak (days)</string>
+    <string name="statistics_published_count">Published</string>
+    <string name="statistics_draft_count">Drafts</string>
+    <string name="statistics_tag_count">Tags</string>
+    <string name="statistics_total_writing_time">Total Writing Time</string>
+    <string name="statistics_section_last_7_days">Last 7 Days Word Count</string>
+    <string name="statistics_bar_chart_hint">Bar chart showing daily word count for the last 7 days</string>
+    <string name="statistics_section_last_7_days_time">Last 7 Days Writing Time (min)</string>
+    <string name="statistics_bar_chart_time_hint">Bar chart showing daily writing time for the last 7 days</string>
+    <string name="statistics_writing_calendar">Writing Heatmap</string>
+    <string name="statistics_calendar_less">Less</string>
+    <string name="statistics_calendar_more">More</string>
+    <string name="statistics_section_top_tags">Top 5 Tags</string>
+    <string name="statistics_tag_post_count">%1$d posts</string>
+    <string name="statistics_no_data">No writing data yet</string>
+    <string name="statistics_no_tags">No tags yet</string>
+
+    <!-- Editor writing time -->
+    <string name="editor_writing_time_format">Writing time %1$s</string>
+    <string name="editor_writing_time_default">Writing time 0 min</string>
+
+    <!-- Friend Links -->
+    <string name="friend_links_title">Friend Links</string>
+    <string name="friend_link_name">Site Name</string>
+    <string name="friend_link_url">Site URL</string>
+    <string name="friend_link_url_hint">Include https://, e.g. https://example.com</string>
+    <string name="friend_link_description">Site Description</string>
+    <string name="friend_link_avatar">Avatar URL</string>
+    <string name="friend_link_avatar_hint">Site favicon or avatar image URL</string>
+    <string name="friend_link_add">Add Friend Link</string>
+    <string name="friend_link_edit">Edit Friend Link</string>
+    <string name="friend_link_delete">Delete Friend Link</string>
+    <string name="friend_link_delete_confirm">Delete "%1$s"?</string>
+    <string name="friend_link_empty">No friend links yet. Tap the button below to add one.</string>
+    <string name="friend_link_empty_title">No friend links yet</string>
+    <string name="friend_link_empty_subtitle">Tap the button below to add one, or use the floating button</string>
+    <string name="friend_link_save">Save</string>
+    <string name="friend_link_cancel">Cancel</string>
+    <string name="friend_link_name_required">Please enter site name</string>
+    <string name="friend_link_url_required">Please enter site URL</string>
+    <string name="friend_link_page_title">Friend Links</string>
+
+    <!-- Custom menu management -->
+    <string name="menu_manage_title">Menus</string>
+    <string name="menu_manage_subtitle">Customize site navigation menus</string>
+    <string name="menu_add">Add Menu</string>
+    <string name="menu_edit">Edit Menu</string>
+    <string name="menu_delete">Delete Menu</string>
+    <string name="menu_delete_confirm">Delete menu \"%1$s\"?</string>
+    <string name="menu_empty">No custom menus yet. Tap the button below to add one.</string>
+    <string name="menu_empty_title">No menus yet</string>
+    <string name="menu_empty_subtitle">Tap the button below to create one, or use the floating button</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_name">Menu Name</string>
+    <string name="menu_name_required">Please enter menu name</string>
+    <string name="menu_open_type">Open Method</string>
+    <string name="menu_open_internal">Internal</string>
+    <string name="menu_open_external">External</string>
+    <string name="menu_link_type">Link Type</string>
+    <string name="menu_link_url">Custom URL</string>
+    <string name="menu_link_article">Select Post</string>
+    <string name="menu_link_value_url">Link URL</string>
+    <string name="menu_link_url_hint">e.g. https://example.com or /custom-page</string>
+    <string name="menu_link_value_article">Selected Post</string>
+    <string name="menu_link_article_hint">Tap the icon on the right to select a post</string>
+    <string name="menu_link_required">Please enter or select a link</string>
+    <string name="menu_select_article">Select Post</string>
+    <string name="menu_no_articles">No posts available. Please create a post first.</string>
+
+    <!-- ===== Log Management ===== -->
+    <string name="setting_log_manage">Log Manager</string>
+    <string name="setting_log_manage_subtitle">View, export and clear logs</string>
+    <string name="log_title">Log Manager</string>
+    <string name="log_export">Export</string>
+    <string name="log_clear">Clear</string>
+    <string name="log_clear_confirm">Clear all logs? This cannot be undone</string>
+    <string name="log_level_all">All</string>
+    <string name="log_level_debug">Debug</string>
+    <string name="log_level_info">Info</string>
+    <string name="log_level_warn">Warn</string>
+    <string name="log_level_error">Error</string>
+    <string name="log_level_action">Action</string>
+    <string name="log_category_all">All Categories</string>
+    <string name="log_search_hint">Search logs…</string>
+    <string name="log_empty">No logs yet</string>
+    <string name="log_back_to_top">Back to top</string>
+    <string name="log_export_success">Logs exported</string>
+    <string name="log_export_failed">Export failed</string>
+    <string name="log_cleared">Logs cleared</string>
+    <string name="log_stack_trace">Stack Trace</string>
+</resources>

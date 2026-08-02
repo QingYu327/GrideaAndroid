@@ -1,0 +1,85 @@
+{# 06-Masonry 瀑布流卡片 — 基础布局 #}
+<!DOCTYPE html>
+<html lang="zh-CN"{{ htmlDataAttrs | raw }} data-cols="{{ themePackConfig.column_count | default("3") }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ site.siteDescription | striptags }}">
+    {% if site.siteAuthor %}<meta name="author" content="{{ site.siteAuthor }}">{% endif %}
+    {% if site.siteFavicon %}<link rel="icon" href="{{ site.siteFavicon | https_upgrade }}">{% endif %}
+    <base href="{{ baseUrl }}">
+    {% if themeVarsStyle %}{{ themeVarsStyle | raw }}{% endif %}
+    {% for asset in cssAssets %}
+    <link rel="stylesheet" href="{{ asset.src }}">
+    {% endfor %}
+    <link rel="stylesheet" href="styles/main.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="site-brand">
+                {% if site.siteAvatar %}<img class="site-avatar" src="{{ site.siteAvatar | https_upgrade }}" alt="{{ site.siteName }}">{% endif %}
+                <div class="site-info">
+                    <a href="./" class="site-logo">{{ site.siteName }}</a>
+                    {% if site.siteDescription %}<p class="site-description">{{ site.siteDescription }}</p>{% endif %}
+                </div>
+            </div>
+            {% if site.menus is not empty %}
+            <nav class="site-nav">
+                <button class="nav-toggle" aria-label="菜单" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    {% for menu in site.menus %}
+                    <a href="{{ menu.link }}" class="nav-link"{% if menu.openType == "External" %} target="_blank"{% endif %}>{{ menu.name }}</a>
+                    {% endfor %}
+                </div>
+            </nav>
+            {% endif %}
+        </div>
+    </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>{{ site.footerInfo }}</p>
+        </div>
+    </footer>
+    {{ extraScripts | raw }}
+    {% block scripts %}{% endblock %}
+    <div id="reading-progress-container" class="reading-progress-container">
+        <div id="reading-progress" class="reading-progress-bar"></div>
+    </div>
+    <button id="back-to-top" class="back-to-top" aria-label="回到顶部">↑</button>
+    <div id="image-zoom-overlay" class="image-zoom-overlay">
+        <img id="image-zoom-img" class="image-zoom-img" />
+    </div>
+    {% for asset in jsAssets %}
+    <script src="{{ asset.src }}"{% if asset.defer_ %} defer{% endif %}{% if asset.async_ %} async{% endif %}></script>
+    {% endfor %}
+    {% if site.menus is not empty %}
+    <script>
+    (function(){
+        var toggle = document.querySelector('.nav-toggle');
+        var links = document.querySelector('.nav-links');
+        if (!toggle || !links) return;
+        toggle.addEventListener('click', function(){
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', !expanded);
+            links.classList.toggle('nav-links-open');
+            links.classList.toggle('is-open');
+            links.classList.toggle('open');
+            toggle.classList.toggle('is-open');
+            toggle.classList.toggle('active');
+        });
+    })();
+    </script>
+    {% endif %}
+    <script src="scripts/custom.js"></script>
+</body>
+</html>

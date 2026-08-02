@@ -1,0 +1,41 @@
+{# 08-Terminal 标签详情页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="tag-detail">
+    <p class="page-path"><span class="prompt-dollar">$</span> grep -r "{{ tag.name }}" ./posts/</p>
+    <h1 class="page-title"><span class="title-prefix">&gt;</span> 标签: <span class="bracket">[</span>{{ tag.name }}<span class="bracket">]</span></h1>
+    <p class="tag-info"><span class="comment">#</span> {{ tag.count }} posts tagged</p>
+    <div class="post-list">
+        {% if posts is not empty %}
+        {% for post in posts %}
+        <article class="post-card">
+            <div class="post-card-body">
+                <h2 class="post-card-title">
+                    <span class="title-prefix">&gt;</span> <a href="{{ post.link }}">{{ post.title }}</a>
+                </h2>
+                <div class="post-card-meta">
+                    <span class="post-date"><span class="comment">#</span> {{ post.date }}</span>
+                </div>
+                <div class="post-card-abstract">{{ post.abstract | raw }}</div>
+                <a href="{{ post.link }}" class="read-more"><span class="prompt-dollar">$</span> cat {{ post.fileName }}.md →</a>
+            </div>
+        </article>
+        {% endfor %}
+        {% else %}
+        <div class="empty"><span class="prompt-dollar">$</span> echo "该标签下暂无文章"<span class="cursor-blink">_</span></div>
+        {% endif %}
+    </div>
+    {% if pagination.total > 1 %}
+    <nav class="pagination">
+        {% if pagination.prev %}
+        <a href="{{ pagination.prev }}" class="page-prev"><span class="prompt-dollar">$</span> prev</a>
+        {% endif %}
+        <span class="page-info">[ {{ pagination.current }} / {{ pagination.total }} ]</span>
+        {% if pagination.next %}
+        <a href="{{ pagination.next }}" class="page-next">next <span class="prompt-dollar">$</span></a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

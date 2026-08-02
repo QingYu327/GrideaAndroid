@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>备份与恢复 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 备份与恢复：BackupScheduler 自动备份文章、标签、友链、菜单、主题配置、偏好设置。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html" class="active">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html" class="active">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>备份与恢复</h1>
+      <p class="doc-lead">Gridea Android 的所有数据都存在本地应用沙箱内，不上传任何服务器。BackupScheduler 会周期性为你备份全部内容，你也可以手动导出，换机或重装时一键恢复。</p>
+
+      <h2 id="scope">备份范围</h2>
+      <p>一次完整备份包含以下内容：</p>
+      <table>
+        <thead><tr><th>类别</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>文章</td><td>全部已发布 / 草稿 / 回收站文章及版本历史</td></tr>
+          <tr><td>标签</td><td>所有标签定义</td></tr>
+          <tr><td>友链</td><td>友链列表</td></tr>
+          <tr><td>菜单</td><td>自定义菜单项</td></tr>
+          <tr><td>主题配置</td><td>当前主题选择与 customConfig 配置值</td></tr>
+          <tr><td>偏好设置</td><td>站点信息、部署凭证、界面偏好等 DataStore 配置</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="auto">自动备份</h2>
+      <p><code>BackupScheduler</code> 调度周期性备份任务，默认每天在后台执行一次。你可以在「设置 → 备份」中：</p>
+      <ul>
+        <li>开启 / 关闭自动备份。</li>
+        <li>调整备份频率。</li>
+        <li>设置保留份数（超过后自动清理最旧的备份）。</li>
+      </ul>
+      <p>备份文件存储在应用沙箱目录下，卸载应用会一并清除。重要数据建议定期手动导出到外部存储或云盘。</p>
+
+      <h2 id="manual">手动导出</h2>
+      <p>在「设置 → 备份 → 立即备份并导出」可生成一份完整备份包，通过系统分享面板保存到：</p>
+      <ul>
+        <li>本地下载目录。</li>
+        <li>云盘 App（如 Google Drive、OneDrive、百度网盘）。</li>
+        <li>通过邮件或即时通讯发送给自己。</li>
+      </ul>
+      <p>备份包是标准的压缩归档，可单独解压查看其中的 Markdown 原文，不依赖 App 即可阅读你的文章。</p>
+
+      <h2 id="restore">恢复数据</h2>
+      <p>换机或重装后，可通过备份包恢复：</p>
+      <ol>
+        <li>安装并打开 Gridea Android，完成首次引导。</li>
+        <li>进入「设置 → 备份 → 从文件恢复」。</li>
+        <li>选择之前导出的备份包。</li>
+        <li>App 会校验包完整性，并列出可恢复的内容供你确认。</li>
+        <li>确认后恢复完成，文章、标签、主题配置、部署凭证等全部回到备份时的状态。</li>
+      </ol>
+      <div class="callout warn">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>注意：</strong>恢复操作会用备份内容<strong>覆盖</strong>当前数据。如果当前有未备份的新内容，请先导出一份再恢复。</p>
+      </div>
+
+      <h2 id="privacy">隐私说明</h2>
+      <ul>
+        <li>所有文章、配置、主题数据均存储在应用沙箱内，其他应用无法访问。</li>
+        <li>部署时仅与你配置的代码托管平台通信。</li>
+        <li>部署凭证（Token、私钥）保存在 DataStore 中，未加密但隔离于其他应用。</li>
+        <li>反馈日志打包前会脱敏处理（token 等敏感字段仅保留前缀），详见 <a href="logs.html">日志管理</a>。</li>
+      </ul>
+
+      <nav class="doc-nav">
+        <a href="preview.html"><span class="lbl">← 上一章</span><span class="ttl">站点预览</span></a>
+        <a class="next" href="logs.html"><span class="lbl">下一章 →</span><span class="ttl">日志管理</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

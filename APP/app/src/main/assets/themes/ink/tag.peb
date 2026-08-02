@@ -1,0 +1,40 @@
+{# 10-Ink 标签详情页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="tag-detail">
+    <h1 class="page-title">标签 · {{ tag.name }}</h1>
+    <div class="page-divider"><span class="page-divider-dot"></span></div>
+    <div class="post-list">
+        {% if posts is not empty %}
+        {% for post in posts %}
+        <article class="post-card">
+            <div class="post-card-body">
+                <h2 class="post-card-title">
+                    <a href="{{ post.link }}">{{ post.title }}</a>
+                </h2>
+                <div class="post-card-meta">
+                    <span class="post-date">{{ post.date }}</span>
+                </div>
+                <div class="post-card-abstract">{{ post.abstract | raw }}</div>
+                <a href="{{ post.link }}" class="read-more">阅 · 续</a>
+            </div>
+        </article>
+        {% endfor %}
+        {% else %}
+        <div class="empty">此标签下尚无文章</div>
+        {% endif %}
+    </div>
+    {% if pagination.total > 1 %}
+    <nav class="pagination">
+        {% if pagination.prev %}
+        <a href="{{ pagination.prev }}" class="page-prev">← 前页</a>
+        {% endif %}
+        <span class="page-info">{{ pagination.current }} / {{ pagination.total }}</span>
+        {% if pagination.next %}
+        <a href="{{ pagination.next }}" class="page-next">后页 →</a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,339 @@
+# Gridea Baseline Profile
+# 预编译关键路径为 AOT 机器码，消除首次加载 JIT 编译开销
+# H=Hot(热点) S=Startup(启动) P=Post-startup L=LoadClass(加载类)
+# 格式: <flags><class>-><method>(<params>)<return>
+
+# ============================================================
+# Compose Runtime 核心 - 首次组合的关键路径
+# ============================================================
+HSPLandroidx/compose/runtime/ComposerImpl;-><init>(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->startRestartGroup(*)I
+HSPLandroidx/compose/runtime/ComposerImpl;->endRestartGroup(*)Landroidx/compose/runtime/Composer;
+HSPLandroidx/compose/runtime/ComposerImpl;->startReplaceableGroup(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->endReplaceableGroup(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->updateRememberedValue(*)Ljava/lang/Object;
+HSPLandroidx/compose/runtime/ComposerImpl;->apply(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->register(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->remember(*)Ljava/lang/Object;
+HSPLandroidx/compose/runtime/ComposerImpl;->collectValueFromCurrentInstance(*)Ljava/lang/Object;
+HSPLandroidx/compose/runtime/ComposerImpl;->updateValue(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->node(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->emitNode(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->useNode(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->includeInOtherNode(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->endNode(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->startNode(*)V
+HSPLandroidx/compose/runtime/ComposerImpl;->createNode(*)V
+HSPLandroidx/compose/runtime/ComposerKt;-><init>
+HSPLandroidx/compose/runtime/SnapshotKt;-><init>
+HSPLandroidx/compose/runtime/SnapshotKt;->current(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->mutableStateOf(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->derivedStateOf(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->remember(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->structurallyEqual(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->stateObjectWithEqualityPolicy(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->overridableStateObject(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->nestedAffects(*)
+HSPLandroidx/compose/runtime/SnapshotKt;->activeAffects(*)
+HSPLandroidx/compose/runtime/SnapshotMutableStateImpl;-><init>
+HSPLandroidx/compose/runtime/SnapshotMutableStateImpl;->setValue(*)
+HSPLandroidx/compose/runtime/SnapshotMutableStateImpl;->getValue(*)
+HSPLandroidx/compose/runtime/SnapshotStateMap;-><init>
+HSPLandroidx/compose/runtime/SnapshotStateMap;-><init>
+HSPLandroidx/compose/runtime/SnapshotStateList;-><init>
+HSPLandroidx/compose/runtime/ParcelableSnapshotMutableState;-><init>
+HSPLandroidx/compose/runtime/Recomposer;-><init>
+HSPLandroidx/compose/runtime/Recomposer;-><init>
+HSPLandroidx/compose/runtime/Recomposer;->recompose(*)Landroidx/compose/runtime/Recomposer;
+HSPLandroidx/compose/runtime/Recomposer;-><init>
+HSPLandroidx/compose/runtime/CompositionImpl;-><init>
+HSPLandroidx/compose/runtime/CompositionImpl;-><init>
+HSPLandroidx/compose/runtime/BundledComposition;-><init>
+HSPLandroidx/compose/runtime/ControlledComposition;-><init>
+HSPLandroidx/compose/runtime/APplier;-><init>
+HSPLandroidx/compose/runtime/AbstractApplier;-><init>
+HSPLandroidx/compose/runtime/RecomposeScopeImpl;-><init>
+HSPLandroidx/compose/runtime/RecomposeScopeImpl;->markAsUsed(*)
+HSPLandroidx/compose/runtime/RecomposeScopeImpl;-><init>
+HSPLandroidx/compose/runtime/Pending;-><init>
+HSPLandroidx/compose/runtime/ComposableLambda;-><init>
+HSPLandroidx/compose/runtime/ComposableLambdaN;-><init>
+HSPLandroidx/compose/runtime/ComposableSingletons;-><init>
+
+# ============================================================
+# Compose Animation 核心 - 动画流畅度关键路径
+# ============================================================
+HSPLandroidx/compose/animation/core/Animatable;-><init>
+HSPLandroidx/compose/animation/core/Animatable;->animateTo(*)
+HSPLandroidx/compose/animation/core/Animatable;->animateDecay(*)
+HSPLandroidx/compose/animation/core/Animatable;->snapTo(*)
+HSPLandroidx/compose/animation/core/Animatable;->asState(*)
+HSPLandroidx/compose/animation/core/AnimationVectorKt;-><init>
+HSPLandroidx/compose/animation/core/AnimationVector1D;-><init>
+HSPLandroidx/compose/animation/core/AnimationVector2D;-><init>
+HSPLandroidx/compose/animation/core/AnimationSpec;-><init>
+HSPLandroidx/compose/animation/core/TweenSpec;-><init>
+HSPLandroidx/compose/animation/core/TweenSpec;->vectorize(*)
+HSPLandroidx/compose/animation/core/SpringSpec;-><init>
+HSPLandroidx/compose/animation/core/SpringSpec;->vectorize(*)
+HSPLandroidx/compose/animation/core/KeyframesSpec;-><init>
+HSPLandroidx/compose/animation/core/KeyframesSpec;->vectorize(*)
+HSPLandroidx/compose/animation/core/SnapSpec;-><init>
+HSPLandroidx/compose/animation/core/StartOffset;-><init>
+HSPLandroidx/compose/animation/core/RepeatableSpec;-><init>
+HSPLandroidx/compose/animation/core/RepeatableSpec;->vectorize(*)
+HSPLandroidx/compose/animation/core/EasingKt;-><init>
+HSPLandroidx/compose/animation/core/EasingKt;->FastOutSlowInEasing(*)
+HSPLandroidx/compose/animation/core/EasingKt;->LinearEasing(*)
+HSPLandroidx/compose/animation/core/CubicBezierEasing;-><init>
+HSPLandroidx/compose/animation/core/CubicBezierEasing;->transform(*)
+HSPLandroidx/compose/animation/core/AnimationStateKt;-><init>
+HSPLandroidx/compose/animation/core/AnimationStateKt;->animateDecay(*)
+HSPLandroidx/compose/animation/core/AnimationStateKt;->animateTo(*)
+HSPLandroidx/compose/animation/core/Animation;-><init>
+HSPLandroidx/compose/animation/core/Animation;->animateToFrom(*)
+HSPLandroidx/compose/animation/core/TargetBasedAnimation;-><init>
+HSPLandroidx/compose/animation/core/TargetBasedAnimation;->isFinished(*)
+HSPLandroidx/compose/animation/core/TargetBasedAnimation;->getValueFromNanos(*)
+HSPLandroidx/compose/animation/core/TargetBasedAnimation;->getVelocityVectorFromNanos(*)
+HSPLandroidx/compose/animation/core/DecayAnimationSpec;-><init>
+HSPLandroidx/compose/animation/core/DecayAnimationSpecKt;-><init>
+HSPLandroidx/compose/animation/core/AnimationVectorKt;-><init>
+HSPLandroidx/compose/animation/core/AnimationFrameClock;-><init>
+HSPLandroidx/compose/animation/core/MonotonicFrameAnimationClock;-><init>
+HSPLandroidx/compose/animation/core/AnimationFrameClockKt;-><init>
+HSPLandroidx/compose/animation/AnimatedVisibilityKt;-><init>
+HSPLandroidx/compose/animation/AnimatedVisibilityKt;->AnimatedVisibility(*)
+HSPLandroidx/compose/animation/AnimatedContentKt;-><init>
+HSPLandroidx/compose/animation/AnimatedContentKt;->AnimatedContent(*)
+HSPLandroidx/compose/animation/CrossfadeKt;-><init>
+HSPLandroidx/compose/animation/CrossfadeKt;->Crossfade(*)
+HSPLandroidx/compose/animation/ScaleInScaleOutAlphaKt;-><init>
+HSPLandroidx/compose/animation/core/SeekableTransitionStateKt;-><init>
+HSPLandroidx/compose/animation/core/SeekableTransitionState;-><init>
+
+# ============================================================
+# Compose UI - 布局与测量关键路径
+# ============================================================
+HSPLandroidx/compose/ui/ComposeModifierInfo;-><init>
+HSPLandroidx/compose/ui/semantics/SemanticsModifier;-><init>
+HSPLandroidx/compose/ui/graphics/GraphicsLayerModifier;-><init>
+HSPLandroidx/compose/ui/graphics/GraphicsLayerModifierKt;-><init>
+HSPLandroidx/compose/ui/graphics/GraphicsLayerModifierKt;->graphicsLayer(*)
+HSPLandroidx/compose/ui/layout/ContentScale;-><init>
+HSPLandroidx/compose/ui/layout/AlignmentLine;-><init>
+HSPLandroidx/compose/ui/layout/Placeable;-><init>
+HSPLandroidx/compose/ui/layout/MeasureScope;-><init>
+HSPLandroidx/compose/ui/layout/MeasureScopeKt;-><init>
+HSPLandroidx/compose/ui/node/LayoutNode;-><init>
+HSPLandroidx/compose/ui/node/LayoutNode;->measure(*)
+HSPLandroidx/compose/ui/node/LayoutNode;->layout(*)
+HSPLandroidx/compose/ui/node/LayoutNode;->placeAt(*)
+HSPLandroidx/compose/ui/node/LayoutNode;->attach(*)
+HSPLandroidx/compose/ui/node/LayoutNode;-><init>
+HSPLandroidx/compose/ui/node/LayoutNodeLayout;-><init>
+HSPLandroidx/compose/ui/node/LayoutNodeLayout;->measure(*)
+HSPLandroidx/compose/ui/node/LayoutNodeLayout;->placeChildren(*)
+HSPLandroidx/compose/ui/node/LayoutNodeLayout;-><init>
+HSPLandroidx/compose/ui/node/LayoutNodeLayout;-><init>
+HSPLandroidx/compose/ui/node/MeasureAndLayoutDelegate;-><init>
+HSPLandroidx/compose/ui/node/MeasureAndLayoutDelegate;-><init>
+HSPLandroidx/compose/ui/node/MeasureAndLayoutDelegate;->measureAndLayout(*)
+HSPLandroidx/compose/ui/node/MeasureAndLayoutDelegate;-><init>
+HSPLandroidx/compose/ui/node/Owner;-><init>
+HSPLandroidx/compose/ui/node/NodeFactory;-><init>
+HSPLandroidx/compose/ui/node/ModifierNodeElement;-><init>
+HSPLandroidx/compose/ui/node/RootForPreview;-><init>
+HSPLandroidx/compose/ui/AndroidComposeView;-><init>
+HSPLandroidx/compose/ui/AndroidComposeView;->measure(*)
+HSPLandroidx/compose/ui/AndroidComposeView;->layout(*)
+HSPLandroidx/compose/ui/AndroidComposeView;->dispatchDraw(*)
+HSPLandroidx/compose/ui/AndroidComposeView;-><init>
+HSPLandroidx/compose/ui/AndroidComposeView;-><init>
+HSPLandroidx/compose/ui/AndroidComposeViewAccessibilityDelegateCompat;-><init>
+HSPLandroidx/compose/ui/AndroidComposeViewAccessibilityDelegateCompat;-><init>
+HSPLandroidx/compose/ui/ModifiedLayoutNode;-><init>
+HSPLandroidx/compose/ui/ModifiedLayoutNode;-><init>
+HSPLandroidx/compose/ui/ModifiedLayoutNode;-><init>
+HSPLandroidx/compose/ui/DrawModifierNode;-><init>
+HSPLandroidx/compose/ui/DrawModifierNode;-><init>
+HSPLandroidx/compose/ui/ModifiedDrawNode;-><init>
+HSPLandroidx/compose/ui/ModifiedDrawNode;-><init>
+HSPLandroidx/compose/ui/RenderNode;-><init>
+HSPLandroidx/compose/ui/RenderNode;-><init>
+HSPLandroidx/compose/ui/platform/RenderNodeAndroidApi;-><init>
+
+# ============================================================
+# Compose Foundation - LazyColumn, 滚动, 手势
+# ============================================================
+HSPLandroidx/compose/foundation/lazy/LazyList;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyList;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListKt;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListKt;->items(*)
+HSPLandroidx/compose/foundation/lazy/LazyListKt;->LazyColumn(*)
+HSPLandroidx/compose/foundation/lazy/LazyListMeasure;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListMeasure;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListMeasure;->measure(*)
+HSPLandroidx/compose/foundation/lazy/LazyListMeasure;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListMeasureKt;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListMeasureKt;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListMeasureKt;->measureLazyList(*)
+HSPLandroidx/compose/foundation/lazy/LazyListState;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListState;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListItemProviderImpl;-><init>
+HSPLandroidx/compose/foundation/lazy/LazyListLayoutInfo;-><init>
+HSPLandroidx/compose/foundation/gestures/ScrollingKt;-><init>
+HSPLandroidx/compose/foundation/gestures/ScrollingKt;-><init>
+HSPLandroidx/compose/foundation/gestures/ScrollingKt;->scrollable(*)
+HSPLandroidx/compose/foundation/gestures/DraggableKt;-><init>
+HSPLandroidx/compose/foundation/gestures/DraggableKt;-><init>
+HSPLandroidx/compose/foundation/gestures/DraggableKt;->detectDragGesturesAfterLongPress(*)
+HSPLandroidx/compose/foundation/gestures/PointerInputScope;-><init>
+HSPLandroidx/compose/foundation/gestures/PointerInputScope;-><init>
+HSPLandroidx/compose/foundation/gestures/TapGesturesKt;-><init>
+HSPLandroidx/compose/foundation/gestures/TapGesturesKt;->detectTapGestures(*)
+HSPLandroidx/compose/foundation/ClickableKt;-><init>
+HSPLandroidx/compose/foundation/ClickableKt;-><init>
+HSPLandroidx/compose/foundation/ClickableKt;->clickable(*)
+
+# ============================================================
+# Material3 组件
+# ============================================================
+HSPLandroidx/compose/material3/ScaffoldKt;->Scaffold(*)
+HSPLandroidx/compose/material3/ScaffoldKt;-><init>
+HSPLandroidx/compose/material3/TopAppBarKt;-><init>
+HSPLandroidx/compose/material3/TopAppBarKt;-><init>
+HSPLandroidx/compose/material3/TopAppBarKt;->TopAppBar(*)
+HSPLandroidx/compose/material3/CardKt;-><init>
+HSPLandroidx/compose/material3/CardKt;-><init>
+HSPLandroidx/compose/material3/CardKt;->Card(*)
+HSPLandroidx/compose/material3/SurfaceKt;->Surface(*)
+HSPLandroidx/compose/material3/SurfaceKt;-><init>
+HSPLandroidx/compose/material3/ButtonKt;->Button(*)
+HSPLandroidx/compose/material3/ButtonKt;-><init>
+HSPLandroidx/compose/material3/TextKt;->Text(*)
+HSPLandroidx/compose/material3/TextKt;-><init>
+HSPLandroidx/compose/material3/FloatingActionButtonKt;->FloatingActionButton(*)
+HSPLandroidx/compose/material3/FloatingActionButtonKt;-><init>
+HSPLandroidx/compose/material3/NavigationBarKt;->NavigationBar(*)
+HSPLandroidx/compose/material3/NavigationBarKt;-><init>
+HSPLandroidx/compose/material3/NavigationBarItemKt;->NavigationBarItem(*)
+HSPLandroidx/compose/material3/NavigationBarItemKt;-><init>
+HSPLandroidx/compose/material3/IconKt;->Icon(*)
+HSPLandroidx/compose/material3/IconKt;-><init>
+HSPLandroidx/compose/material3/MaterialThemeKt;->MaterialTheme(*)
+HSPLandroidx/compose/material3/MaterialThemeKt;-><init>
+
+# ============================================================
+# Navigation Compose
+# ============================================================
+HSPLandroidx/navigation/compose/NavHostKt;->NavHost(*)
+HSPLandroidx/navigation/compose/NavHostKt;-><init>
+HSPLandroidx/navigation/NavController;->navigate(*)
+HSPLandroidx/navigation/NavController;-><init>
+HSPLandroidx/navigation/NavDestination;-><init>
+HSPLandroidx/navigation/NavGraph;-><init>
+HSPLandroidx/navigation/NavGraphBuilder;-><init>
+HSPLandroidx/navigation/compose/ComposableNavigator;-><init>
+HSPLandroidx/navigation/compose/ComposableNavGraphNavigator;-><init>
+
+# ============================================================
+# Hilt 依赖注入 - 启动时初始化组件图
+# ============================================================
+HSPLcom/gridea/android/GrideaApp;->onCreate()V
+HSPLcom/gridea/android/GrideaApp;-><init>
+HSPLcom/gridea/android/Hilt_GrideaApp;-><init>
+HSPLcom/gridea/android/MainActivity;->onCreate(*)V
+HSPLcom/gridea/android/MainActivity;-><init>
+HSPLcom/gridea/android/Hilt_MainActivity;-><init>
+HSPLdagger/hilt/android/internal/managers/ApplicationContextComponentBuilderEntryPoint;-><init>
+HSPLdagger/hilt/android/internal/managers/DefaultViewModelComponentBuilderEntryPoint;-><init>
+HSPLdagger/internal/DoubleCheck;->get(*)
+HSPLdagger/internal/DoubleCheck;-><init>
+
+# ============================================================
+# App 自身关键 Composable 和 ViewModel
+# ============================================================
+HSPLcom/gridea/android/ui/GrideaAppKt;->GrideaApp(*)
+HSPLcom/gridea/android/ui/GrideaAppKt;->GrideaAppContent(*)
+HSPLcom/gridea/android/ui/GrideaAppKt;->PressableFloatingActionButton(*)
+HSPLcom/gridea/android/ui/GrideaAppKt;-><init>
+HSPLcom/gridea/android/ui/screen/home/HomeScreenKt;->HomeScreen(*)
+HSPLcom/gridea/android/ui/screen/home/HomeScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/home/HomeViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/home/HomeViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/editor/EditorScreenKt;->EditorScreen(*)
+HSPLcom/gridea/android/ui/screen/editor/EditorScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/editor/EditorViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/editor/EditorViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/setting/SettingScreenKt;->SettingScreen(*)
+HSPLcom/gridea/android/ui/screen/setting/SettingScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/setting/SettingViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/setting/SettingViewModel;-><init>
+HSPLcom/gridea/android/ui/screen/setting/DeployScreenKt;->DeployScreen(*)
+HSPLcom/gridea/android/ui/screen/setting/DeployScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/setting/ThemeHubScreenKt;->ThemeHubScreen(*)
+HSPLcom/gridea/android/ui/screen/setting/ThemeHubScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/tags/TagsScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/pages/PagesScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/statistics/StatisticsScreenKt;-><init>
+HSPLcom/gridea/android/ui/screen/trash/TrashScreenKt;-><init>
+HSPLcom/gridea/android/ui/theme/GrideaAndroidThemeKt;->GrideaAndroidTheme(*)
+HSPLcom/gridea/android/ui/theme/GrideaAndroidThemeKt;-><init>
+HSPLcom/gridea/android/ui/theme/NoticeManagerKt;-><init>
+HSPLcom/gridea/android/ui/theme/RememberNoticeManagerKt;-><init>
+
+# ============================================================
+# Coroutines - 异步数据加载
+# ============================================================
+HSPLkotlinx/coroutines/CoroutineScopeKt;-><init>
+HSPLkotlinx/coroutines/CoroutineScopeKt;->launch(*)
+HSPLkotlinx/coroutines/CoroutineScopeKt;->async(*)
+HSPLkotlinx/coroutines/Dispatchers;->getIO(*)
+HSPLkotlinx/coroutines/Dispatchers;->getDefault(*)
+HSPLkotlinx/coroutines/Dispatchers;->getMain(*)
+HSPLkotlinx/coroutines/StandaloneCoroutine;-><init>
+HSPLkotlinx/coroutines/BuildersKt;-><init>
+HSPLkotlinx/coroutines/flow/FlowKt;-><init>
+HSPLkotlinx/coroutines/flow/FlowKt;->collect(*)
+HSPLkotlinx/coroutines/flow/StateFlowImpl;-><init>
+HSPLkotlinx/coroutines/flow/StateFlowImpl;->setValue(*)
+HSPLkotlinx/coroutines/flow/StateFlowImpl;->getValue(*)
+HSPLkotlinx/coroutines/flow/StateFlowKt;-><init>
+HSPLkotlinx/coroutines/flow/StateFlowKt;->mutableStateOf(*)
+HSPLkotlinx/coroutines/android/AndroidCoroutineDispatcher;-><init>
+HSPLkotlinx/coroutines/android/AndroidDispatcherFactory;-><init>
+
+# ============================================================
+# Room 数据库 - 启动时数据加载
+# ============================================================
+HSPLandroidx/room/RoomDatabase;-><init>
+HSPLandroidx/room/RoomDatabase;->query(*)
+HSPLandroidx/room/RoomDatabaseKt;-><init>
+HSPLandroidx/room/RoomDatabaseKt;->withTransaction(*)
+HSPLandroidx/room/CoroutineRoom;-><init>
+HSPLandroidx/room/RawQuery;-><init>
+HSPLandroidx/room/RoomOpenHelper;-><init>
+HSPLandroidx/room/util/DBUtil;-><init>
+HSPLandroidx/sqlite/db/SupportSQLiteDatabase;-><init>
+HSPLandroidx/sqlite/db/framework/FrameworkSQLiteDatabase;-><init>
+
+# ============================================================
+# Coil 图片加载
+# ============================================================
+HSPLcoil/CoilKt;-><init>
+HSPLcoil/CoilKt;->imageLoader(*)
+HSPLcoil/ImageLoader;-><init>
+HSPLcoil/ImageLoader;->execute(*)
+HSPLcoil/request/ImageRequest;-><init>
+HSPLcoil/compose/AsyncImageKt;-><init>
+HSPLcoil/compose/AsyncImagePainter;-><init>
+
+# ============================================================
+# Profileinstaller 自身 - 确保 profile 安装流程也被预编译
+# ============================================================
+HSPLandroidx/profileinstaller/ProfileInstaller;-><init>
+HSPLandroidx/profileinstaller/ProfileInstaller;->writeLazyProfileInBackground(*)
+HSPLandroidx/profileinstaller/ProfileInstaller;->transcodeProfile(*)
+HSPLandroidx/profileinstaller/ProfileVerifier;-><init>
+HSPLandroidx/profileinstaller/ProfileVerifier;->getCompileStatus(*)

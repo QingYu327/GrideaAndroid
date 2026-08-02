@@ -1,0 +1,21 @@
+{# 08-Terminal 标签汇总页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="tags-page">
+    <p class="page-path"><span class="prompt-dollar">$</span> tags --list</p>
+    <h1 class="page-title"><span class="title-prefix">&gt;</span> 标签</h1>
+    <div class="tags-cloud">
+        {% if tags is not empty %}
+        {% for tag in tags %}
+        <a href="{{ tag.link }}" class="tag-card">
+            <span class="bracket">[</span><span class="tag-name">{{ tag.name }}</span><span class="bracket">]</span>
+            <span class="tag-count">({{ tag.count }})</span>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="empty"><span class="prompt-dollar">$</span> echo "暂无标签"<span class="cursor-blink">_</span></div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

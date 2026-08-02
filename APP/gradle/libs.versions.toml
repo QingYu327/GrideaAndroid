@@ -1,0 +1,140 @@
+[versions]
+agp = "8.5.2"
+kotlin = "2.0.20"
+ksp = "2.0.20-1.0.25"
+
+# AndroidX
+coreKtx = "1.13.1"
+lifecycle = "2.8.6"
+activityCompose = "1.9.2"
+composeBom = "2024.09.02"
+navigationCompose = "2.8.1"
+
+# Room
+room = "2.6.1"
+
+# 数据加载
+coroutines = "1.9.0"
+
+# 依赖注入
+hilt = "2.52"
+hiltNavigation = "1.2.0"
+
+# 序列化
+serialization = "1.7.3"
+
+# Markdown 渲染
+markwon = "4.6.2"
+androidsvg = "1.4"
+androidGifDrawable = "1.2.29"
+
+# 数据存储
+datastore = "1.1.1"
+
+# 部署功能
+okhttp = "4.12.0"
+jsch = "0.2.20"
+
+# 图片加载
+coil = "2.7.0"
+
+# 模板引擎
+pebble = "4.1.2"
+slf4j = "1.7.36"
+
+# 文件访问
+documentfile = "1.0.1"
+
+# 性能优化
+profileinstaller = "1.4.1"
+
+# 测试
+junit = "4.13.2"
+junitExt = "1.2.1"
+espresso = "3.6.1"
+
+[libraries]
+# AndroidX Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+
+# Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+# Room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# Coroutines
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+
+# Serialization
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+# Markwon（Markdown 渲染）
+markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "markwon" }
+markwon-editor = { group = "io.noties.markwon", name = "editor", version.ref = "markwon" }
+markwon-image = { group = "io.noties.markwon", name = "image", version.ref = "markwon" }
+markwon-image-coil = { group = "io.noties.markwon", name = "image-coil", version.ref = "markwon" }
+markwon-html = { group = "io.noties.markwon", name = "html", version.ref = "markwon" }
+markwon-syntax-highlight = { group = "io.noties.markwon", name = "syntax-highlight", version.ref = "markwon" }
+markwon-ext-tables = { group = "io.noties.markwon", name = "ext-tables", version.ref = "markwon" }
+markwon-ext-tasklist = { group = "io.noties.markwon", name = "ext-tasklist", version.ref = "markwon" }
+markwon-simple-ext = { group = "io.noties.markwon", name = "simple-ext", version.ref = "markwon" }
+markwon-linkify = { group = "io.noties.markwon", name = "linkify", version.ref = "markwon" }
+
+# Markwon 图片解码依赖（SVG / GIF 支持）
+androidsvg = { group = "com.caverock", name = "androidsvg", version.ref = "androidsvg" }
+android-gif-drawable = { group = "pl.droidsonroids.gif", name = "android-gif-drawable", version.ref = "androidGifDrawable" }
+
+# DataStore
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+# 部署功能
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+jsch = { group = "com.github.mwiede", name = "jsch", version.ref = "jsch" }
+
+# 图片加载
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+# 模板引擎
+pebble = { group = "io.pebbletemplates", name = "pebble", version.ref = "pebble" }
+slf4j-nop = { group = "org.slf4j", name = "slf4j-nop", version.ref = "slf4j" }
+
+# 文件访问
+documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
+
+# 性能优化：Baseline Profile 运行时安装
+androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
+
+# 测试
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

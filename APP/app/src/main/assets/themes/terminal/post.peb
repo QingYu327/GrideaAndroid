@@ -1,0 +1,156 @@
+{# 08-Terminal 文章详情 #}
+{% extends "base" %}
+
+{% block head %}
+{% if ogTags %}{{ ogTags | raw }}{% endif %}
+{% if jsonLd %}{{ jsonLd | raw }}{% endif %}
+{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+    <header class="post-header">
+        <p class="post-path"><span class="prompt-dollar">$</span> cat ./posts/{{ post.fileName }}.md</p>
+        <h1 class="post-title"><span class="title-prefix">&gt;</span> {{ post.title }}</h1>
+        <div class="post-meta">
+            <span class="meta-item post-date"><span class="comment">#</span> date: {{ post.date }}</span>
+            <span class="meta-item"><span class="comment">#</span> {{ post.stats.words }} words</span>
+            <span class="meta-item"><span class="comment">#</span> ~{{ post.stats.minutes }} min read</span>
+        </div>
+        <div class="post-tags">
+            {% for tag in post.tags %}
+            <a href="{{ tag.link }}" class="tag-chip"><span class="bracket">[</span>{{ tag.name }}<span class="bracket">]</span></a>
+            {% endfor %}
+        </div>
+    </header>
+    {% if post.toc %}{{ post.toc | raw }}{% endif %}
+    <div class="post-content">
+        {{ post.content | raw }}
+    </div>
+    <nav class="post-navigation">
+        {% if post.prevPost is not null %}
+        <div class="post-nav prev">
+            <span class="nav-label"><span class="prompt-dollar">$</span> cd ../prev</span>
+            <a href="{{ post.prevPost.link }}" class="nav-title">&lt;- {{ post.prevPost.title }}</a>
+        </div>
+        {% endif %}
+        {% if post.nextPost is not null %}
+        <div class="post-nav next">
+            <span class="nav-label">cd ../next <span class="prompt-dollar">$</span></span>
+            <a href="{{ post.nextPost.link }}" class="nav-title">{{ post.nextPost.title }} -&gt;</a>
+        </div>
+        {% endif %}
+    </nav>
+    {% if commentHtml %}{{ commentHtml | raw }}{% endif %}
+</article>
+{% endblock %}
+
+{% block scripts %}
+{% verbatim %}
+<script>
+(function() {
+    'use strict';
+    document.querySelectorAll('.post-content pre').forEach(function(pre) {
+        if (pre.querySelector('.code-copy-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = 'code-copy-btn';
+        btn.type = 'button';
+        btn.textContent = '复制';
+        btn.setAttribute('aria-label', '复制代码');
+        pre.appendChild(btn);
+        btn.addEventListener('click', function() {
+            var code = pre.querySelector('code');
+            var text = code ? code.innerText : pre.innerText;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopied(btn);
+                }).catch(function() { fallbackCopy(text, btn); });
+            } else { fallbackCopy(text, btn); }
+        });
+    });
+    function showCopied(btn) {
+        btn.textContent = '已复制'; btn.classList.add('copied');
+        setTimeout(function() { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000);
+    }
+    function fallbackCopy(text, btn) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showCopied(btn); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+    var backTopBtn = document.getElementById('back-to-top');
+    var progressBar = document.getElementById('reading-progress');
+    if (backTopBtn) backTopBtn.dataset.grideaInline = '1';
+    if (progressBar) progressBar.dataset.grideaInline = '1';
+    var backTopVisible = false, ticking = false;
+    var cachedScrollHeight = document.documentElement.scrollHeight;
+    var cachedClientHeight = document.documentElement.clientHeight;
+    var lastPercent = -1;
+    function recalcScrollMetrics() {
+        cachedScrollHeight = document.documentElement.scrollHeight;
+        cachedClientHeight = document.documentElement.clientHeight;
+        lastPercent = -1;
+    }
+    function onScrollUpdate() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (backTopBtn) {
+            var shouldShow = scrollTop > 300;
+            if (shouldShow !== backTopVisible) {
+                backTopVisible = shouldShow;
+                if (shouldShow) backTopBtn.classList.add('visible');
+                else backTopBtn.classList.remove('visible');
+            }
+        }
+        if (progressBar) {
+            var scrollRange = cachedScrollHeight - cachedClientHeight;
+            var percent = scrollRange > 0 ? (scrollTop / scrollRange) : 0;
+            var quantized = Math.round(percent * 200) / 200;
+            if (quantized !== lastPercent) {
+                lastPercent = quantized;
+                progressBar.style.transform = 'scaleX(' + quantized + ')';
+            }
+        }
+        ticking = false;
+    }
+    window.addEventListener('scroll', function() {
+        if (!ticking) { window.requestAnimationFrame(onScrollUpdate); ticking = true; }
+    }, { passive: true });
+    var resizeTimer = null;
+    window.addEventListener('resize', function() {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            recalcScrollMetrics();
+            if (!ticking) { window.requestAnimationFrame(onScrollUpdate); ticking = true; }
+        }, 200);
+    }, { passive: true });
+    onScrollUpdate();
+    if (backTopBtn) {
+        backTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    var overlay = document.getElementById('image-zoom-overlay');
+    var zoomImg = document.getElementById('image-zoom-img');
+    if (overlay) overlay.dataset.grideaInline = '1';
+    if (overlay && zoomImg) {
+        document.querySelectorAll('.post-content img, .post-feature img').forEach(function(img) {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); e.stopPropagation();
+                zoomImg.src = img.src; zoomImg.alt = img.alt || '';
+                overlay.classList.add('visible');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        function closeZoom() {
+            overlay.classList.remove('visible');
+            overlay.setAttribute('aria-hidden', 'true');
+            zoomImg.src = ''; document.body.style.overflow = '';
+        }
+        overlay.addEventListener('click', closeZoom);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeZoom(); });
+    }
+})();
+</script>
+{% endverbatim %}
+{% endblock %}

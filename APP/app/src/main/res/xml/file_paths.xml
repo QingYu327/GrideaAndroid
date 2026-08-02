@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 公共 Download 目录（APK 更新下载存放位置） -->
+    <external-path
+        name="downloads"
+        path="Download/Gridea" />
+    <!-- 应用外部存储（兼容其他临时文件） -->
+    <external-files-path
+        name="external_files"
+        path="." />
+    <!-- 应用内部文件（兼容 cacheDir 等） -->
+    <files-path
+        name="internal_files"
+        path="." />
+    <cache-path
+        name="internal_cache"
+        path="." />
+</paths>

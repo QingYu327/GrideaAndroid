@@ -1,0 +1,50 @@
+{# 07-Sidebar 首页 #}
+{% extends "base" %}
+
+{% block content %}
+{% if showHero or themePackConfig.show_hero == "true" %}
+<section class="hero">
+    <h1 class="hero-title">{{ site.siteName }}</h1>
+    <p class="hero-desc">{{ site.siteDescription }}</p>
+</section>
+{% endif %}
+<div class="post-list">
+    {% if posts is not empty %}
+    {% for post in posts %}
+    <article class="post-card">
+        {% if post.feature %}
+        <a href="{{ post.link }}" class="post-card-cover">
+            <img src="{{ post.feature }}" alt="{{ post.title }}" class="post-card-img" loading="lazy" decoding="async">
+        </a>
+        {% endif %}
+        <div class="post-card-body">
+            <h2 class="post-card-title">
+                <a href="{{ post.link }}">{{ post.title }}</a>
+            </h2>
+            <div class="post-card-meta">
+                <span class="post-date">{{ post.date }}</span>
+                {% for tag in post.tags %}
+                <a href="{{ tag.link }}" class="tag-chip">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            <div class="post-card-abstract">{{ post.abstract | raw }}</div>
+            <a href="{{ post.link }}" class="read-more">阅读全文 →</a>
+        </div>
+    </article>
+    {% endfor %}
+    {% else %}
+    <div class="empty">暂无文章</div>
+    {% endif %}
+</div>
+{% if pagination.total > 1 %}
+<nav class="pagination">
+    {% if pagination.prev %}
+    <a href="{{ pagination.prev }}" class="page-prev">← 上一页</a>
+    {% endif %}
+    <span class="page-info">{{ pagination.current }} / {{ pagination.total }}</span>
+    {% if pagination.next %}
+    <a href="{{ pagination.next }}" class="page-next">下一页 →</a>
+    {% endif %}
+</nav>
+{% endif %}
+{% endblock %}

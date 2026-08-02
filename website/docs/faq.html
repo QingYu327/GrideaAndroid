@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见问题 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 常见问题解答：安装、部署、主题、数据、更新等高频问题。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html" class="active">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html" class="active">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>常见问题</h1>
+      <p class="doc-lead">这里收录了用户最常提出的问题。如果你的问题不在其中，欢迎在 GitHub Issues 提出，或通过应用内「问题反馈」打包日志反馈。</p>
+
+      <h2 id="install">安装与运行</h2>
+
+      <h3>Q：为什么提示「未知来源应用」无法安装？</h3>
+      <p>Gridea Android 未上架 Google Play，通过 APK 直接安装会触发系统的安全提示。在系统设置中为文件管理器或浏览器开启「允许安装未知来源应用」权限后重试即可。应用本身是开源的，源码可在 <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">GitHub</a> 审查。</p>
+
+      <h3>Q：支持哪些 Android 版本？</h3>
+      <p>最低支持 Android 7.0（API 24），目标版本 Android 14（API 34）。建议使用 Android 9 及以上以获得最佳体验（动态取色等特性需要较新系统）。</p>
+
+      <h3>Q：有 iOS 版本吗？</h3>
+      <p>没有。Gridea Android 是基于 Kotlin + Jetpack Compose 的 Android 原生应用，目前没有 iOS 计划。原版 Gridea 是跨平台桌面端（Windows / Mac / Linux），可按需选择。</p>
+
+      <h2 id="deploy">部署相关</h2>
+
+      <h3>Q：GitHub 部署失败提示 401 怎么办？</h3>
+      <p>这是 Token 无效或权限不足。请确认：① Token 未过期；② 创建时勾选了 <code>repo</code> 权限；③ 仓库存在且你有写入权限。可在 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">GitHub Token 管理页</a>重新生成。</p>
+
+      <h3>Q：部署后访问博客是 404？</h3>
+      <p>常见原因：① 仓库名不是 <code>&lt;用户名&gt;.github.io</code> 格式，需要到仓库 Settings → Pages 手动开启；② 站点 URL 配置错误；③ GitHub Pages 还在构建中（首次部署可能需要 1-2 分钟生效）。</p>
+
+      <h3>Q：部署很慢怎么办？</h3>
+      <p>GitHub Pages 采用逐文件 PUT 且间隔 1 秒防限流，文件多时较慢。可考虑：① 使用 Netlify 或 Vercel（SHA 增量更快）；② 精简文章图片体积；③ 国内用户可用 Gitee Pages。</p>
+
+      <h3>Q：可以同时部署到多个平台吗？</h3>
+      <p>每次部署只能选择一条通道，但你可以保存多套部署配置，切换后分别部署。例如平时用 GitHub Pages，重要文章再手动部署一份到 Vercel 做镜像。</p>
+
+      <h2 id="theme">主题相关</h2>
+
+      <h3>Q：切换主题后预览没变化？</h3>
+      <p>预览会立即重新渲染。若没变化，检查：① 是否真的切换成功（主题卡片高亮）；② 查看渲染日志是否有 <code>ERROR</code>；③ 主题包是否完整（缺 <code>base.peb</code> 会渲染失败）。</p>
+
+      <h3>Q：手机上访问博客排版错乱？</h3>
+      <p>所有内置主题都做了响应式适配。如果是自定义主题，请确保你的 CSS 包含 <code>@media (max-width: 768px)</code> 的移动端样式——这是主题审核的强制要求。</p>
+
+      <h3>Q：能把原版 Gridea 的 EJS 主题直接用吗？</h3>
+      <p>不能直接用。Gridea Android 使用 Pebble 模板引擎替代 EJS，语法不同。需要把 EJS 的 <code>&lt;%= %&gt;</code> 改为 Pebble 的 <code>{{ }}</code>，<code>&lt;% %&gt;</code> 改为 <code>{% %}</code>。变量名基本兼容。</p>
+
+      <h2 id="data">数据与隐私</h2>
+
+      <h3>Q：我的文章会上传到服务器吗？</h3>
+      <p>不会。所有文章、配置、主题数据都存储在应用本地沙箱内。只有当你主动点「部署」时，构建产物才会推送到你配置的代码托管平台。应用不连接任何 Gridea 官方服务器。</p>
+
+      <h3>Q：卸载应用数据会丢吗？</h3>
+      <p>会。卸载会清除应用沙箱内的全部数据，包括自动备份。请养成定期「导出备份」的习惯，把备份包存到云盘或下载目录。详见 <a href="backup.html">备份与恢复</a>。</p>
+
+      <h3>Q：Token 安全吗？</h3>
+      <p>Token 保存在本地 DataStore 中，不上传任何服务器，其他应用无法访问。提交反馈日志时会自动脱敏（仅保留前缀）。但仍建议为博客部署使用独立的最小权限 Token。</p>
+
+      <h2 id="update">更新与反馈</h2>
+
+      <h3>Q：怎么检查更新？</h3>
+      <p>「设置 → 检查更新」会自动查询 GitHub 最新 Release 并提示下载安装。你也可以直接关注 <a href="https://github.com/QingYu327/GrideaAndroid/releases" target="_blank" rel="noopener">Release 页面</a>。</p>
+
+      <h3>Q：遇到 Bug 怎么反馈？</h3>
+      <p>推荐使用应用内「设置 → 问题反馈」，它会自动打包脱敏日志，通过系统分享发送。你也可以直接在 <a href="https://github.com/QingYu327/GrideaAndroid/issues" target="_blank" rel="noopener">GitHub Issues</a> 提交，附上日志面板的 ERROR 截图。</p>
+
+      <h3>Q：可以参与开发吗？</h3>
+      <p>欢迎！项目遵循 GPL-3.0 开源，PR 详见仓库的贡献指南。主题开发参考 <a href="themes.html#dev">主题开发</a> 章节。</p>
+
+      <nav class="doc-nav">
+        <a href="logs.html"><span class="lbl">← 上一章</span><span class="ttl">日志管理</span></a>
+        <a class="next" href="index.html"><span class="lbl">回到 →</span><span class="ttl">快速开始</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

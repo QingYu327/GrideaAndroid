@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>站点预览 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 站点预览：内置 WebView 实时预览、浏览器级导航、JS Bridge、远程调试。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html" class="active">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html" class="active">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>站点预览</h1>
+      <p class="doc-lead">写完文章、切换主题、修改配置后，无需部署即可在「预览」标签页即时看到效果。预览使用系统 WebView 加载本地构建产物，与浏览器表现一致。</p>
+
+      <h2 id="how">预览原理</h2>
+      <p>切换到预览页时，App 会用 Pebble 渲染当前所有已发布文章与站点配置，生成静态文件写入本地沙箱，再用系统 WebView 加载 <code>file://</code> 协议的 <code>index.html</code>。整个过程在本地完成，不依赖网络。</p>
+      <ul>
+        <li>切换主题、修改主题配置后，预览<strong>立即重新渲染</strong>。</li>
+        <li>新建 / 编辑文章后，预览同步刷新。</li>
+        <li>预览只加载本地 <code>file://</code> 产物，不加载任何外部 CDN（评论系统 CDN 在预览模式下自动跳过）。</li>
+      </ul>
+
+      <h2 id="nav">浏览器级导航</h2>
+      <p>预览页提供返回上一页 / 前进下一页按钮，遵循浏览器历史栈语义：</p>
+      <ul>
+        <li><strong>返回</strong>：优先回退 WebView 历史；若已到栈底，则交由系统手势返回上一界面。</li>
+        <li><strong>前进</strong>：在历史栈中前进。</li>
+        <li>按钮的启用 / 禁用状态实时同步 <code>canGoBack</code> / <code>canGoForward</code>。</li>
+      </ul>
+
+      <h2 id="external">外链处理</h2>
+      <p>预览页内的 http / https 链接不会在应用内加载，而是自动调起系统浏览器打开。这避免了在 WebView 中跳转到第三方站点导致导航混乱，也更安全。</p>
+
+      <h2 id="bridge">JS Bridge</h2>
+      <p>App 在预览 WebView 中注入了 <code>GrideaPreview</code> 桥接对象，把页面行为回传到 <a href="logs.html">AppLogger</a>，方便排查主题问题：</p>
+      <table>
+        <thead><tr><th>事件</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>点击</td><td>页面内点击事件回传，定位交互问题</td></tr>
+          <tr><td>console 日志</td><td>页面 <code>console.log/error</code> 转发到 AppLogger</td></tr>
+          <tr><td>资源加载失败</td><td>JS / CSS / 图片加载失败时记录路径</td></tr>
+          <tr><td>404</td><td>页面未找到时记录请求路径</td></tr>
+        </tbody>
+      </table>
+      <p>这意味着开发主题时无需连接 logcat，直接在 App 内的日志面板就能看到主题的报错信息。</p>
+
+      <h2 id="debug">远程调试</h2>
+      <p>需要更深入的调试时，可开启 Chrome DevTools 远程审查：</p>
+      <ol>
+        <li>进入「设置 → 调试模式」，开启「WebView 远程调试」。</li>
+        <li>用 USB 连接电脑，或在同一网络下使用无线调试。</li>
+        <li>在电脑 Chrome 浏览器访问 <code>chrome://inspect</code>。</li>
+        <li>在设备列表中找到 Gridea 的 WebView，点击「inspect」即可打开 DevTools。</li>
+      </ol>
+      <p>调试完成后建议关闭远程调试开关，避免在公共网络下暴露调试端口。</p>
+
+      <h2 id="tips">预览技巧</h2>
+      <ul>
+        <li>预览是部署的「彩排」——预览没问题，部署基本就没问题。</li>
+        <li>主题资源 404 是最常见问题，结合 JS Bridge 的资源加载失败日志快速定位。</li>
+        <li>预览模式下评论系统的外部 CDN 会自动跳过，所以预览看不到评论属正常现象。</li>
+      </ul>
+
+      <nav class="doc-nav">
+        <a href="deploy.html"><span class="lbl">← 上一章</span><span class="ttl">部署配置</span></a>
+        <a class="next" href="backup.html"><span class="lbl">下一章 →</span><span class="ttl">备份与恢复</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

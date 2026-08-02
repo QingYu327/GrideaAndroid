@@ -1,0 +1,64 @@
+{# 03-Magazine 标签详情页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="tag-detail">
+    <h1 class="page-title">标签: {{ tag.name }}</h1>
+    {% if posts is not empty %}
+    {% set firstPost = posts[0] %}
+    <article class="featured-post">
+        {% if firstPost.feature %}
+        <a href="{{ firstPost.link }}" class="featured-cover">
+            <img src="{{ firstPost.feature }}" alt="{{ firstPost.title }}" loading="lazy">
+        </a>
+        {% endif %}
+        <div class="featured-body">
+            <div class="featured-meta">
+                <span class="featured-date">{{ firstPost.date }}</span>
+            </div>
+            <h2 class="featured-title">
+                <a href="{{ firstPost.link }}">{{ firstPost.title }}</a>
+            </h2>
+            <div class="featured-abstract">{{ firstPost.abstract | raw }}</div>
+            <a href="{{ firstPost.link }}" class="read-more">阅读全文 →</a>
+        </div>
+    </article>
+    {% set restPosts = posts|slice(1, posts|length) %}
+    {% if restPosts is not empty %}
+    <div class="post-grid">
+        {% for post in restPosts %}
+        <article class="post-card">
+            {% if post.feature %}
+            <a href="{{ post.link }}" class="post-card-cover">
+                <img src="{{ post.feature }}" alt="{{ post.title }}" loading="lazy">
+            </a>
+            {% endif %}
+            <div class="post-card-body">
+                <div class="post-card-meta">
+                    <span class="post-date">{{ post.date }}</span>
+                </div>
+                <h3 class="post-card-title">
+                    <a href="{{ post.link }}">{{ post.title }}</a>
+                </h3>
+                <div class="post-card-abstract">{{ post.abstract | raw }}</div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% else %}
+    <div class="empty">该标签下暂无文章</div>
+    {% endif %}
+    {% if pagination.total > 1 %}
+    <nav class="pagination">
+        {% if pagination.prev %}
+        <a href="{{ pagination.prev }}" class="page-prev">← 上一页</a>
+        {% endif %}
+        <span class="page-info">{{ pagination.current }} / {{ pagination.total }}</span>
+        {% if pagination.next %}
+        <a href="{{ pagination.next }}" class="page-next">下一页 →</a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

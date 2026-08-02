@@ -1,0 +1,79 @@
+{
+  "id": "sidebar",
+  "name": "经典双栏",
+  "version": "1.0.0",
+  "author": "Gridea",
+  "description": "桌面端固定左侧边栏，右侧主内容区，专业干净的经典博客布局",
+  "previewImage": null,
+  "tags": ["双栏", "侧边栏", "经典"],
+  "isBuiltin": false,
+  "customConfig": [
+    {
+      "name": "accent_color",
+      "label": "强调色",
+      "group": "颜色",
+      "type": "color",
+      "value": "#7c5cfc",
+      "note": "用于链接、标签、按钮等交互元素"
+    },
+    {
+      "name": "show_hero",
+      "label": "首页大标题",
+      "group": "排版",
+      "type": "switch",
+      "value": false,
+      "note": "在首页顶部显示站点名称和描述"
+    },
+    {
+      "name": "sidebar_width",
+      "label": "侧边栏宽度",
+      "group": "排版",
+      "type": "slider",
+      "value": 240,
+      "min": 200,
+      "max": 320,
+      "step": 10,
+      "note": "桌面端侧边栏宽度（像素）"
+    },
+    {
+      "name": "show_social",
+      "label": "显示社交链接",
+      "group": "排版",
+      "type": "switch",
+      "value": true,
+      "note": "在侧边栏显示社交链接（菜单中的外链）"
+    },
+    {
+      "name": "ga",
+      "label": "Google Analytics",
+      "group": "统计",
+      "type": "input",
+      "value": "",
+      "placeholder": "G-XXXXXXXXXX"
+    },
+    {
+      "name": "baidu",
+      "label": "百度统计 Token",
+      "group": "统计",
+      "type": "input",
+      "value": "",
+      "placeholder": "百度统计的 hm.js token"
+    },
+    {
+      "name": "tencent",
+      "label": "腾讯分析 ID",
+      "group": "统计",
+      "type": "input",
+      "value": "",
+      "placeholder": "腾讯分析的项目 ID"
+    },
+    {
+      "name": "view",
+      "label": "不蒜子访客",
+      "group": "统计",
+      "type": "switch",
+      "value": false,
+      "note": "启用不蒜子访客统计"
+    }
+  ]
+}

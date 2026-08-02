@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>部署配置 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 部署配置：GitHub Pages、Gitee Pages、Netlify、Vercel、SFTP 五条部署通道的认证与增量策略。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html" class="active">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html">主题系统</a>
+      <a href="deploy.html" class="active">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>部署配置</h1>
+      <p class="doc-lead">Gridea Android 提供五条直连部署通道：GitHub Pages、Gitee Pages、Netlify、Vercel、SFTP。部署在后台 Service 中执行，支持中断、进度通知与失败重试，完成后自动写入部署历史。</p>
+
+      <h2 id="overview">通道总览</h2>
+      <table>
+        <thead><tr><th>平台</th><th>认证方式</th><th>增量策略</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Pages</td><td>Personal Access Token</td><td>Contents API 逐文件 PUT</td><td>1 秒间隔防限流</td></tr>
+          <tr><td>Gitee Pages</td><td>Personal Access Token</td><td>PUT + DELETE</td><td>404 增强诊断</td></tr>
+          <tr><td>Netlify</td><td>Bearer Token</td><td>SHA1 增量</td><td>仅上传缺失文件</td></tr>
+          <tr><td>Vercel</td><td>Bearer Token</td><td>SHA 去重</td><td>替代 Gitee Pages</td></tr>
+          <tr><td>SFTP</td><td>密码 / 私钥</td><td>全量替换</td><td>JSch mwiede fork</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="github">GitHub Pages</h2>
+      <p>最常用的部署方式。你的博客会托管在 <code>yourname.github.io</code> 仓库下。</p>
+      <ol>
+        <li>在 GitHub 创建仓库，命名为 <code>&lt;用户名&gt;.github.io</code>（例如 <code>limengrid.github.io</code>）。</li>
+        <li>前往 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">GitHub Settings → Developer settings → Personal access tokens</a>，生成一个 Classic Token，至少勾选 <code>repo</code> 权限。</li>
+        <li>在 App「设置 → 部署 → GitHub Pages」中填写：仓库拥有者、仓库名、分支（默认 <code>master</code> 或 <code>main</code>）、Token。</li>
+        <li>点击「部署」。App 通过 Contents API 逐文件 PUT，文件间间隔 1 秒以防触发限流。</li>
+      </ol>
+      <div class="callout tip">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><strong>Token 安全：</strong>Token 保存在本地 DataStore 中，不上传任何服务器。反馈日志打包时会自动脱敏，仅保留前缀。</p>
+      </div>
+
+      <h2 id="gitee">Gitee Pages</h2>
+      <p>面向国内用户的代码托管平台，访问速度更稳定。配置方式与 GitHub 类似：</p>
+      <ol>
+        <li>在 Gitee 创建同名仓库 <code>&lt;用户名&gt;.github.io</code> 或自定义仓库名。</li>
+        <li>在 Gitee「设置 → 私人令牌」生成令牌，需 <code>projects</code> 与 <code>pull_requests</code> 等权限。</li>
+        <li>在 App 中填写 Gitee 凭证并部署。采用 PUT + DELETE 策略同步删除已移除的文件。</li>
+      </ol>
+      <p>Gitee 部署失败时提供 404 增强诊断，会在日志中标注缺失资源路径，便于排查主题资源引用问题。</p>
+
+      <h2 id="netlify">Netlify</h2>
+      <p>Netlify 通过 SHA1 增量上传，只推送缺失或变更的文件，适合文章量大时加速部署。</p>
+      <ol>
+        <li>在 <a href="https://app.netlify.com/" target="_blank" rel="noopener">Netlify</a> 创建站点并记录站点 ID。</li>
+        <li>在「User Settings → Applications」生成 Personal Access Token（Bearer Token）。</li>
+        <li>在 App「设置 → 部署 → Netlify」中填写站点 ID 与 Bearer Token。</li>
+        <li>部署时 App 计算每个文件 SHA1，仅上传远端不存在的文件。</li>
+      </ol>
+
+      <h2 id="vercel">Vercel</h2>
+      <p>Vercel 采用 SHA 去重策略，可作为 Gitee Pages 的替代方案。配置：</p>
+      <ol>
+        <li>在 <a href="https://vercel.com/account/tokens" target="_blank" rel="noopener">Vercel Account → Tokens</a> 生成 Token。</li>
+        <li>创建项目并记录 Project ID 与所属 Team ID（个人账户可留空）。</li>
+        <li>在 App 中填写上述信息后部署。App 会对文件做 SHA 去重，避免重复上传。</li>
+      </ol>
+
+      <h2 id="sftp">SFTP</h2>
+      <p>SFTP 适合自建服务器场景，支持密码与私钥两种认证方式。底层使用 JSch（mwiede fork，修复了旧版安全漏洞）。</p>
+      <ol>
+        <li>填写服务器地址、端口（默认 22）、用户名。</li>
+        <li>选择认证方式：密码，或粘贴私钥内容。</li>
+        <li>填写远程站点根目录，例如 <code>/var/www/blog</code>。</li>
+        <li>SFTP 采用<strong>全量替换</strong>策略，部署时会清空目标目录后重新上传全部文件。</li>
+      </ol>
+      <div class="callout warn">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>注意：</strong>SFTP 全量替换会删除目标目录下的所有内容。请确保填写的根目录只用于博客，避免误删其他站点文件。</p>
+      </div>
+
+      <h2 id="process">部署过程</h2>
+      <p>无论选择哪条通道，部署流程都在后台 Service 中执行：</p>
+      <ul>
+        <li><strong>构建</strong>：用 Pebble 渲染所有页面，生成静态 HTML / CSS / JS / 图片。</li>
+        <li><strong>上传</strong>：按通道策略上传文件，进度以通知形式展示。</li>
+        <li><strong>历史</strong>：部署完成后自动写入部署历史，记录时间、通道、文件数、耗时。</li>
+        <li><strong>中断与重试</strong>：部署可随时中断；失败时支持重试，无需重新构建。</li>
+      </ul>
+
+      <h2 id="history">部署历史</h2>
+      <p>在「设置 → 部署历史」可查看所有部署记录。每条记录包含部署时间、通道、成功 / 失败状态与日志摘要。失败的部署可一键重试。</p>
+
+      <nav class="doc-nav">
+        <a href="themes.html"><span class="lbl">← 上一章</span><span class="ttl">主题系统</span></a>
+        <a class="next" href="preview.html"><span class="lbl">下一章 →</span><span class="ttl">站点预览</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>主题系统 — Gridea Android 文档</title>
+  <meta name="description" content="Gridea Android 主题系统文档：内置主题、自定义主题包导入、Pebble 模板开发、theme.json 配置契约。">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="../assets/icons/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/icons/app-icon.png" alt="">
+        <span>Gridea Android<small>静态博客 · 移动写作</small></span>
+      </a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html">首页</a>
+        <a href="../themes.html">主题</a>
+        <a href="index.html" class="active">文档</a>
+        <a href="https://github.com/QingYu327/GrideaAndroid" target="_blank" rel="noopener">开源</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="切换主题">
+          <span data-theme-icon><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        <button class="icon-btn menu-toggle" data-menu-toggle aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="docs-layout">
+
+    <details class="docs-mobile-nav"><summary>导航</summary>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html" class="active">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+    </details>
+    <aside class="docs-side">
+      <h4>入门</h4>
+      <a href="index.html">快速开始</a>
+      <h4>使用</h4>
+      <a href="articles.html">文章管理</a>
+      <a href="themes.html" class="active">主题系统</a>
+      <a href="deploy.html">部署配置</a>
+      <a href="preview.html">站点预览</a>
+      <h4>数据与维护</h4>
+      <a href="backup.html">备份与恢复</a>
+      <a href="logs.html">日志管理</a>
+      <h4>更多</h4>
+      <a href="faq.html">常见问题</a>
+    </aside>
+
+    <article class="docs-main">
+      <h1>主题系统</h1>
+      <p class="doc-lead">Gridea Android 使用 Pebble 模板引擎（替代原版的 EJS）渲染站点。应用内置 7 套主题，同时支持通过 .zip 包导入自定义主题。主题与 App 之间通过 theme.json 通信。</p>
+
+      <h2 id="builtin">内置主题</h2>
+      <p>应用内置 7 套主题，均强制要求响应式适配（手机端 ≤768px 与电脑端）：</p>
+      <table>
+        <thead><tr><th>主题</th><th>标识</th><th>风格</th></tr></thead>
+        <tbody>
+          <tr><td>杂志编辑</td><td><code>magazine</code></td><td>大标题、网格排版、图文专栏</td></tr>
+          <tr><td>复古打字机</td><td><code>retro</code></td><td>等宽字体、米色纸张、怀旧质感</td></tr>
+          <tr><td>瀑布流</td><td><code>masonry</code></td><td>封面优先、不规则卡片、视觉博客</td></tr>
+          <tr><td>经典双栏</td><td><code>sidebar</code></td><td>侧边栏导航、技术博客、友链</td></tr>
+          <tr><td>终端</td><td><code>terminal</code></td><td>单色高对比、极客风、等宽</td></tr>
+          <tr><td>水墨</td><td><code>ink</code></td><td>东方意境、衬线字体、诗文随笔</td></tr>
+        </tbody>
+      </table>
+      <p>在「主题」标签页点击任意主题卡片即可切换。切换后预览界面立即重新渲染，无需重新部署。</p>
+
+      <h2 id="custom">导入自定义主题</h2>
+      <p>除内置主题外，你可以导入他人分享或自己开发的主题包。主题包是一个 <code>.zip</code> 文件，结构如下：</p>
+      <pre><code>my-theme.zip
+├── theme.json          # 主题配置契约（必需）
+├── preview.jpg         # 主题预览图（必需）
+├── base.peb            # 基础布局模板（必需）
+├── index.peb           # 首页
+├── post.peb            # 文章页
+├── tag.peb             # 标签文章列表
+├── tags.peb            # 标签云
+├── archives.peb        # 归档页
+├── friends.peb         # 友链页
+├── 404.peb             # 404 页
+├── custom.css          # 附加样式（可选）
+├── custom.js           # 附加脚本（可选）
+└── assets/             # 附加资源（可选）
+    ├── font/
+    ├── image/
+    └── ...</code></pre>
+      <p>导入步骤：「主题」页 → 右上角导入按钮 → 选择 <code>.zip</code> 文件 → 应用自动校验并安装。安装后可在主题列表中看到新主题。</p>
+
+      <h2 id="dev">主题开发</h2>
+      <h3>模板引擎：Pebble</h3>
+      <p>Gridea Android 使用 <a href="https://pebbletemplates.io/" target="_blank" rel="noopener">Pebble</a> 模板引擎。语法示例：</p>
+      <pre><code>{# base.peb #}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;{{ site.title }}&lt;/title&gt;
+  &lt;link rel="stylesheet" href="{{ theme.assets.customCss }}"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;a href="{{ site.url }}"&gt;{{ site.title }}&lt;/a&gt;
+  &lt;/header&gt;
+
+  {% block content %}{% endblock %}
+
+  &lt;footer&gt;© {{ site.author }}&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <pre><code>{# index.peb #}
+{% extends "base.peb" %}
+
+{% block content %}
+  &lt;main&gt;
+    {% for post in posts %}
+      &lt;article&gt;
+        &lt;h2&gt;&lt;a href="{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/h2&gt;
+        &lt;time&gt;{{ post.date }}&lt;/time&gt;
+        &lt;p&gt;{{ post.summary }}&lt;/p&gt;
+      &lt;/article&gt;
+    {% endfor %}
+  &lt;/main&gt;
+{% endblock %}</code></pre>
+
+      <h3 id="variables">可用模板变量</h3>
+      <table>
+        <thead><tr><th>变量</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>site.title</code></td><td>站点标题</td></tr>
+          <tr><td><code>site.description</code></td><td>站点描述</td></tr>
+          <tr><td><code>site.url</code></td><td>站点 URL</td></tr>
+          <tr><td><code>site.author</code></td><td>作者昵称</td></tr>
+          <tr><td><code>posts</code></td><td>已发布文章列表（首页 / 归档）</td></tr>
+          <tr><td><code>post.title / post.content / post.url</code></td><td>单篇文章字段</td></tr>
+          <tr><td><code>post.date / post.tags / post.cover</code></td><td>文章日期 / 标签 / 封面</td></tr>
+          <tr><td><code>tags</code></td><td>全部标签</td></tr>
+          <tr><td><code>menus</code></td><td>自定义菜单项</td></tr>
+          <tr><td><code>friends</code></td><td>友链列表</td></tr>
+          <tr><td><code>theme.config.xxx</code></td><td>通过 theme.json 声明的自定义配置</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="theme-json">theme.json 配置契约</h3>
+      <p>theme.json 是主题与 App 之间的通信契约。它声明主题元信息与用户可配置项，App 会根据 <code>customConfig</code> 自动生成配置界面。</p>
+      <pre><code>{
+  "name": "我的主题",
+  "author": "Your Name",
+  "version": "1.0.0",
+  "description": "一个示例主题",
+  "preview": "preview.jpg",
+  "customConfig": [
+    {
+      "name": "accentColor",
+      "label": "主题色",
+      "type": "text",
+      "default": "#059669"
+    },
+    {
+      "name": "showSidebar",
+      "label": "显示侧边栏",
+      "type": "switch",
+      "default": true
+    },
+    {
+      "name": "columns",
+      "label": "列数",
+      "type": "slider",
+      "min": 1, "max": 4, "step": 1, "default": 2
+    },
+    {
+      "name": "customCss",
+      "label": "自定义 CSS",
+      "type": "code",
+      "default": ""
+    },
+    {
+      "name": "tags",
+      "label": "显示的标签",
+      "type": "multiselect",
+      "options": ["tech", "life", "photo"],
+      "default": ["tech"]
+    }
+  ]
+}</code></pre>
+      <p>支持的控件类型（<code>type</code>）共 5 种：</p>
+      <table>
+        <thead><tr><th>类型</th><th>说明</th><th>额外字段</th></tr></thead>
+        <tbody>
+          <tr><td><code>text</code></td><td>单行文本</td><td>—</td></tr>
+          <tr><td><code>switch</code></td><td>布尔开关</td><td>—</td></tr>
+          <tr><td><code>slider</code></td><td>数值滑块</td><td>min / max / step</td></tr>
+          <tr><td><code>code</code></td><td>多行代码</td><td>—</td></tr>
+          <tr><td><code>multiselect</code></td><td>多选</td><td>options</td></tr>
+        </tbody>
+      </table>
+      <p>配置值在模板中通过 <code>{{ theme.config.accentColor }}</code> 访问。用户修改配置后预览立即重新渲染。</p>
+
+      <h3 id="assets">附加资源</h3>
+      <p>主题包可声明附加资源，App 会自动复制到输出目录并按需注入 HTML：</p>
+      <ul>
+        <li><strong>css / js</strong>：<code>custom.css</code> 与 <code>custom.js</code> 自动注入到页面。</li>
+        <li><strong>font</strong>：字体文件，通过 <code>@font-face</code> 引用。</li>
+        <li><strong>image / file</strong>：图片与其他静态文件，模板中通过 <code>{{ theme.assets.xxx }}</code> 引用路径。</li>
+      </ul>
+
+      <div class="callout warn">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>响应式强制要求：</strong>每个主题必须同时适配手机端（≤768px）与电脑端（&gt;768px）。审核主题时会检查移动端表现。</p>
+      </div>
+
+      <h2 id="debug">主题调试</h2>
+      <p>开发主题时，建议开启「设置 → 调试模式 → WebView 远程调试」，然后用 Chrome 浏览器访问 <code>chrome://inspect</code> 远程审查预览页。App 内置的 JS Bridge 会把页面点击、控制台日志、资源加载失败、404 等事件回传到 AppLogger，无需 logcat 即可定位问题，详见 <a href="logs.html">日志管理</a>。</p>
+
+      <nav class="doc-nav">
+        <a href="articles.html"><span class="lbl">← 上一章</span><span class="ttl">文章管理</span></a>
+        <a class="next" href="deploy.html"><span class="lbl">下一章 →</span><span class="ttl">部署配置</span></a>
+      </nav>
+    </article>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Gridea Android · 基于原版 Gridea 重构</span>
+      <span class="license">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        GPL-3.0 开源许可证
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

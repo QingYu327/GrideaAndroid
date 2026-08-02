@@ -1,0 +1,12 @@
+{# 08-Terminal 404 页 #}
+{% extends "base" %}
+
+{% block content %}
+<div class="error-page">
+    <p class="error-path"><span class="prompt-dollar">$</span> cd ./not-found</p>
+    <h1 class="error-code">404<span class="cursor-blink">_</span></h1>
+    <p class="error-message"><span class="bracket">[</span>ERROR<span class="bracket">]</span> command not found</p>
+    <p class="error-desc"><span class="comment">#</span> 抱歉，您访问的页面不存在或已被移除。</p>
+    <a href="./" class="error-back-home"><span class="prompt-dollar">$</span> cd ~</a>
+</div>
+{% endblock %}

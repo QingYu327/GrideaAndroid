@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gridea</string>
+
+    <!-- 应用快捷方式 -->
+    <string name="shortcut_new_post">新建文章</string>
+    <string name="shortcut_new_post_long">新建文章</string>
+    <string name="shortcut_new_post_disabled">无法新建文章</string>
+
+    <!-- 底部导航 -->
+    <string name="nav_articles">文章</string>
+    <string name="nav_tags">页面</string>
+    <string name="nav_deploy">部署</string>
+    <string name="nav_theme">主题</string>
+    <string name="nav_setting">设置</string>
+
+    <!-- 通用 -->
+    <string name="back">返回</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="preview">预览</string>
+    <string name="edit">编辑</string>
+    <string name="search">搜索</string>
+    <string name="clear">清除</string>
+    <string name="loading">加载中…</string>
+
+    <!-- 首页 -->
+    <string name="home_title">Gridea</string>
+    <string name="home_search_hint">搜索文章（标题/内容/标签）</string>
+    <string name="home_new_post">新建文章</string>
+    <string name="home_empty_title">暂无文章</string>
+    <string name="home_empty_subtitle">点击右下角按钮开始写作</string>
+    <string name="home_stat_total">总文章</string>
+    <string name="home_stat_published">已发布</string>
+    <string name="home_stat_draft">草稿</string>
+    <string name="home_stat_tags">标签</string>
+    <string name="home_stat_continuous_days">连续写作</string>
+    <string name="home_delete_title">删除文章</string>
+    <string name="home_delete_message">确定要删除这篇文章吗？此操作不可撤销。</string>
+    <string name="home_sort_date_desc">日期降序</string>
+    <string name="home_sort_date_asc">日期升序</string>
+    <string name="home_sort_title">标题排序</string>
+    <string name="home_filter_all">全部</string>
+    <string name="home_filter_published">已发布</string>
+    <string name="home_filter_draft">草稿</string>
+    <string name="home_archive">归档</string>
+    <string name="home_pinned">置顶</string>
+    <string name="home_draft_badge">草稿</string>
+    <string name="home_published_badge">已发布</string>
+    <string name="home_hidden_badge">隐藏</string>
+    <string name="home_unnamed_post">未命名文章</string>
+    <string name="home_no_match_title">未找到匹配的文章</string>
+    <string name="home_no_match_subtitle">试试其他关键词</string>
+
+    <!-- 批量管理（文章/标签多选删除） -->
+    <string name="batch_selected_count">已选 %1$d 项</string>
+    <string name="batch_select_all">全选</string>
+    <string name="batch_deselect_all">取消全选</string>
+    <string name="batch_exit_selection">退出选择</string>
+    <string name="batch_delete_posts_title">批量删除文章</string>
+    <string name="batch_delete_posts_message">确定要删除选中的 %1$d 篇文章吗？此操作不可撤销。</string>
+    <string name="batch_delete_tags_title">批量删除标签</string>
+    <string name="batch_delete_tags_message">确定要删除选中的 %1$d 个标签吗？已使用的标签会自动从相关文章中移除引用。此操作不可撤销。</string>
+    <string name="batch_delete_menus_title">批量删除菜单</string>
+    <string name="batch_delete_menus_message">确定要删除选中的 %1$d 个菜单吗？此操作不可撤销。</string>
+    <string name="batch_delete_friend_links_title">批量删除友链</string>
+    <string name="batch_delete_friend_links_message">确定要删除选中的 %1$d 个友链吗？此操作不可撤销。</string>
+    <string name="batch_delete">批量删除</string>
+
+    <!-- 编辑器 -->
+    <string name="editor_new_post">新建文章</string>
+    <string name="editor_edit_post">编辑文章</string>
+    <string name="editor_title_label">标题</string>
+    <string name="editor_tags_label">标签（逗号分隔）</string>
+    <string name="editor_content_placeholder">开始写作…</string>
+    <string name="editor_tab_edit">编辑</string>
+    <string name="editor_tab_preview">预览</string>
+    <string name="editor_publish">发布</string>
+    <string name="editor_top">置顶</string>
+    <string name="editor_hide">隐藏</string>
+    <string name="editor_save">保存</string>
+    <string name="editor_export">导出 Markdown</string>
+    <string name="editor_export_success">导出成功</string>
+    <string name="editor_export_fail">导出失败</string>
+    <string name="editor_export_title_empty">标题为空，无法导出</string>
+    <string name="editor_export_unknown_error">未知错误</string>
+    <string name="editor_export_cannot_write">无法写入文件</string>
+    <string name="editor_word_count_format">%1$d 字 · 约 %2$d 分钟阅读</string>
+    <string name="editor_autosave_saving">保存中…</string>
+    <string name="editor_autosave_saved">已自动保存</string>
+    <string name="editor_autosave_failed">自动保存失败</string>
+    <string name="editor_date_label">日期: %1$s</string>
+    <string name="editor_search">查找替换</string>
+    <string name="editor_find">查找</string>
+    <string name="editor_replace">替换为</string>
+    <string name="editor_replace_btn">替换</string>
+    <string name="editor_replace_all">全部替换</string>
+    <string name="editor_prev">上一个</string>
+    <string name="editor_next">下一个</string>
+    <string name="editor_version_history">版本历史</string>
+    <string name="editor_more">更多</string>
+    <string name="editor_version_loading">加载中…</string>
+    <string name="editor_version_empty">暂无历史版本</string>
+    <string name="editor_version_untitled">未命名</string>
+    <string name="editor_version_restore">恢复</string>
+    <string name="editor_version_delete_title">删除版本</string>
+    <string name="editor_version_delete_message">确定要删除这个历史版本吗？此操作不可撤销。</string>
+    <string name="editor_paste_image">粘贴图片</string>
+    <string name="editor_paste_image_empty">剪贴板中没有图片</string>
+    <string name="editor_paste_image_failed">粘贴图片失败</string>
+
+    <!-- 编辑器：代码片段模板 -->
+    <string name="editor_template">模板</string>
+    <string name="editor_template_code_block">代码块</string>
+    <string name="editor_template_table_3x3">表格 3×3</string>
+    <string name="editor_template_table_4x4">表格 4×4</string>
+    <string name="editor_template_quote">引用块</string>
+    <string name="editor_template_task_list">任务列表</string>
+    <string name="editor_template_math">数学公式</string>
+    <string name="editor_template_warning">警告框</string>
+    <string name="editor_template_select_language">选择语言</string>
+
+    <!-- 编辑器：字数目标 -->
+    <string name="editor_word_count_goal_progress">%1$d / %2$d 字</string>
+    <string name="editor_word_count_goal_reached">🎉 恭喜！已达到字数目标 %1$d 字</string>
+    <string name="editor_autosave_unsaved">未保存</string>
+    <string name="editor_autosave_saved_label">已保存</string>
+    <string name="editor_url_label">文章 URL</string>
+    <string name="editor_url_hint">留空则按标题自动生成，如 gridea</string>
+    <string name="editor_url_invalid">URL 只能包含小写字母、数字和连字符</string>
+    <string name="editor_cover_label">封面图</string>
+    <string name="editor_cover_add">设置封面图</string>
+    <string name="editor_cover_change">更换封面图</string>
+    <string name="editor_cover_remove">移除封面图</string>
+    <string name="editor_date_change">修改日期</string>
+
+    <!-- 图片库 -->
+    <string name="image_insert_title">插入图片</string>
+    <string name="image_select_from_album">从相册选择</string>
+    <string name="image_import_batch">批量导入</string>
+    <string name="image_library_count">图片库（%1$d）</string>
+    <string name="image_library_empty">图片库为空，请从相册选择或批量导入</string>
+    <string name="image_long_press_hint">长按图片可重命名或删除</string>
+    <string name="image_rename">重命名</string>
+    <string name="image_rename_title">重命名图片</string>
+    <string name="image_rename_hint">输入新文件名</string>
+    <string name="image_rename_empty">文件名不能为空</string>
+    <string name="image_rename_failed">重命名失败，名称可能已存在</string>
+    <string name="image_delete_title">删除图片</string>
+    <string name="image_delete_message">确定要删除图片 \"%1$s\" 吗？此操作不可撤销。</string>
+    <string name="image_import_progress">导入中 %1$d/%2$d</string>
+    <string name="image_import_done">成功导入 %1$d 张图片</string>
+    <string name="image_import_partial">共 %1$d 张，成功 %2$d 张</string>
+
+    <!-- 标签页 -->
+    <string name="tags_title">标签</string>
+    <string name="tags_empty_title">暂无标签</string>
+    <string name="tags_empty_subtitle">在文章中添加标签后会显示在这里，或点击右下角按钮新建</string>
+    <string name="tags_post_count_format">%1$d 篇文章</string>
+    <string name="tags_delete_title">移入回收站</string>
+    <string name="tags_delete_used_message">标签 \"%1$s\" 被 %2$d 篇文章引用，移入回收站后将自动从这些文章中移除该标签。3 天内可在回收站中恢复。</string>
+    <string name="tags_delete_unused_message">确定要将标签 \"%1$s\" 移入回收站吗？3 天内可在回收站中恢复。</string>
+    <string name="tags_create_title">新建标签</string>
+    <string name="tags_create_hint">输入标签名</string>
+    <string name="tags_create_exists">该标签已存在</string>
+    <string name="tags_create_empty">标签名不能为空</string>
+    <string name="tags_new">新建标签</string>
+
+    <!-- 设置主页 -->
+    <string name="setting_title">设置</string>
+    <string name="setting_search_hint">搜索设置项</string>
+    <string name="setting_search_empty">未找到匹配项</string>
+    <string name="setting_general">通用</string>
+    <string name="setting_general_subtitle">语言、外观、字体大小、字数目标</string>
+    <string name="setting_deploy">部署平台</string>
+    <string name="setting_deploy_subtitle">GitHub / Gitee / SFTP / Netlify / Vercel</string>
+    <string name="setting_comment">评论</string>
+    <string name="setting_comment_subtitle">Gitalk / Giscus / Disqus / Valine / Twikoo / Waline</string>
+    <string name="setting_account">账户</string>
+    <string name="setting_account_subtitle">GitHub 登录</string>
+    <string name="setting_data">数据与备份</string>
+    <string name="setting_data_subtitle">输出目录、备份与恢复</string>
+    <string name="setting_about">关于</string>
+    <string name="setting_about_subtitle">版本信息、技术栈</string>
+    <string name="setting_update_feedback">更新与反馈</string>
+    <string name="setting_update_feedback_subtitle">检查更新、日志收集</string>
+    <string name="update_check">检查更新</string>
+    <string name="update_checking">正在检查…</string>
+    <string name="update_latest">已是最新版本</string>
+    <string name="update_available">发现新版本 %1$s</string>
+    <string name="update_release_notes">更新内容</string>
+    <string name="update_download">下载更新</string>
+    <string name="update_downloading">下载中…%1$d%%</string>
+    <string name="update_download_complete">下载完成，点击安装</string>
+    <string name="update_download_failed">下载失败：%1$s</string>
+    <string name="update_check_failed">检查失败：%1$s</string>
+    <string name="update_install">安装</string>
+    <string name="feedback_section">问题反馈</string>
+    <string name="feedback_collect_logs">一键收集日志</string>
+    <string name="feedback_collect_logs_subtitle">打包日志 + 设备信息 + 配置快照（脱敏）</string>
+    <string name="feedback_collecting">正在收集…</string>
+    <string name="feedback_collect_success">日志已打包：%1$s</string>
+    <string name="feedback_collect_failed">收集失败：%1$s</string>
+    <string name="feedback_clear_logs">一键清空日志</string>
+    <string name="feedback_clearing">正在清空…</string>
+    <string name="feedback_clear_success">已清空 %1$d 个日志文件</string>
+    <string name="feedback_clear_failed">清空失败：%1$s</string>
+    <string name="feedback_clear_empty">日志目录为空，无需清理</string>
+    <string name="setting_debug">调试</string>
+    <string name="setting_debug_subtitle">调试开关、运行监测</string>
+    <string name="setting_debug_webview">WebView 调试</string>
+    <string name="setting_debug_webview_subtitle">允许 Chrome DevTools 远程调试</string>
+    <string name="setting_debug_verbose_log">详细日志</string>
+    <string name="setting_debug_verbose_log_subtitle">输出调试级日志到日志管理</string>
+
+    <!-- 通用设置 -->
+    <string name="setting_section_appearance">外观</string>
+    <string name="setting_theme_system">跟随系统</string>
+    <string name="setting_theme_light">浅色</string>
+    <string name="setting_theme_dark">深色</string>
+    <string name="setting_dynamic_color">动态取色</string>
+    <string name="setting_dynamic_color_hint">使用系统壁纸颜色生成配色方案（Android 12+）</string>
+    <string name="setting_app_accent_color">APP 界面强调色</string>
+    <string name="setting_app_accent_color_default">默认（淡紫色）</string>
+    <string name="setting_app_accent_color_reset">恢复默认</string>
+    <string name="setting_section_font_size">字体大小</string>
+    <string name="setting_font_size_scale_format">字号：%1$d%%</string>
+    <string name="setting_font_size_hint">调节应用内所有文字的大小</string>
+    <string name="setting_language">语言</string>
+    <string name="setting_language_system">跟随系统</string>
+    <string name="setting_language_zh">中文</string>
+    <string name="setting_language_en">English</string>
+    <string name="language_restart_title">切换语言</string>
+    <string name="language_restart_message">切换语言需要重启应用以生效，是否立即重启？</string>
+    <string name="language_restart_button">重启</string>
+    <string name="setting_section_basic">基本信息</string>
+    <string name="setting_site_name">站点名称</string>
+    <string name="setting_site_description">站点描述</string>
+    <string name="setting_footer_info">底部信息</string>
+    <string name="setting_html_supported">支持 HTML 标签</string>
+    <string name="setting_site_author">站点作者</string>
+    <string name="setting_site_avatar">站点头像 URL</string>
+    <string name="setting_site_avatar_hint">显示在页眉站点名称上方，留空则不显示</string>
+    <string name="setting_site_favicon">网页图标 URL</string>
+    <string name="setting_site_favicon_hint">浏览器标签页图标，留空则使用浏览器默认图标</string>
+    <string name="setting_section_post">文章设置</string>
+    <string name="setting_post_page_size">每页文章数</string>
+    <string name="setting_date_format">日期格式</string>
+    <string name="setting_show_feature_image">显示文章封面图</string>
+
+    <!-- 站点信息页面 -->
+    <string name="setting_site_info_title">站点信息</string>
+    <string name="setting_site_info_subtitle">站点名称、URL、主题外观</string>
+    <string name="setting_section_basic_info">基本信息</string>
+    <string name="setting_section_site_identity">站点身份</string>
+    <string name="setting_section_url_path">URL 与路径</string>
+    <string name="setting_url_path_hint">控制文章、标签、归档的 URL 生成规则。修改后需重新渲染站点生效。</string>
+    <string name="setting_post_url_format">文章 URL 格式</string>
+    <string name="setting_post_url_format_hint">新建文章时自动生成 URL 路径的方式</string>
+    <string name="setting_url_format_slug">短链接（标题转拼音）</string>
+    <string name="setting_url_format_short_id">短ID（随机字符）</string>
+    <string name="setting_tag_url_format">标签 URL 格式</string>
+    <string name="setting_tag_url_format_hint">标签页 URL 路径的生成方式</string>
+    <string name="setting_section_content_display">内容展示</string>
+    <string name="setting_section_theme_appearance">主题外观</string>
+    <string name="setting_site_url_format">URL 格式</string>
+    <string name="setting_site_url_format_default">默认</string>
+    <string name="setting_site_url_format_slug">SLUG</string>
+    <string name="setting_site_post_path">文章路径</string>
+    <string name="setting_site_tag_path">标签路径</string>
+    <string name="setting_site_archives_path">归档路径</string>
+    <string name="setting_site_post_path_hint">站点文章 URL 的子路径，如 post</string>
+    <string name="setting_site_tag_path_hint">站点标签 URL 的子路径，如 tag</string>
+    <string name="setting_site_archives_path_hint">站点归档 URL 的子路径，如 archives</string>
+    <string name="setting_site_feed_count">RSS 条数</string>
+    <string name="setting_site_feed_full_text">RSS 输出全文</string>
+    <string name="setting_site_font_system">系统字体</string>
+    <string name="setting_site_font_serif">衬线字体</string>
+    <string name="setting_site_font_monospace">等宽字体</string>
+    <string name="setting_site_content_width">内容宽度（dp）</string>
+    <string name="setting_site_border_radius">圆角（dp）</string>
+    <string name="setting_site_primary_color">主色</string>
+    <string name="setting_site_text_color">文字色</string>
+    <string name="setting_site_background_color">背景色</string>
+    <string name="setting_site_color_unset">未设置（使用默认）</string>
+    <string name="setting_site_domain_note">站点域名在【部署】分类中配置</string>
+
+    <!-- 博客主题管理 -->
+    <string name="setting_theme_manage_title">博客主题</string>
+    <string name="setting_theme_manage_subtitle">切换主题、导入主题包</string>
+    <string name="theme_builtin">内置主题</string>
+    <string name="theme_user">用户导入</string>
+    <string name="theme_enable">启用</string>
+    <string name="theme_enabled">已启用</string>
+    <string name="theme_config">配置</string>
+    <string name="theme_import">导入主题</string>
+    <string name="theme_delete">删除</string>
+    <string name="theme_delete_confirm">确认删除此主题？</string>
+    <string name="theme_import_success">主题导入成功</string>
+    <string name="theme_import_failed">导入失败：%1$s</string>
+    <string name="theme_config_saved">配置已保存</string>
+    <string name="theme_switched">主题已切换</string>
+    <string name="theme_no_preview">无预览图</string>
+    <string name="theme_batch_import">批量导入</string>
+    <string name="theme_batch_manage">批量管理</string>
+    <string name="theme_batch_delete">删除选中</string>
+    <string name="theme_batch_delete_confirm">确认删除选中的 %1$d 个主题？</string>
+    <string name="theme_batch_select">选择</string>
+    <string name="theme_batch_cancel">取消选择</string>
+    <string name="theme_batch_selected">已选 %1$d 个</string>
+    <string name="theme_batch_import_progress">正在导入 %1$d / %2$d</string>
+    <string name="theme_batch_import_result">成功导入 %1$d 个，失败 %2$d 个</string>
+    <string name="theme_config_group_appearance">外观</string>
+    <string name="theme_config_group_layout">布局</string>
+    <string name="theme_config_group_typography">字体</string>
+    <string name="theme_restore_builtin">恢复内置主题</string>
+    <string name="theme_restore_builtin_success">已恢复 %1$d 个内置主题</string>
+    <string name="theme_restore_builtin_none">所有内置主题已存在，无需恢复</string>
+    <string name="theme_restore_builtin_failed">恢复内置主题失败：%1$s</string>
+    <string name="theme_empty_hint">暂无主题，可恢复内置主题或导入主题包</string>
+
+    <!-- 站点预览 -->
+    <string name="preview_title">站点预览</string>
+    <string name="preview_refresh">刷新</string>
+    <string name="preview_loading">加载中…</string>
+    <string name="preview_error">页面加载失败</string>
+    <string name="preview_info">%1$d 篇文章 · %2$d 个标签</string>
+
+    <!-- 编辑器设置 -->
+    <string name="setting_section_editor">编辑器</string>
+    <string name="setting_word_count_goal">字数目标</string>
+    <string name="setting_word_count_goal_hint">达到目标字数时会在编辑器中提醒</string>
+
+    <!-- 部署设置 -->
+    <string name="setting_section_platform">部署平台</string>
+    <string name="setting_site_domain">站点域名（含 https://）</string>
+    <string name="setting_site_domain_hint">用于生成文章绝对链接和 RSS Feed，例如 https://example.com</string>
+    <string name="setting_test_connection">测试连接</string>
+    <string name="setting_publish_site">发布站点</string>
+    <string name="setting_deploying">部署中…</string>
+    <string name="setting_uploading_format">上传中 %1$d/%2$d：%3$s</string>
+    <string name="setting_deploy_success">部署成功</string>
+    <string name="setting_deploy_fail">部署失败</string>
+    <string name="setting_git_config">GitHub 配置</string>
+    <string name="setting_repo_name">仓库名</string>
+    <string name="setting_repo_name_hint">只填仓库名，如 blog（无需包含用户名前缀）</string>
+    <string name="setting_branch">分支</string>
+    <string name="setting_branch_hint">通常为 master 或 main，默认 master</string>
+    <string name="setting_username">GitHub 用户名</string>
+    <string name="setting_email">Git 提交邮箱</string>
+    <string name="setting_token">Personal Access Token</string>
+    <string name="setting_token_hint">在 GitHub Settings → Developer settings → Personal access tokens 创建，需勾选 repo 权限。若已通过 OAuth 登录可点击下方按钮自动填入。</string>
+    <string name="setting_cname">CNAME 自定义域名</string>
+    <string name="setting_cname_hint">绑定自定义域名时填写，如 mydomain.com（留空则使用 username.github.io/repo 地址）</string>
+    <!-- Gitee 配置（独立字段，与 GitHub 隔离） -->
+    <string name="setting_gitee_config">Gitee 配置</string>
+    <string name="setting_gitee_repo_name">仓库名</string>
+    <string name="setting_gitee_repo_name_hint">只填仓库名，如 blog（无需包含用户名前缀）</string>
+    <string name="setting_gitee_branch">分支</string>
+    <string name="setting_gitee_branch_hint">通常为 master 或 main，默认 master</string>
+    <string name="setting_gitee_username">Gitee 用户名</string>
+    <string name="setting_gitee_token">个人访问令牌</string>
+    <string name="setting_gitee_token_hint">在 Gitee → 设置 → 私人令牌 创建，需勾选 projects 权限。推送后 EdgeOne 将自动检测并触发部署。</string>
+    <string name="setting_use_oauth_token">使用已登录账户的 Token</string>
+    <string name="setting_use_oauth_token_hint">从 GitHub OAuth 登录获取的 Token 自动填入，免去手动创建</string>
+    <string name="setting_oauth_not_logged_in">请先在"账户"页面完成 GitHub 登录</string>
+    <string name="setting_sftp_config">SFTP 配置</string>
+    <string name="setting_server">服务器地址</string>
+    <string name="setting_server_hint">SFTP 服务器 IP 或域名，如 192.168.1.1 或 sftp.example.com</string>
+    <string name="setting_port">端口</string>
+    <string name="setting_port_hint">SFTP 默认端口 22</string>
+    <string name="setting_password">密码</string>
+    <string name="setting_remote_path">远程路径</string>
+    <string name="setting_remote_path_hint">服务器上的部署目录，如 /var/www/blog</string>
+    <string name="setting_netlify_config">Netlify 配置</string>
+    <string name="setting_netlify_site_id">Site ID</string>
+    <string name="setting_netlify_site_id_hint">在 Netlify 站点设置 → General → Site details 中查看，格式如 123abc-456def-789ghi</string>
+    <string name="setting_netlify_token">Access Token</string>
+    <string name="setting_netlify_token_hint">在 Netlify User Settings → Applications → Personal access tokens 创建</string>
+    <string name="setting_vercel_config">Vercel 配置</string>
+    <string name="setting_vercel_project_id">Project Name / ID</string>
+    <string name="setting_vercel_project_id_hint">在 Vercel 项目 Settings → General 中查看，可填项目名或 Project ID</string>
+    <string name="setting_vercel_token">Access Token</string>
+    <string name="setting_vercel_token_hint">在 Vercel Account Settings → Tokens 创建</string>
+
+    <!-- 评论设置 -->
+    <string name="setting_show_comment">显示评论</string>
+    <string name="setting_gitalk_config">Gitalk 配置</string>
+    <string name="setting_gitalk_client_id">Client ID</string>
+    <string name="setting_gitalk_client_secret">Client Secret</string>
+    <string name="setting_gitalk_repo">仓库名</string>
+    <string name="setting_gitalk_owner">仓库所有者</string>
+    <string name="setting_giscus_config">Giscus 配置</string>
+    <string name="setting_giscus_repo">仓库（owner/repo）</string>
+    <string name="setting_giscus_repo_id">仓库 ID</string>
+    <string name="setting_giscus_category">分类名称</string>
+    <string name="setting_giscus_category_id">分类 ID</string>
+    <string name="setting_giscus_mapping">页面映射方式</string>
+    <string name="setting_giscus_theme">主题</string>
+    <string name="setting_disqus_config">DisqusJS 配置</string>
+    <string name="setting_disqus_shortname">Shortname</string>
+    <string name="setting_disqus_apikey">API Key</string>
+    <string name="setting_disqus_api">API 地址</string>
+    <string name="setting_valine_config">Valine 配置</string>
+    <string name="setting_valine_app_id">App ID</string>
+    <string name="setting_valine_app_key">App Key</string>
+    <string name="setting_twikoo_config">Twikoo 配置</string>
+    <string name="setting_twikoo_env_id">环境 ID</string>
+    <string name="setting_waline_config">Waline 配置</string>
+    <string name="setting_waline_server_url">服务端地址</string>
+
+    <!-- 账户设置 -->
+    <string name="setting_current_account">当前账户</string>
+    <string name="setting_view_github">在浏览器查看 GitHub 主页</string>
+    <string name="setting_logout">退出登录</string>
+    <string name="setting_oauth_config">OAuth App 配置</string>
+    <string name="setting_oauth_hint">使用 GitHub Device Flow 登录（无需 Client Secret，安全）。\n\n请先在 GitHub 创建 OAuth App：\ngithub.com/settings/apps\n\n创建时勾选 \"Enable Device Flow\"，然后把生成的 Client ID 填入下方。\n登录后可一键授权部署 GitHub Pages，无需手动填写 Token。</string>
+    <string name="setting_oauth_client_id">OAuth App Client ID</string>
+    <string name="setting_oauth_client_id_placeholder">20位十六进制字符串</string>
+    <string name="setting_waiting_auth">等待授权</string>
+    <string name="setting_auth_hint">请在任意设备的浏览器中访问下方网址，并输入以下用户码完成授权：</string>
+    <string name="setting_waiting_browser">等待你在浏览器中完成授权…</string>
+    <string name="setting_login_github">使用 GitHub 登录</string>
+    <string name="setting_requesting">请求中…</string>
+    <string name="setting_need_client_id">请先填写 Client ID 才能开始登录</string>
+
+    <!-- 数据设置 -->
+    <string name="setting_section_generate">站点生成</string>
+    <string name="setting_generate_hint">将所有已发布文章渲染为静态 HTML 站点，生成后可在预览中查看或部署到远程服务器。</string>
+    <string name="setting_generate_site">生成静态站点</string>
+    <string name="setting_generating">生成中…</string>
+    <string name="setting_section_output">站点输出目录</string>
+    <string name="setting_current_path">当前：%1$s</string>
+    <string name="setting_select_dir">选择目录</string>
+    <string name="setting_restore_default">恢复默认</string>
+    <string name="setting_output_no_permission">未获得存储权限，无法输出到公共目录</string>
+    <string name="setting_grant_permission">授权存储权限</string>
+    <string name="setting_existing_files">已扫描到 %1$d 个文件，共 %2$s</string>
+    <string name="setting_scan_files">扫描文件</string>
+    <string name="setting_clear_output">清空目录</string>
+    <string name="setting_clear_output_confirm_title">确认清空输出目录</string>
+    <string name="setting_clear_output_confirm_msg">将删除站点输出目录下的所有文件（含 HTML、CSS、图片等），该操作不可撤销。是否继续？</string>
+    <string name="setting_section_backup">数据备份</string>
+    <string name="setting_export_data">导出数据</string>
+    <string name="setting_import_data">导入数据</string>
+    <string name="setting_export_success">导出成功：%1$d 篇文章</string>
+    <string name="setting_import_success">导入成功：%1$d 篇文章</string>
+    <string name="setting_backup_fail">失败：%1$s</string>
+    <string name="setting_render_result">生成结果</string>
+
+    <!-- 关于页 -->
+    <string name="about_app_name">Gridea Android</string>
+    <string name="about_app_desc">Gridea Android 是一款开源的静态博客写作 APP，旨在帮助你更容易地构建并管理博客或任何静态站点，像使用本地软件一样，让你更专注于写作本身。</string>
+    <string name="about_version_info">版本信息</string>
+    <string name="about_version_name">版本号</string>
+    <string name="about_version_code">版本代码</string>
+    <string name="about_software_version">发行版本</string>
+    <string name="about_build_type">构建类型</string>
+    <string name="debug_unlock_enabled">调试模式已开启</string>
+    <string name="debug_unlock_disabled">调试模式已关闭</string>
+    <string name="debug_unlock_not_needed">当前为 Debug 版本，无需开启此功能</string>
+    <string name="about_tech_stack">技术栈</string>
+    <string name="about_tech_stack_content">Kotlin + Jetpack Compose\nRoom + Hilt + DataStore\nPebble + Markwon + commonmark-java\nCoil + OkHttp + Navigation Compose</string>
+    <string name="about_open_source">开源信息</string>
+    <string name="about_open_source_content">基于开源项目 Gridea 0.9.3 重构\n采用 GPL-3.0 开源协议</string>
+    <string name="about_acknowledgement">致谢</string>
+    <string name="about_acknowledgement_content">感谢 Gridea 原项目作者 EryouHao\n感谢 Gridea Pro 版本作者 Vega\n感谢所有开源项目的贡献者\n感谢 Jetpack Compose 提供的现代 UI 框架</string>
+    <string name="about_developers">开发者</string>
+    <string name="about_developer_xiuhong_role">项目发起人 / 产品设计</string>
+    <string name="about_developer_ai_role">代码实现 / 架构设计</string>
+    <string name="about_repo_link">查看原项目仓库</string>
+    <string name="about_repo_link_this">查看本项目仓库</string>
+    <string name="about_open_source_licenses">开源许可</string>
+    <string name="feedback_email_section">邮件反馈</string>
+    <string name="feedback_email_desc">将上方收集的日志文件作为附件发送到下方邮箱，便于开发者快速定位问题。</string>
+    <string name="feedback_email_address_label">开发者邮箱</string>
+    <string name="feedback_email_address">xiuhong0327@163.com</string>
+    <string name="feedback_email_subject_label">邮件主题建议</string>
+    <string name="feedback_email_subject">【Gridea反馈】问题描述 + 设备信息</string>
+    <string name="feedback_email_attach_hint">请将上方收集的日志文件作为附件发送</string>
+    <string name="feedback_copy">复制</string>
+    <string name="feedback_copied">已复制到剪贴板</string>
+
+    <!-- 桌面小部件 -->
+    <string name="widget_new_post">新建文章</string>
+    <string name="widget_stats_title">文章统计</string>
+
+    <!-- 写作统计仪表盘 -->
+    <string name="statistics_title">写作统计</string>
+    <string name="statistics_view_detail">查看详细统计</string>
+    <string name="statistics_section_word_count">字数统计</string>
+    <string name="statistics_total_words">总字数</string>
+    <string name="statistics_weekly_words">本周</string>
+    <string name="statistics_monthly_words">本月</string>
+    <string name="statistics_section_overview">写作概览</string>
+    <string name="statistics_streak_days">连续写作天数</string>
+    <string name="statistics_published_count">已发布</string>
+    <string name="statistics_draft_count">草稿</string>
+    <string name="statistics_tag_count">标签</string>
+    <string name="statistics_total_writing_time">总写作时长</string>
+    <string name="statistics_section_last_7_days">最近 7 天每日字数</string>
+    <string name="statistics_bar_chart_hint">柱状图展示最近 7 天每日写作字数</string>
+    <string name="statistics_section_last_7_days_time">最近 7 天每日写作时长（分钟）</string>
+    <string name="statistics_bar_chart_time_hint">柱状图展示最近 7 天每日写作时长</string>
+    <string name="statistics_writing_calendar">写作热力图</string>
+    <string name="statistics_calendar_less">少</string>
+    <string name="statistics_calendar_more">多</string>
+    <string name="statistics_section_top_tags">热门标签 TOP 5</string>
+    <string name="statistics_tag_post_count">%1$d 篇文章</string>
+    <string name="statistics_no_data">暂无写作数据</string>
+    <string name="statistics_no_tags">暂无标签</string>
+
+    <!-- 编辑器写作时长 -->
+    <string name="editor_writing_time_format">写作时长 %1$s</string>
+    <string name="editor_writing_time_default">写作时长 0 分钟</string>
+
+    <!-- 友链管理 -->
+    <string name="friend_links_title">友链管理</string>
+    <string name="friend_link_name">网站名称</string>
+    <string name="friend_link_url">网站地址</string>
+    <string name="friend_link_url_hint">包含 https://，如 https://example.com</string>
+    <string name="friend_link_description">网站描述</string>
+    <string name="friend_link_avatar">头像地址</string>
+    <string name="friend_link_avatar_hint">网站 favicon 或头像图片 URL</string>
+    <string name="friend_link_add">添加友链</string>
+    <string name="friend_link_edit">编辑友链</string>
+    <string name="friend_link_delete">删除友链</string>
+    <string name="friend_link_delete_confirm">确定删除「%1$s」吗？</string>
+    <string name="friend_link_empty">暂无友链，点击右下角按钮添加</string>
+    <string name="friend_link_empty_title">暂无友链</string>
+    <string name="friend_link_empty_subtitle">点击下方按钮添加友链，或点击右下角悬浮按钮</string>
+    <string name="friend_link_save">保存</string>
+    <string name="friend_link_cancel">取消</string>
+    <string name="friend_link_name_required">请填写网站名称</string>
+    <string name="friend_link_url_required">请填写网站地址</string>
+    <string name="friend_link_page_title">友情链接</string>
+
+    <!-- 自定义菜单管理 -->
+    <string name="menu_manage_title">菜单管理</string>
+    <string name="menu_manage_subtitle">自定义站点导航菜单</string>
+    <string name="menu_add">添加菜单</string>
+    <string name="menu_edit">编辑菜单</string>
+    <string name="menu_delete">移入回收站</string>
+    <string name="menu_delete_confirm">确定将菜单「%1$s」移入回收站吗？3 天内可在回收站中恢复。</string>
+    <string name="menu_empty">暂无自定义菜单，点击右下角按钮添加</string>
+    <string name="menu_empty_title">暂无菜单</string>
+    <string name="menu_empty_subtitle">点击下方按钮新建菜单，或点击右下角悬浮按钮</string>
+    <string name="menu_save">保存</string>
+    <string name="menu_name">菜单名称</string>
+    <string name="menu_name_required">请填写菜单名称</string>
+    <string name="menu_open_type">打开方式</string>
+    <string name="menu_open_internal">内部跳转</string>
+    <string name="menu_open_external">外部跳转</string>
+    <string name="menu_link_type">链接类型</string>
+    <string name="menu_link_url">自定义链接</string>
+    <string name="menu_link_article">选择文章</string>
+    <string name="menu_link_value_url">链接地址</string>
+    <string name="menu_link_url_hint">如 https://example.com 或 /custom-page</string>
+    <string name="menu_link_value_article">选择的文章</string>
+    <string name="menu_link_article_hint">点击右侧图标选择文章</string>
+    <string name="menu_link_required">请填写或选择链接</string>
+    <string name="menu_select_article">选择文章</string>
+    <string name="menu_no_articles">暂无文章可选，请先创建文章</string>
+
+    <!-- ===== 日志管理 ===== -->
+    <string name="setting_log_manage">日志管理</string>
+    <string name="setting_log_manage_subtitle">查看运行日志、导出与清空</string>
+    <string name="log_title">日志管理</string>
+    <string name="log_export">导出</string>
+    <string name="log_clear">清空</string>
+    <string name="log_clear_confirm">确认清空所有日志？此操作不可撤销</string>
+    <string name="log_level_all">全部</string>
+    <string name="log_level_debug">调试</string>
+    <string name="log_level_info">信息</string>
+    <string name="log_level_warn">警告</string>
+    <string name="log_level_error">错误</string>
+    <string name="log_level_action">操作</string>
+    <string name="log_category_all">全部分类</string>
+    <string name="log_search_hint">搜索日志内容…</string>
+    <string name="log_empty">暂无日志记录</string>
+    <string name="log_back_to_top">返回顶部</string>
+    <string name="log_export_success">日志已导出</string>
+    <string name="log_export_failed">导出失败</string>
+    <string name="log_cleared">日志已清空</string>
+    <string name="log_stack_trace">堆栈信息</string>
+</resources>

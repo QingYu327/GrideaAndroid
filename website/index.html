@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gridea Android — 把静态博客装进口袋</title>
+<meta name="description" content="一款专为 Android 设计的静态博客写作客户端。一部手机即可完成写作、预览、部署的全流程。">
+<meta name="theme-color" content="#9C8FDA">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="css/style.css?v=20260803">
+</head>
+<body class="page-transition">
+
+<!-- Navbar -->
+<nav class="navbar">
+<div class="navbar-inner">
+<a class="navbar-brand" href="index.html">
+<img src="assets/icon.png" alt="Gridea Android">
+Gridea Android
+</a>
+<button class="menu-toggle" aria-label="菜单" aria-expanded="false"><span></span></button>
+<div class="navbar-links">
+<a class="navbar-link active" href="index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
+<a class="navbar-link" href="themes.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>主题</a>
+<a class="navbar-link" href="docs/index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>文档</a>
+<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndriod"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+</div>
+<div class="navbar-actions">
+<button class="theme-toggle" aria-label="切换主题">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+<div class="floating-shape floating-shape--1"></div>
+<div class="floating-shape floating-shape--2"></div>
+<div class="container">
+<div class="hero-grid">
+<div class="hero-text">
+<span class="hero-badge"><span class="dot"></span>新的开始，始于 Android 平台</span>
+<h1>把静态博客<br><span class="gradient-text">装进口袋</span></h1>
+<p class="hero-sub">一部手机完成「写作 → 预览 → 部署」全流程，让创作随时随地发生。</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载 APK</a>
+<a class="btn btn-outline" href="docs/index.html">查看文档</a>
+</div>
+<p class="hero-platforms">支持 Android 7.0+ · 100% Jetpack Compose · GPL-3.0 开源</p>
+</div>
+<div class="hero-visual">
+<div class="hero-glow"></div>
+<div class="hero-editor">
+<div class="editor-titlebar">
+<span class="editor-dot red"></span>
+<span class="editor-dot yellow"></span>
+<span class="editor-dot green"></span>
+<span class="editor-title">我的第一篇博客.md — Gridea Android</span>
+</div>
+<div class="editor-toolbar">
+<span class="editor-tool">H</span>
+<span class="editor-tool">B</span>
+<span class="editor-tool">I</span>
+<span class="editor-divider"></span>
+<span class="editor-tool">•</span>
+<span class="editor-tool">1.</span>
+<span class="editor-tool">☑</span>
+<span class="editor-divider"></span>
+<span class="editor-tool">{ }</span>
+<span class="editor-tool">🔗</span>
+<span class="editor-tool">🖼</span>
+</div>
+<div class="editor-body">
+<div class="editor-h1">你好，Gridea Android</div>
+<div class="editor-meta">
+<span>2026-08-02</span>
+<span class="editor-tag">随笔</span>
+<span class="editor-tag">Android</span>
+</div>
+<div class="editor-p">今天开始用 Gridea Android 写博客。打开 App，写下一段文字，点击预览，一键部署——博客就这样更新了。</div>
+<div class="editor-code">val editor = Markwon.builder(context)<br>&nbsp;&nbsp;&nbsp;&nbsp;.usePlugin(CodeSyntaxHighlight.create())<br>&nbsp;&nbsp;&nbsp;&nbsp;.build()</div>
+<div class="editor-p">Markdown 让写作回归纯粹，让表达自由流淌<span class="editor-cursor"></span></div>
+</div>
+<div class="editor-statusbar">
+<div class="editor-save-indicator">
+<span class="editor-save-dot"></span>
+<span>已自动保存</span>
+</div>
+<span>字数 128 · 写作 3 分钟</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- 核心功能 -->
+<section class="section">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-eyebrow">核心功能</span>
+<h2>为写作者精心打磨的细节</h2>
+<p>不需要命令行，不需要繁琐配置。打开 App，即刻开始写作。</p>
+</div>
+<div class="features-grid">
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">✍️</div>
+<h3>Markdown 写作</h3>
+<p>基于 Markwon 引擎，支持代码高亮、任务列表、上下标与高亮标记。IDE 风格查找替换，2 秒自动保存，版本历史随时回滚。</p>
+</div>
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">👁️</div>
+<h3>实时预览</h3>
+<p>WebView 加载本地构建产物，与浏览器表现完全一致。修改主题配置立即重新渲染，所见即所得，无需重新部署。</p>
+</div>
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">🎨</div>
+<h3>主题系统</h3>
+<p>Pebble 模板引擎 + theme.json 配置契约，6 款内置主题覆盖杂志、终端、水墨等风格，三端响应式，支持自定义主题包导入。</p>
+</div>
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">🚀</div>
+<h3>一键部署</h3>
+<p>直连 GitHub Pages、Gitee、SFTP、Netlify、Vercel 五大平台。后台 Service 执行构建上传，支持中断、进度通知与失败重试。</p>
+</div>
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">🔒</div>
+<h3>全本地隐私</h3>
+<p>所有数据存储在应用沙箱内，不上传任何服务器。Room 数据库 + DataStore 持久化，反馈日志打包前自动脱敏。</p>
+</div>
+<div class="feature-card reveal">
+<span class="feature-num"></span>
+<div class="feature-icon">✨</div>
+<h3>Material You</h3>
+<p>100% Jetpack Compose 实现，动态取色跟随系统壁纸，灵动岛通知、手势导航、FAB 按压动画，中英双语，亮色暗色自由切换。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 精选主题 -->
+<section class="section section--subtle">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-eyebrow">精选主题</span>
+<h2>总有一款契合你的表达</h2>
+<p>6 款不同风格的内置主题，每一款都为手机、平板、电脑三端精心适配。</p>
+</div>
+<div class="theme-gallery">
+<div class="theme-card reveal">
+<div class="theme-preview t-magazine">Magazine · 杂志编辑</div>
+<div class="theme-card-body">
+<h3>Magazine · 杂志编辑</h3>
+<p>大图封面、网格布局、衬线标题，借鉴印刷杂志的版式语言。</p>
+<div class="theme-tags"><span class="theme-tag">杂志</span><span class="theme-tag">衬线</span></div>
+</div>
+</div>
+<div class="theme-card reveal">
+<div class="theme-preview t-terminal">$ Terminal · 极客终端</div>
+<div class="theme-card-body">
+<h3>Terminal · 极客终端</h3>
+<p>黑底绿字、等宽字体、CRT 扫描线，致敬命令行美学。</p>
+<div class="theme-tags"><span class="theme-tag">终端</span><span class="theme-tag">极客</span></div>
+</div>
+</div>
+<div class="theme-card reveal">
+<div class="theme-preview t-ink">Ink · 水墨中国风</div>
+<div class="theme-card-body">
+<h3>Ink · 水墨中国风</h3>
+<p>宣纸纹理、楷书标题、朱砂红强调，东方水墨意境。</p>
+<div class="theme-tags"><span class="theme-tag">中国风</span><span class="theme-tag">水墨</span></div>
+</div>
+</div>
+</div>
+<div style="text-align:center; margin-top:44px;" class="reveal">
+<a class="btn btn-outline" href="themes.html">浏览全部主题</a>
+</div>
+</div>
+</section>
+
+<!-- 致敬原项目 -->
+<section class="section section--subtle">
+<div class="container">
+<div class="tribute reveal">
+<div class="tribute-inner">
+<div class="tribute-content">
+<span class="section-eyebrow">致敬</span>
+<h2>站在巨人的肩膀上</h2>
+<p>Gridea Android 基于 <a href="https://github.com/getgridea/gridea">Gridea</a> 原项目开发，感谢原作者 <strong>EryouHao</strong> 与整个 Gridea 社区的开源贡献。正是原项目「让每个人都能拥有自己的博客」的理念，激励我们将静态博客的写作体验带到 Android 平台。</p>
+<a class="btn btn-outline" href="https://github.com/getgridea/gridea">访问原项目仓库 →</a>
+</div>
+<div class="tribute-card">
+<div class="tribute-quote-block">
+<svg class="tribute-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/></svg>
+<p class="tribute-text">让每个人都能拥有自己的博客，记录生活，表达自我。</p>
+<p class="tribute-author">— Gridea 原项目理念</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+<div class="container">
+<div class="cta reveal">
+<h2>开始你的写作之旅</h2>
+<p>下载 Gridea Android，几分钟内拥有一个属于自己的博客。</p>
+<a class="btn" href="https://github.com/QingYu327/GrideaAndriod/releases">免费下载</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div class="footer-brand">
+<a class="navbar-brand" href="index.html"><img src="assets/icon.png" alt="Gridea Android"> Gridea Android</a>
+<p>把静态博客装进口袋。一款专为 Android 设计的静态博客写作客户端。</p>
+</div>
+<div class="footer-col">
+<h4>产品</h4>
+<ul>
+<li><a href="index.html">首页</a></li>
+<li><a href="themes.html">主题</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>文档</h4>
+<ul>
+<li><a href="docs/index.html">快速开始</a></li>
+<li><a href="docs/index.html#deploy">部署指南</a></li>
+<li><a href="docs/index.html#theme">主题系统</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>社区</h4>
+<ul>
+<li><a href="https://github.com/QingYu327/GrideaAndriod">GitHub</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndriod/issues">问题反馈</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span></p>
+</div>
+</div>
+</footer>
+
+<button class="back-to-top" aria-label="返回顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+<script>
+// 返回顶部按钮显示控制
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (btn) {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>
