@@ -161,7 +161,7 @@ echo "sdk.dir=/path/to/Android/Sdk" > local.properties
 ## 致谢
 
 - [Gridea](https://github.com/getgridea/gridea) — 原项目作者 EryouHao，本项目基于 Gridea 0.9.3 重构
-- [Gridea Pro](https://github.com/vegaaltair/gridea-pro) — Pro 版本作者 Vega，部分设计灵感来源于此
+- [Gridea Pro](https://github.com/vegaaltair/gridea-pro) — Pro 版本作者 Tespera，部分设计灵感来源于此
 - [Jetpack Compose](https://developer.android.com/jetpack/compose) / [Pebble](https://pebbletemplates.io/) / [Markwon](https://github.com/noties/markwon) / [Coil](https://github.com/coil-kt/coil)
 
 ---
