@@ -38,7 +38,8 @@
 
 - **内置 6 款主题**：magazine（杂志）、retro（复古）、masonry（瀑布流）、sidebar（双栏）、terminal（终端）、ink（水墨）
 - **Pebble 模板引擎**：使用 Pebble 4.x 渲染 `.peb` 模板，每个主题包含 8 个模板 + theme.json + custom.css + custom.js + preview.jpg
-- **theme.json 通信契约**：通过 `customConfig` 数组声明配置项，支持 **9 种控件类型**：`color` / `switch` / `select` / `radio` / `slider` / `number` / `textarea` / `code` / `multiselect`
+- **theme.json 通信契约**：通过 `customConfig` 数组声明配置项，支持 **12 种内置控件类型**：`input` / `textarea` / `switch` / `color` / `select` / `radio` / `multiselect` / `number` / `slider` / `code` / `image` / `compound`
+- **动态适配**：外部主题可声明自定义 `type`，通过 `fallback` 字段降级渲染（未指定则降级 `textarea`）；`compound` 复合控件可组合多个原子控件，无需 APP 发版即可支持新控件
 - **统计字段统一**：所有主题的统计组包含 ga（Google Analytics）、baidu（百度统计）、tencent（腾讯分析）、view（不蒜子访客）四项配置
 - **即时预览**：切换主题配置后无需重新部署，预览界面立即重新渲染
 - **外部主题包**：通过 `.zip` 主题包导入，文件平铺在根目录
@@ -110,7 +111,7 @@
 
 ## 下载与安装
 
-- 通过 GitHub Releases 下载 APK：[Releases](https://github.com/QingYu327/GrideaAndriod/releases)
+- 通过 GitHub Releases 下载 APK：[Releases](https://github.com/QingYu327/GrideaAndroid/releases)
 - 应用内「设置 → 检查更新」会自动查询最新 Release 并提示下载安装
 
 > 应用未上架 Google Play，安装时需在系统设置中允许「安装未知来源应用」。
@@ -180,7 +181,11 @@ my-theme.zip
 }
 ```
 
-支持的控件类型：`color` / `switch` / `select` / `radio` / `slider` / `number` / `textarea` / `code` / `multiselect`
+支持的控件类型：`input` / `textarea` / `switch` / `color` / `select` / `radio` / `multiselect` / `number` / `slider` / `code` / `image` / `compound`
+
+**动态适配机制**：
+- **fallback 智能降级**：自定义 `type` 通过 `fallback` 字段指定降级渲染的原子类型（未指定则降级 `textarea`），保证配置值始终可读写
+- **compound 复合控件**：通过 `items` 数组组合多个原子控件（支持递归嵌套），`layout` 指定布局方向（`row`/`column`），值以 JSON 对象字符串存储
 
 详细的主题开发指南请参考 [THEME_DEVELOPMENT_GUIDE.md](./docs/THEME_DEVELOPMENT_GUIDE.md)。
 
@@ -197,8 +202,8 @@ my-theme.zip
 ### 构建步骤
 
 ```bash
-git clone https://github.com/QingYu327/GrideaAndriod.git
-cd GrideaAndriod/APP
+git clone https://github.com/QingYu327/GrideaAndroid.git
+cd GrideaAndroid/APP
 
 # 配置 SDK 路径
 echo "sdk.dir=/path/to/Android/Sdk" > local.properties
@@ -219,6 +224,7 @@ echo "sdk.dir=/path/to/Android/Sdk" > local.properties
 - [主题画廊](https://gridea.cc.cd/themes.html) — 6 款内置主题预览与下载
 - [Code Wiki](./docs/CODE_WIKI.md) — 项目结构与关键文件说明
 - [主题开发指南](./docs/THEME_DEVELOPMENT_GUIDE.md) — 完整的主题开发规范
+- [更新日志](./docs/RELEASE_NOTES.md) — 版本更新记录
 
 ---
 
