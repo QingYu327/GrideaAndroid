@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,14 @@ body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-hei
 .navbar-brand img{width:36px;height:36px;border-radius:9px}
 .container{max-width:1120px;margin:0 auto;padding:0 28px}
 img{max-width:100%;display:block}
+/* FOUC 防护：外部 CSS 加载完成前隐藏 body，避免无样式闪烁 */
+body{opacity:0;transition:opacity .25s ease-out}
+body.css-ready{opacity:1}
+.no-js body{opacity:1;transition:none}
 </style>
-<link rel="stylesheet" href="css/style.css?v=20260803c">
+<link rel="preload" href="css/style.css?v=20260803e" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=20260803e"></noscript>
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="page-transition">
 
@@ -38,14 +44,14 @@ Gridea Android
 <a class="navbar-link active" href="index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
 <a class="navbar-link" href="themes.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>主题</a>
 <a class="navbar-link" href="docs/index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>文档</a>
-<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndriod"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndroid"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
 </div>
 <div class="navbar-actions">
 <button class="theme-toggle" aria-label="切换主题">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
-<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a>
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a>
 </div>
 </div>
 </nav>
@@ -57,7 +63,7 @@ Gridea Android
 <div class="container">
 <div class="hero-grid">
 <div class="hero-text">
-<span class="hero-badge"><span class="dot"></span>新的开始，始于 Android 移动平台</span>
+<span class="hero-badge"><span class="dot"></span>新的开始，我们实现在 Android 平台上使用 Gridea </span>
 <h1>把静态博客<br><span class="gradient-text">装进口袋</span></h1>
 <p class="hero-sub">在手机上即可完成「写作 → 预览 → 部署」全流程，让创作随时随地发生。</p>
 <div class="hero-actions">
@@ -207,10 +213,11 @@ Gridea Android
 <div class="tribute reveal">
 <div class="tribute-inner">
 <div class="tribute-content">
-<span class="section-eyebrow">致谢</span>
-<h2>我接过了前人的火炬</h2>
-<p>Gridea Android 基于 <a href="https://github.com/getgridea/gridea">Gridea</a> 原项目开发，感谢 Gridea 作者 <strong>EryouHao</strong> 与 Gridea Pro 作者 <strong>Tespera</strong> 的开源贡献。</p>
-<p>Gridea Android 是对 Gridea Pro 和 Gridea 的接力，通过树立「让每个人都能拥有自己的博客」的理念，鼓励我们将静态博客的写作习惯带到日常生活中。</p>
+<span class="section-eyebrow">感言</span>
+<h2>我们迈出了第一步</h2>
+<p>无意间发现了 Gridea Pro 项目。沉寂了四年之久的 Gridea，依然有人还在延续着它的存在。</p>
+<p>原作和续作适配了三大平台，唯独没有移动端。故而，我打算补齐这份遗憾，也就是— <strong>Gridea Android</strong>，基于 Gridea原项目开发，且采用了新项目的部分灵感，在此非常感谢两个项目作者的开源贡献！</p>
+<p>在新平台的开发过程中，我也理解了为什么不开发移动端：环境的局限。相比桌面端完整的环境支持，移动端的环境功能不完整，需要花费大量精力移植和适配。权衡利弊下，只开发桌面端是最优选。</p>
 <a class="btn btn-outline" href="https://github.com/getgridea/gridea">访问 Gridea 项目仓库 →</a>
 <p></p>
 <a class="btn btn-outline" href="https://github.com/Gridea-Pro/gridea-pro">访问 Gridea Pro 项目仓库 →</a>
@@ -247,11 +254,11 @@ Gridea Android
 <p>把静态博客装进口袋。一款适配 Android 平台的静态博客写作客户端。</p>
 </div>
 <div class="footer-col">
-<h4>产品</h4>
+<h4>导航</h4>
 <ul>
 <li><a href="index.html">首页</a></li>
 <li><a href="themes.html">主题</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a></li>
 </ul>
 </div>
 <div class="footer-col">
@@ -263,10 +270,10 @@ Gridea Android
 </ul>
 </div>
 <div class="footer-col">
-<h4>社区</h4>
+<h4>项目</h4>
 <ul>
-<li><a href="https://github.com/QingYu327/GrideaAndriod">GitHub</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/issues">问题反馈</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid">GitHub</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/issues">问题反馈</a></li>
 </ul>
 </div>
 </div>

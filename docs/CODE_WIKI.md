@@ -268,6 +268,8 @@ interface Deployer {
 | terminal（极客终端） | 极客 | 黑底绿字、等宽字体、CRT 扫描线 |
 | ink（水墨中国风） | 中国风 | 宣纸纹理、楷书标题、朱砂红强调、印章标签 |
 
+**控件类型与动态适配**：customConfig 支持 12 种内置控件（color/switch/select/slider/input/textarea/radio/number/code/multiselect/image/compound）。外部主题可声明自定义 type，通过 `fallback` 字段指定降级渲染的原子类型（未指定则降级 textarea），保证配置值始终可读写。`compound` 复合控件通过 `items` 数组组合多个原子控件（支持递归嵌套），值以 JSON 对象字符串存储。`ThemeConfigItem.effectiveType` 为数据层与 UI 层共用的有效类型解析入口。无需 APP 发版即可支持新控件。
+
 ### 2.6 运行方式
 
 ```bash
@@ -772,7 +774,7 @@ yarn electron:build
 
 | 项目 | 主题配置类型 | 样式覆盖机制 | 模板引擎 | 主题包格式 |
 |------|------------|------------|---------|-----------|
-| APP | `theme.json` customConfig 数组（9 种控件：color/switch/select/slider/input/textarea/radio/number/code） | `{{变量}}` 占位符替换 | Pebble 4.x（`.peb`） | `.zip`（根目录平铺） |
+| APP | `theme.json` customConfig 数组（12 种控件：color/switch/select/slider/input/textarea/radio/number/code/multiselect/image/compound，支持 fallback 智能降级） | `{{变量}}` 占位符替换 | Pebble 4.x（`.peb`） | `.zip`（根目录平铺） |
 | gridea-pro | 主题 `config.json` customConfig | style-override + 后处理 | Pongo2/EJS/Go Templates | 目录 |
 | gridea-old | 主题 `config.json` customConfig | `style-override.js` 函数 | EJS + Less | 目录 |
 

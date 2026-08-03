@@ -501,7 +501,17 @@ img { max-width: 100%; display: block; }
 .theme-card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; }
 .theme-card-body h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
 .theme-card-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
-.theme-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 13px; }
+
+/* 卡片底部：标签 + 下载按钮同一行水平排列 */
+.theme-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 13px;
+}
+.theme-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .theme-tag {
     font-size: 12px;
     padding: 3px 10px;
@@ -511,27 +521,26 @@ img { max-width: 100%; display: block; }
     font-weight: 500;
 }
 
-/* 主题卡片下载按钮 — 右下角对齐 */
+/* 主题卡片下载按钮 — 与标签同行的胶囊按钮 */
 .theme-download-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 14px;
-    padding: 8px 14px;
-    border-radius: var(--radius-sm, 10px);
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: 999px;
     background: var(--grad-lavender, linear-gradient(135deg, #9C8FDA 0%, #B7A8F0 100%));
     color: #fff;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(124, 108, 201, 0.25);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(124, 108, 201, 0.22);
     transition: transform var(--t, 0.2s), box-shadow var(--t, 0.2s), opacity var(--t, 0.2s);
-    align-self: flex-end;
 }
-.theme-download-btn svg { width: 14px; height: 14px; }
+.theme-download-btn svg { width: 12px; height: 12px; }
 .theme-download-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(124, 108, 201, 0.4);
+    box-shadow: 0 4px 12px rgba(124, 108, 201, 0.38);
     color: #fff;
     text-decoration: none;
 }

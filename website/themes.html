@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,14 @@ body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-hei
 .navbar-brand img{width:36px;height:36px;border-radius:9px}
 .container{max-width:1120px;margin:0 auto;padding:0 28px}
 img{max-width:100%;display:block}
+/* FOUC 防护：外部 CSS 加载完成前隐藏 body，避免无样式闪烁 */
+body{opacity:0;transition:opacity .25s ease-out}
+body.css-ready{opacity:1}
+.no-js body{opacity:1;transition:none}
 </style>
-<link rel="stylesheet" href="css/style.css?v=20260803c">
+<link rel="preload" href="css/style.css?v=20260803e" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=20260803e"></noscript>
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="page-transition">
 
@@ -38,14 +44,14 @@ Gridea Android
 <a class="navbar-link" href="index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
 <a class="navbar-link active" href="themes.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>主题</a>
 <a class="navbar-link" href="docs/index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>文档</a>
-<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndriod"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndroid"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
 </div>
 <div class="navbar-actions">
 <button class="theme-toggle" aria-label="切换主题">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
-<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a>
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a>
 </div>
 </div>
 </nav>
@@ -56,7 +62,7 @@ Gridea Android
 <div class="container">
 <div class="hero-text" style="max-width:680px;">
 <span class="hero-badge"><span class="dot"></span>6 款内置主题</span>
-<h1>主题画廊</h1>
+<h1>🎨主题画廊</h1>
 <p class="hero-sub">每一款都为三端精心适配，在 App 内即时预览配置，无需重新部署。从杂志排版到水墨意境，找到契合你的表达。</p>
 </div>
 </div>
@@ -65,7 +71,7 @@ Gridea Android
 <!-- 主题展示区 -->
 <section class="section" style="padding-top:24px;">
 <div class="container">
-<p class="theme-preview-hint">以下主题的Preview预览图均为AI渲染😚</p>
+<p class="theme-preview-hint">✨以下主题已内置在 App 中，展示的 Preview 预览图均为 AI 渲染 😚</p>
 <div class="theme-gallery theme-gallery--live">
 
 <div class="theme-card reveal">
@@ -75,11 +81,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Magazine · 杂志编辑</h3>
 <p>大图封面、网格布局、衬线标题、首字下沉。借鉴印刷杂志的版式语言，适合图文并茂的长篇专栏。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">杂志</span><span class="theme-tag">侧边栏</span><span class="theme-tag">衬线</span></div>
 <a class="theme-download-btn" href="Download/magazine.zip" download title="下载 Magazine 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -90,11 +98,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Retro · 复古打字机</h3>
 <p>米色纸张、打字机字体、虚线边框、光标闪烁。还原老式打字机的质感与节奏，让字符带着时光的温度。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">复古</span><span class="theme-tag">打字机</span><span class="theme-tag">怀旧</span></div>
 <a class="theme-download-btn" href="Download/retro.zip" download title="下载 Retro 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -105,11 +115,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Masonry · 瀑布流卡片</h3>
 <p>Pinterest 风格瀑布流、图片为主、CSS columns 实现。不规则高度的卡片排列，适合摄影与视觉类博客。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">瀑布流</span><span class="theme-tag">图片</span><span class="theme-tag">卡片</span></div>
 <a class="theme-download-btn" href="Download/masonry.zip" download title="下载 Masonry 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -120,11 +132,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Sidebar · 经典双栏</h3>
 <p>固定侧边栏、主内容区、桌面双栏手机堆叠。经典博客布局，结构清晰，适合长期更新的技术博客。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">双栏</span><span class="theme-tag">侧边栏</span><span class="theme-tag">经典</span></div>
 <a class="theme-download-btn" href="Download/sidebar.zip" download title="下载 Sidebar 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -135,11 +149,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Terminal · 极客终端</h3>
 <p>黑底绿字、等宽字体、CRT 扫描线、命令行提示符。致敬命令行美学，极客与开发者专属的数字风格。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">终端</span><span class="theme-tag">极客</span><span class="theme-tag">CRT</span></div>
 <a class="theme-download-btn" href="Download/terminal.zip" download title="下载 Terminal 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -150,11 +166,13 @@ Gridea Android
 <div class="theme-card-body">
 <h3>Ink · 水墨中国风</h3>
 <p>宣纸纹理、楷书标题、朱砂红强调、竖排装饰、印章标签。东方水墨意境，适合诗文随笔与文人气质的书写。</p>
+<div class="theme-card-footer">
 <div class="theme-tags"><span class="theme-tag">中国风</span><span class="theme-tag">水墨</span><span class="theme-tag">宣纸</span></div>
 <a class="theme-download-btn" href="Download/ink.zip" download title="下载 Ink 主题包">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-<span>下载主题</span>
+<span>下载</span>
 </a>
+</div>
 </div>
 </div>
 
@@ -167,8 +185,8 @@ Gridea Android
 <div class="container">
 <div class="cta reveal">
 <h2>找到你喜欢的主题了吗？</h2>
-<p>下载 Gridea Android，在 App 内一键切换主题，所有配置即时预览。</p>
-<a class="btn" href="https://gridea.cc.cd/Download/app-release.apk">免费下载</a>
+<p>在 App 内一键切换主题，所有配置即时预览。</p>
+<a class="btn" href="https://gridea.cc.cd/Download/app-release.apk">下载 Gridea Android</a>
 </div>
 </div>
 </section>
@@ -182,11 +200,11 @@ Gridea Android
 <p>把静态博客装进口袋。一款适配 Android 平台的静态博客写作客户端。</p>
 </div>
 <div class="footer-col">
-<h4>产品</h4>
+<h4>导航</h4>
 <ul>
 <li><a href="index.html">首页</a></li>
 <li><a href="themes.html">主题</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a></li>
 </ul>
 </div>
 <div class="footer-col">
@@ -198,10 +216,10 @@ Gridea Android
 </ul>
 </div>
 <div class="footer-col">
-<h4>社区</h4>
+<h4>项目</h4>
 <ul>
-<li><a href="https://github.com/QingYu327/GrideaAndriod">GitHub</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/issues">问题反馈</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid">GitHub</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/issues">问题反馈</a></li>
 </ul>
 </div>
 </div>

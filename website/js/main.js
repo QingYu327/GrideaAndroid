@@ -42,6 +42,32 @@
     ready(function () {
         var body = document.body;
 
+        /* ---------- FOUC 防护：外部 CSS 加载完成后淡入 body ---------- */
+        // 配合 <link rel="preload" as="style" onload> 使用：
+        // preload 的 onload 把 rel 切回 stylesheet 后，浏览器才会应用该样式。
+        // 这里轮询检测样式表是否已应用（document.styleSheets 包含目标文件），
+        // 应用后给 body 加 css-ready 类触发淡入，超时 3s 强制显示兜底。
+        function markCssReady() { body.classList.add('css-ready'); }
+        function checkCssLoaded() {
+            var sheets = document.styleSheets;
+            for (var i = 0; i < sheets.length; i++) {
+                var href = sheets[i].href || '';
+                if (href.indexOf('style.css') !== -1) {
+                    try { sheets[i].cssRules; /* 触发跨域检查 */ return true; }
+                    catch (e) { return true; }
+                }
+            }
+            return false;
+        }
+        if (checkCssLoaded()) {
+            markCssReady();
+        } else {
+            var cssTimer = setInterval(function () {
+                if (checkCssLoaded()) { clearInterval(cssTimer); markCssReady(); }
+            }, 30);
+            setTimeout(function () { clearInterval(cssTimer); markCssReady(); }, 3000);
+        }
+
         /* ---------- 页面进入动画 ---------- */
         if (body.classList.contains('page-transition')) {
             body.classList.add('is-entering');

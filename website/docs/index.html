@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="light" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,14 @@ body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-hei
 .navbar-brand img{width:36px;height:36px;border-radius:9px}
 .container{max-width:1120px;margin:0 auto;padding:0 28px}
 img{max-width:100%;display:block}
+/* FOUC 防护：外部 CSS 加载完成前隐藏 body，避免无样式闪烁 */
+body{opacity:0;transition:opacity .25s ease-out}
+body.css-ready{opacity:1}
+.no-js body{opacity:1;transition:none}
 </style>
-<link rel="stylesheet" href="../css/style.css?v=20260803b">
+<link rel="preload" href="../css/style.css?v=20260803e" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.css?v=20260803e"></noscript>
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
 
@@ -37,14 +43,14 @@ img{max-width:100%;display:block}
 <a class="navbar-link" href="../index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
 <a class="navbar-link" href="../themes.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>主题</a>
 <a class="navbar-link active" href="index.html"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>文档</a>
-<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndriod"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+<a class="navbar-link" href="https://github.com/QingYu327/GrideaAndroid"><svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
 </div>
 <div class="navbar-actions">
 <button class="theme-toggle" aria-label="切换主题">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
-<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a>
+<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a>
 </div>
 </div>
 </nav>
@@ -84,6 +90,12 @@ img{max-width:100%;display:block}
 <li><a href="#find-replace">查找替换</a></li>
 <li><a href="#stats">写作统计</a></li>
 </ul>
+<h4>预览</h4>
+<ul>
+<li><a href="#preview">实时预览</a></li>
+<li><a href="#preview-nav">页面导航</a></li>
+<li><a href="#preview-bridge">JS Bridge 调试</a></li>
+</ul>
 <h4>主题</h4>
 <ul>
 <li><a href="#theme-system">主题系统</a></li>
@@ -104,6 +116,7 @@ img{max-width:100%;display:block}
 <li><a href="#site-config">站点配置</a></li>
 <li><a href="#comments">评论系统</a></li>
 <li><a href="#appearance">外观与主题</a></li>
+<li><a href="#interaction">通知与交互</a></li>
 <li><a href="#backup">数据备份</a></li>
 </ul>
 <h4>其他</h4>
@@ -135,7 +148,7 @@ img{max-width:100%;display:block}
 <h3 id="install">安装指南</h3>
 <p>Gridea Android 通过 GitHub Releases 分发 APK 安装包，暂未上架 Google Play。请按以下步骤完成安装：</p>
 <ol>
-<li>前往 <a href="https://github.com/QingYu327/GrideaAndriod/releases">GitHub Releases</a> 页面，下载最新版本的 <code>app-release.apk</code>。</li>
+<li>前往 <a href="https://github.com/QingYu327/GrideaAndroid/releases">GitHub Releases</a> 页面，下载最新版本的 <code>app-release.apk</code>。</li>
 <li>在手机上点击下载好的 APK，系统会提示「为了你的安全……」——这是因为应用未经过 Play 商店签名，选择「仍然安装」。</li>
 <li>若系统要求开启「允许安装未知来源应用」，请在系统设置中为浏览器或文件管理器开启该权限，再返回重试。</li>
 <li>安装完成后打开应用，即可看到欢迎引导。</li>
@@ -206,6 +219,38 @@ img{max-width:100%;display:block}
 <li><strong>文章热力图</strong>：以热力图形式展示过去一段时间内的写作活跃度，颜色深浅对应当天字数。</li>
 </ul>
 
+<h2 id="preview-section">预览</h2>
+
+<h3 id="preview">实时预览</h3>
+<p>写完文章后，无需部署就能立刻看到最终效果。Gridea Android 内置的预览引擎会在本地完成完整的站点构建——渲染 Pebble 模板、生成 CSS、组装文章列表与详情页——然后通过系统 WebView 加载构建产物，呈现与浏览器完全一致的视觉效果。</p>
+<ul>
+<li><strong>所见即所得</strong>：预览页面加载的是本地 <code>file://</code> 产物，渲染结果与部署后的真实站点一致，包括主题样式、字体、响应式布局。</li>
+<li><strong>即时重渲染</strong>：修改主题配置、切换主题、调整文章后，预览会立即重新构建并刷新，无需等待部署。</li>
+<li><strong>评论系统隔离</strong>：预览模式下评论系统的 CDN 脚本会自动跳过加载，避免在本地环境发起外部请求，既加快加载又保护隐私。</li>
+<li><strong>外链交给系统浏览器</strong>：预览页面中点击 http/https 链接会自动调起系统浏览器打开，不在应用内加载，避免离线状态下出现错误页。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong>预览只加载本地资源，不依赖任何外部 CDN，因此即使在飞行模式下也能正常查看博客效果。</p>
+</blockquote>
+
+<h3 id="preview-nav">页面导航</h3>
+<p>预览界面顶部提供浏览器风格的导航控件，方便在多页面之间来回查看。</p>
+<ul>
+<li><strong>返回 / 前进</strong>：遵循浏览器历史栈语义，按钮的启用状态会根据 <code>canGoBack</code> / <code>canGoForward</code> 实时同步，避免点了没反应的困惑。</li>
+<li><strong>手势返回</strong>：使用系统手势返回时，若 WebView 历史栈中还有上一页，优先回退到上一页而非直接退出预览。</li>
+<li><strong>刷新</strong>：下拉或点击刷新按钮可强制重新构建并加载最新内容。</li>
+</ul>
+
+<h3 id="preview-bridge">JS Bridge 调试</h3>
+<p>预览页面内置了一个 <code>GrideaPreview</code> JavaScript 桥接对象，把页面内的运行时行为回传到应用的 AppLogger 日志系统，让你无需连接电脑查看 logcat 即可定位主题问题。</p>
+<ul>
+<li><strong>点击事件回传</strong>：页面内的点击行为会记录到日志，便于排查交互异常。</li>
+<li><strong>控制台日志</strong>：主题脚本中的 <code>console.log</code> / <code>console.error</code> 会被桥接捕获，写入应用日志。</li>
+<li><strong>资源加载失败</strong>：CSS、JS、图片等资源加载失败时会记录失败地址，便于发现主题包路径错误。</li>
+<li><strong>404 检测</strong>：页面跳转到不存在的路径时会被标记，帮助发现链接配置错误。</li>
+</ul>
+<p>配合「调试模式 → WebView 远程调试」开启后，还可用 Chrome DevTools 远程审查预览页面的 DOM、网络与控制台，进行更深入的主题调试。详见 <a href="#debug">调试模式</a>。</p>
+
 <h2 id="theme">主题</h2>
 
 <h3 id="theme-system">主题系统</h3>
@@ -221,14 +266,30 @@ img{max-width:100%;display:block}
 <p><code>theme.json</code> 是主题与应用之间的通信契约。它声明主题支持哪些可配置项，应用据此在设置界面生成对应的配置控件，并将用户填写的值回传给模板渲染。</p>
 <h4>customConfig 数组</h4>
 <p>主题的所有可配置项都放在 <code>customConfig</code> 数组中，每一项定义一个配置控件。</p>
-<h4>5 种控件类型</h4>
+<h4>12 种控件类型</h4>
 <ul>
-<li><strong>text</strong>：单行文本输入，适用于标题、副标题、自定义文案等。</li>
+<li><strong>input</strong>：单行文本输入，适用于标题、副标题、自定义文案等。</li>
+<li><strong>textarea</strong>：多行文本输入，适用于长文本、自定义说明等。</li>
 <li><strong>switch</strong>：开关，适用于布尔型选项，如是否显示某个模块。</li>
-<li><strong>slider</strong>：滑块，适用于数值范围调节，如列数、字号缩放。</li>
-<li><strong>code</strong>：多行代码输入，适用于自定义 CSS / JS 注入。</li>
-<li><strong>multiselect</strong>：多选，适用于从预设选项中选择多个值，如启用的社交图标。</li>
+<li><strong>color</strong>：颜色选择器，弹出取色面板选择颜色，适用于主题色、背景色等。</li>
+<li><strong>select</strong> / <strong>radio</strong>：下拉单选 / 单选按钮组，配合 <code>options</code> 选项列表。</li>
+<li><strong>multiselect</strong>：多选标签，以 FilterChip 形式从预设选项中选择多个值，值以逗号分隔字符串存储。</li>
+<li><strong>number</strong>：数字输入框，配合 <code>min</code> / <code>max</code> 约束范围。</li>
+<li><strong>slider</strong>：滑块，适用于数值范围调节，如列数、字号缩放，配合 <code>min</code> / <code>max</code> / <code>step</code>。</li>
+<li><strong>code</strong>：代码编辑器，适用于自定义 CSS / JS 注入，可指定 <code>language</code> 语法高亮。</li>
+<li><strong>image</strong>：图片 URL 输入，适用于头像、封面图等。</li>
+<li><strong>compound</strong>：复合控件，由多个原子控件组合而成，详见下方「动态适配」。</li>
 </ul>
+<h4>动态适配：compound 复合控件与 fallback 智能降级</h4>
+<p>为了支持外部主题开发者自定义新控件，而无需 APP 发版更新，本系统提供两种动态适配机制：</p>
+<ul>
+<li><strong>fallback 智能降级</strong>：当主题声明了一个 APP 未内置的自定义 <code>type</code>（如 <code>gradient</code>、<code>icon-picker</code>）时，可通过 <code>fallback</code> 字段指定降级渲染的原子类型。APP 遇到未知类型时优先使用 <code>fallback</code> 指定的类型渲染；未指定或不受支持时统一降级为 <code>textarea</code>，保证配置值始终可读写。</li>
+<li><strong>compound 复合控件</strong>：通过 <code>compound</code> 类型可将多个原子控件组合成一个复合控件，适用于需要多个关联字段的场景（如渐变色起始/结束色）。子项通过 <code>items</code> 数组声明（支持递归嵌套），<code>layout</code> 指定布局方向（<code>row</code> 水平 / <code>column</code> 垂直）。复合控件的值以 JSON 对象字符串存储于父 <code>name</code> 下，如 <code>{"start":"#ffffff","end":"#000000"}</code>，可在 <code>custom.js</code> 中 <code>JSON.parse()</code> 解析后使用。</li>
+</ul>
+<p>完整的字段说明、示例与 <code>custom.js</code> 解析方法请下载 <strong>主题开发完整指南</strong>。</p>
+<blockquote>
+<p><strong>说明：</strong>未识别的 type（如 <code>input</code>、<code>image</code>）会自动回退为单行文本输入框。</p>
+</blockquote>
 <h4>统计字段</h4>
 <p>主题可声明以下统计代码字段，用户填写对应 ID 后即可接入第三方统计：</p>
 <ul>
@@ -247,7 +308,7 @@ img{max-width:100%;display:block}
     {
       "name": "siteSubTitle",
       "label": "站点副标题",
-      "type": "text",
+      "type": "textarea",
       "value": "用文字记录生活"
     },
     {
@@ -288,7 +349,7 @@ img{max-width:100%;display:block}
 
 <h3 id="theme-dev">主题开发指南</h3>
 <p>如果你想开发自己的主题，需要遵循以下规范。完整的开发规范（含模板变量、过滤器、路径分页、多端适配检查清单、常见陷阱、打包发布流程等）请下载 <strong>主题开发完整指南</strong>：</p>
-<p><a class="btn btn-primary" href="../assets/THEME_DEVELOPMENT_GUIDE.md" download>主题开发指南.md</a></p>
+<p><a class="btn btn-primary" href="../Download/THEME_DEVELOPMENT_GUIDE.md" download>THEME_DEVELOPMENT_GUIDE.md</a></p>
 <h4>主题包结构</h4>
 <p>一个完整的主题包（<code>.zip</code>）所有文件平铺在根目录，不嵌套 <code>templates/</code>、<code>assets/</code> 等子目录。结构如下：</p>
 <pre><code>my-theme/
@@ -534,6 +595,16 @@ img{max-width:100%;display:block}
 <li><strong>语言</strong>：中文 / 英文 / 跟随系统，三种语言选项。</li>
 </ul>
 
+<h3 id="interaction">通知与交互</h3>
+<p>除了外观主题，应用在交互细节上也做了精心打磨，让操作更顺滑、反馈更直观。</p>
+<ul>
+<li><strong>灵动岛通知</strong>：部署进度、保存成功、复制完成等操作反馈会以灵动岛样式在屏幕顶部短暂出现，不打断你的写作节奏。</li>
+<li><strong>手势导航</strong>：在主界面横向滑动可切换 Tab（阈值 80dp，350ms 导航锁防止误触）；预览页手势返回优先回退 WebView 历史栈。</li>
+<li><strong>FAB 按压动画</strong>：新建文章的悬浮按钮按下时缩放至 0.85（50ms），松手后回弹至 1.0（150ms，中等阻尼），按压反馈清晰利落。</li>
+<li><strong>Material You 设计</strong>：100% Jetpack Compose 实现，遵循 Material 3 设计规范，圆角、阴影、动效与系统保持一致。</li>
+<li><strong>应用内更新</strong>：在「设置 → 检查更新」中可查询最新版本，下载完成后一键安装，无需前往浏览器。</li>
+</ul>
+
 <h3 id="backup">数据备份</h3>
 <p>为防止数据丢失，应用提供完善的备份与恢复机制。</p>
 <ul>
@@ -568,7 +639,7 @@ img{max-width:100%;display:block}
 
 <h3 id="faq">常见问题</h3>
 
-<h4>打开应用后白屏怎么办？</h4>
+<h4>点击预览后白屏怎么办？</h4>
 <p>白屏通常与 WebView 加载失败或主题渲染异常有关。可尝试：清除应用缓存后重启；切换为默认主题后重新预览；若仍无效，开启「调试模式 → WebView 远程调试」用 Chrome DevTools 查看控制台报错定位问题。</p>
 
 <h4>GitHub Pages 部署后页面空白？</h4>
@@ -583,6 +654,15 @@ img{max-width:100%;display:block}
 <h4>如何在不同设备间同步文章数据？</h4>
 <p>应用目前不提供云同步功能，所有数据存储在本地。如需在设备间迁移，请在旧设备的「设置 → 数据备份」中导出完整备份包，将备份文件传输到新设备后，在同一页面选择「恢复数据」即可。备份包含所有文章、配置、主题设置与版本历史。建议将备份包同时保存到云盘，以防设备丢失。</p>
 
+<h4>GitHub OAuth 登录失败？</h4>
+<p>请依次排查：OAuth App 是否已勾选「Enable Device Flow」（必须开启）；填写的 Client ID 是否正确（20 位十六进制）；用户码是否过期（有效期内未完成授权会超时，重新发起即可）；网络是否能正常访问 <code>github.com/login/device</code>。若一直卡在轮询，可切换网络后重试。</p>
+
+<h4>主题导入失败或预览异常？</h4>
+<p>常见原因：zip 包内嵌套了父目录（应将所有文件平铺在根目录）；缺少必需的模板文件（base/index/post/archives/tags/tag/friends/404 共 8 个 .peb 文件 + theme.json + custom.css + custom.js + preview.jpg）；<code>theme.json</code> 格式错误。请按主题开发指南检查文件结构后重新打包导入。</p>
+
+<h4>如何在文章中插入图片？</h4>
+<p>在编辑器中点击工具栏的图片按钮，可从相册选择或直接拍照插入。图片会保存到应用沙箱的资源目录，部署时随文章一起上传到代码托管平台。建议上传前适当压缩图片体积，避免影响页面加载速度。</p>
+
 </article>
 
 </div>
@@ -595,14 +675,14 @@ img{max-width:100%;display:block}
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="navbar-brand" href="../index.html"><img src="../assets/icons/app-icon.png" alt="Gridea Android" class="nav-brand-icon"> Gridea Android</a>
-<p>把静态博客装进口袋。一款专为 Android 设计的静态博客写作客户端。</p>
+<p>把静态博客装进口袋。一款适配 Android 平台的静态博客写作客户端。</p>
 </div>
 <div class="footer-col">
-<h4>产品</h4>
+<h4>导航</h4>
 <ul>
 <li><a href="../index.html">首页</a></li>
 <li><a href="../themes.html">主题</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/releases">下载</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/releases">下载</a></li>
 </ul>
 </div>
 <div class="footer-col">
@@ -614,10 +694,10 @@ img{max-width:100%;display:block}
 </ul>
 </div>
 <div class="footer-col">
-<h4>社区</h4>
+<h4>项目</h4>
 <ul>
-<li><a href="https://github.com/QingYu327/GrideaAndriod">GitHub</a></li>
-<li><a href="https://github.com/QingYu327/GrideaAndriod/issues">问题反馈</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid">GitHub</a></li>
+<li><a href="https://github.com/QingYu327/GrideaAndroid/issues">问题反馈</a></li>
 <li><a href="https://github.com/getgridea/gridea">原项目</a></li>
 </ul>
 </div>

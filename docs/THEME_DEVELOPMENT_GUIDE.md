@@ -332,6 +332,9 @@ my-theme/
 | `step` | number | ❌ | slider 步长 |
 | `placeholder` | string | ❌ | input/textarea 占位提示 |
 | `language` | string | ❌ | code 类型的语法高亮语言 |
+| `fallback` | string | ❌ | 当 `type` 为 APP 未识别的自定义类型时，降级使用的原子类型（如 `"color"`/`"slider"`）。见 4.4 |
+| `items` | array | ❌ | compound 复合类型的子配置项列表，每项本身是一个 customConfig 对象。见 4.4 |
+| `layout` | string | ❌ | compound 子项布局方向：`"row"`（水平）/ `"column"`（垂直，默认） |
 
 ### 4.3 支持的 type 类型
 
@@ -346,8 +349,82 @@ my-theme/
 | `radio` | 单选按钮 | string | - |
 | `number` | 数字输入 | number | - |
 | `code` | 代码编辑器 | string | - |
+| `multiselect` | 多选标签 | string（逗号分隔） | `"shadow,glass"`（配合 `options`） |
+| `image` | 图片 URL | string | `"https://..."` |
+| `compound` | 复合控件 | string（JSON 对象） | `"{\"start\":\"#fff\",\"end\":\"#000\"}"` |
 
-### 4.4 assets 资源声明（可选）
+### 4.4 动态适配：compound 复合控件与 fallback 智能降级
+
+为了支持外部主题开发者自定义新控件，而无需 APP 发版更新，本系统提供两种动态适配机制：
+
+#### 4.4.1 fallback 智能降级
+
+当主题声明了一个 APP 未内置的自定义 `type`（如 `"gradient"`、`"icon-picker"`）时，可通过 `fallback` 字段指定降级渲染的原子类型。APP 遇到未知类型时：
+
+1. 优先使用 `fallback` 指定的原子类型渲染（若该类型受支持）
+2. 未指定 `fallback` 或 `fallback` 也不受支持时，统一降级为 `textarea`
+
+**配置值始终可读写**，保证未知控件的配置不会丢失。
+
+```json
+{
+  "name": "hero_gradient",
+  "label": "首页渐变色",
+  "group": "颜色",
+  "type": "gradient",
+  "fallback": "textarea",
+  "value": "linear-gradient(135deg, #667eea, #764ba2)",
+  "note": "填写 CSS 渐变表达式"
+}
+```
+
+> 常用 fallback：`color`（颜色）、`input`（单行文本）、`textarea`（多行文本）、`slider`（滑块）、`switch`（开关）、`select`（下拉）、`number`（数字）。
+
+#### 4.4.2 compound 复合控件
+
+通过 `compound` 类型可将多个原子控件组合成一个复合控件，适用于需要多个关联字段的场景（如渐变色起始/结束色、阴影颜色+模糊半径等）。
+
+- 子项通过 `items` 数组声明，每项是一个完整的 customConfig 对象（支持递归嵌套）
+- `layout` 指定子项布局：`"row"`（水平并排）/ `"column"`（垂直堆叠，默认）
+- 复合控件的值以 **JSON 对象字符串** 存储于父 `name` 下，如 `{"start":"#ffffff","end":"#000000"}`
+- 模板中通过 `{{themePackConfig.父键名}}` 获取 JSON 字符串，可在 `custom.js` 中 `JSON.parse()` 解析后使用
+
+```json
+{
+  "name": "gradient_pair",
+  "label": "渐变配色",
+  "group": "颜色",
+  "type": "compound",
+  "layout": "row",
+  "value": "{\"start\":\"#667eea\",\"end\":\"#764ba2\"}",
+  "items": [
+    {
+      "name": "start",
+      "label": "起始色",
+      "type": "color",
+      "value": "#667eea"
+    },
+    {
+      "name": "end",
+      "label": "结束色",
+      "type": "color",
+      "value": "#764ba2"
+    }
+  ]
+}
+```
+
+**在 custom.js 中解析复合控件值：**
+
+```javascript
+const gradient = JSON.parse('{{gradient_pair}}');
+document.documentElement.style.setProperty('--grad-start', gradient.start);
+document.documentElement.style.setProperty('--grad-end', gradient.end);
+```
+
+> **提示**：compound 可与 fallback 结合——即使旧版 APP 不支持 compound，也可通过 fallback 降级为 textarea 让用户手动填写 JSON。
+
+### 4.5 assets 资源声明（可选）
 
 若主题需要自定义字体、第三方 JS 库等，在 `theme.json` 顶层添加 `assets` 数组。支持两种格式：
 
@@ -484,17 +561,20 @@ my-theme/
 }
 ```
 
-### 4.6 配置值的类型转换规则
+### 4.7 配置值的类型转换规则
 
-APP 持久化配置时所有值都转为字符串。读取时根据 `type` 还原真实类型：
+APP 持久化配置时所有值都转为字符串。读取时根据 `effectiveType`（即 `type` 本身，未知类型则取 `fallback`，最终降级 `textarea`）还原真实类型：
 
-| type | 还原后类型 |
+| effectiveType | 还原后类型 |
 |------|-----------|
 | `switch` | Boolean（`"true"` → `true`） |
 | `number` / `slider` | Double（按小数解析） |
+| `compound` | String（JSON 对象字符串，透传） |
 | 其他 | String（透传） |
 
 > **注意**：传入模板的 `themePackConfig` 是 `Map<String, String>`（全部转成字符串）。因此模板中判断 switch 配置应写 `themePackConfig.xxx == "true"`，而不是 `themePackConfig.xxx`。而 `showHero` 这个特殊布尔变量已被预处理为真正的 Boolean，可直接用 `{% if showHero %}`。
+>
+> **动态适配**：当自定义 `type` 通过 `fallback` 降级为 `switch`/`number`/`slider` 时，配置值也会按降级后的类型正确还原，保证模板中的类型判断一致。
 
 ---
 
