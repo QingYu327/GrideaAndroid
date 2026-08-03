@@ -33,21 +33,23 @@ Gridea Android 是 Gridea 全平台博客客户端的移动端成员。它把 No
 
 ### 主题 — 一键切换，热更新
 
-- **内置 + 外部主题包**：内置一个 default-theme，其余通过 `.zip` 主题包导入
-- **theme.json 通信契约**：主题与 App 之间通过 `theme.json` 的 `customConfig` 数组通信，支持 text/switch/slider/code/multiselect 五种控件类型
+- **内置 6 款主题 + 外部主题包**：内置 magazine（杂志）、retro（复古）、masonry（瀑布流）、sidebar（双栏）、terminal（终端）、ink（水墨）6 款主题，其余通过 `.zip` 主题包导入
+- **Pebble 模板引擎**：使用 Pebble 4.x 渲染 `.peb` 模板文件，每个主题包含 base/index/post/archives/tags/tag/friends/404 共 8 个模板 + theme.json + custom.css + custom.js + preview.jpg
+- **theme.json 通信契约**：主题与 App 之间通过 `theme.json` 的 `customConfig` 数组通信，支持 color/switch/select/slider/input/textarea/radio/number/code 九种控件类型
+- **统计字段统一**：所有主题的统计组包含 ga（Google Analytics）、baidu（百度统计）、tencent（腾讯分析）、view（不蒜子访客）四项配置
 - **即时预览**：切换主题配置后无需重新部署，预览界面立即重新渲染
 - **assets 资源目录**：主题包可声明 css/js/font/image/file 类型附加资源，自动复制到输出目录并按需注入 HTML
-- **响应式强制要求**：每个主题必须同时适配手机端（≤768px）和电脑端（>768px）
+- **响应式强制要求**：每个主题必须同时适配手机端（≤768px）、平板端（769-1024px）、电脑端（>1024px）三端
 
 ### 部署 — 五条直连通道
 
 | 平台 | 认证方式 | 增量策略 | 备注 |
 |------|---------|---------|------|
 | GitHub Pages | Personal Access Token | Contents API 逐文件 PUT | 1 秒间隔防限流 |
-| Gitee + EdgeOne | Personal Access Token | PUT + DELETE | 404 增强诊断 |
+| Gitee + EdgeOne | Personal Access Token | PUT + DELETE | Gitee Pages 已关闭，改用腾讯云 EdgeOne 静态托管接入仓库 |
 | SFTP | 密码 / 私钥 | 全量替换 | JSch mwiede fork |
 | Netlify | Bearer Token | SHA1 增量 | 仅上传缺失文件 |
-| Vercel | Bearer Token | SHA 去重 | SHA 去重优化 |
+| Vercel | Bearer Token | SHA 去重 | 支持 Clean URLs 配置 |
 
 部署过程在后台 Service 中执行，支持中断、进度通知、失败重试。部署完成后自动写入部署历史记录。
 
@@ -117,11 +119,11 @@ Gridea Android 是 Gridea 全平台博客客户端的移动端成员。它把 No
 ## 反馈与社区
 
 - 提交 Bug 或功能建议：通过应用内「设置 → 问题反馈」一键打包日志
-- 主题开发：参考 [主题开发 Wiki](./THEME_DEVELOPMENT.md)
+- 主题开发：参考 [主题开发完整指南](./themes/THEME_DEVELOPMENT_GUIDE.md)
 - 代码贡献：欢迎 PR，构建方式见 [Code Wiki](./CODE_WIKI.md)
 
 ---
 
 ## 许可证
 
-Gridea Android 遵循 MIT 许权证开源。
+Gridea Android 遵循 GPL-3.0 许可证开源。详见 [LICENSE](./LICENSE)。

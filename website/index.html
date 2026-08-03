@@ -7,7 +7,22 @@
 <meta name="description" content="一款专为 Android 设计的静态博客写作客户端。一部手机即可完成写作、预览、部署的全流程。">
 <meta name="theme-color" content="#9C8FDA">
 <link rel="icon" href="assets/icon.png">
-<link rel="stylesheet" href="css/style.css?v=20260803">
+<style>
+/* Critical CSS - 内联首屏样式，避免 FOUC（Flash of Unstyled Content） */
+:root{--lavender:#9C8FDA;--lavender-deep:#7B6CC9;--ink:#1C1B29;--ink-soft:#4A4860;--ink-mute:#807D96;--line:#ECEAF3;--bg:#FFFFFF;--bg-subtle:#FAF9FD;--nav-h:68px;--font-sans:'STZhongsong','华文中宋','Songti SC','STSong','SimSun','Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Noto Serif SC Web',serif;--grad-lavender:linear-gradient(135deg,#9C8FDA 0%,#B7A8F0 100%)}
+[data-theme="dark"]{--ink:#ECEAF4;--ink-soft:#B4B0C9;--bg:#14131F;--bg-subtle:#191826}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+[data-theme="dark"] .navbar{background:rgba(20,19,31,.78)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:1120px;margin:0 auto;padding:0 28px}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;color:var(--ink)}
+.navbar-brand img{width:36px;height:36px;border-radius:9px}
+.container{max-width:1120px;margin:0 auto;padding:0 28px}
+img{max-width:100%;display:block}
+</style>
+<link rel="stylesheet" href="css/style.css?v=20260803c">
 </head>
 <body class="page-transition">
 
@@ -42,11 +57,11 @@ Gridea Android
 <div class="container">
 <div class="hero-grid">
 <div class="hero-text">
-<span class="hero-badge"><span class="dot"></span>新的开始，始于 Android 平台</span>
+<span class="hero-badge"><span class="dot"></span>新的开始，始于 Android 移动平台</span>
 <h1>把静态博客<br><span class="gradient-text">装进口袋</span></h1>
-<p class="hero-sub">一部手机完成「写作 → 预览 → 部署」全流程，让创作随时随地发生。</p>
+<p class="hero-sub">在手机上即可完成「写作 → 预览 → 部署」全流程，让创作随时随地发生。</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="https://github.com/QingYu327/GrideaAndriod/releases">下载 APK</a>
+<a class="btn btn-primary" href="https://gridea.cc.cd/Download/app-release.apk">下载 APK</a>
 <a class="btn btn-outline" href="docs/index.html">查看文档</a>
 </div>
 <p class="hero-platforms">支持 Android 7.0+ · 100% Jetpack Compose · GPL-3.0 开源</p>
@@ -186,22 +201,25 @@ Gridea Android
 </div>
 </section>
 
-<!-- 致敬原项目 -->
+<!-- 致谢原项目 -->
 <section class="section section--subtle">
 <div class="container">
 <div class="tribute reveal">
 <div class="tribute-inner">
 <div class="tribute-content">
-<span class="section-eyebrow">致敬</span>
-<h2>站在巨人的肩膀上</h2>
-<p>Gridea Android 基于 <a href="https://github.com/getgridea/gridea">Gridea</a> 原项目开发，感谢原作者 <strong>EryouHao</strong> 与整个 Gridea 社区的开源贡献。正是原项目「让每个人都能拥有自己的博客」的理念，激励我们将静态博客的写作体验带到 Android 平台。</p>
-<a class="btn btn-outline" href="https://github.com/getgridea/gridea">访问原项目仓库 →</a>
+<span class="section-eyebrow">致谢</span>
+<h2>我接过了前人的火炬</h2>
+<p>Gridea Android 基于 <a href="https://github.com/getgridea/gridea">Gridea</a> 原项目开发，感谢 Gridea 作者 <strong>EryouHao</strong> 与 Gridea Pro 作者 <strong>Tespera</strong> 的开源贡献。</p>
+<p>Gridea Android 是对 Gridea Pro 和 Gridea 的接力，通过树立「让每个人都能拥有自己的博客」的理念，鼓励我们将静态博客的写作习惯带到日常生活中。</p>
+<a class="btn btn-outline" href="https://github.com/getgridea/gridea">访问 Gridea 项目仓库 →</a>
+<p></p>
+<a class="btn btn-outline" href="https://github.com/Gridea-Pro/gridea-pro">访问 Gridea Pro 项目仓库 →</a>
 </div>
 <div class="tribute-card">
 <div class="tribute-quote-block">
 <svg class="tribute-quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/></svg>
-<p class="tribute-text">让每个人都能拥有自己的博客，记录生活，表达自我。</p>
-<p class="tribute-author">— Gridea 原项目理念</p>
+<p class="tribute-text"><strong>让每个人都能拥有自己的博客，记录生活，表达自我。</strong></p>
+<p class="tribute-author">— 我想说的话</p>
 </div>
 </div>
 </div>
@@ -215,7 +233,7 @@ Gridea Android
 <div class="cta reveal">
 <h2>开始你的写作之旅</h2>
 <p>下载 Gridea Android，几分钟内拥有一个属于自己的博客。</p>
-<a class="btn" href="https://github.com/QingYu327/GrideaAndriod/releases">免费下载</a>
+<a class="btn" href="https://gridea.cc.cd/Download/app-release.apk">免费下载</a>
 </div>
 </div>
 </section>
@@ -226,7 +244,7 @@ Gridea Android
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="navbar-brand" href="index.html"><img src="assets/icon.png" alt="Gridea Android"> Gridea Android</a>
-<p>把静态博客装进口袋。一款专为 Android 设计的静态博客写作客户端。</p>
+<p>把静态博客装进口袋。一款适配 Android 平台的静态博客写作客户端。</p>
 </div>
 <div class="footer-col">
 <h4>产品</h4>
@@ -253,7 +271,7 @@ Gridea Android
 </div>
 </div>
 <div class="footer-bottom">
-<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span></p>
+<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span><span class="sep">·</span><span>Powered by <a href="https://cjhong.top/">XIUHONG</a></span></p>
 </div>
 </div>
 </footer>

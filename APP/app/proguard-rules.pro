@@ -78,6 +78,9 @@
 # 抑制 Pebble 对可选依赖（servlet-api/caffeine）的反射探测警告
 -dontwarn io.pebbletemplates.pebble.cache.**
 -dontwarn javax.servlet.**
+# Pebble 3.x 起引入 Servlet5Loader，引用 jakarta.servlet（Servlet 5.0 API），
+# 该依赖在 Android 上不存在也不会被调用，声明 dontwarn 抑制 R8 缺类错误
+-dontwarn jakarta.servlet.**
 
 # ============================================================================
 # 其他第三方库（以下库自带 consumer rules，仅抑制无害警告）

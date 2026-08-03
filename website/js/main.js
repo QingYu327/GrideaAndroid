@@ -198,16 +198,44 @@
             window.setTimeout(function () { window.location.href = url; }, 380);
         });
 
-        /* ---------- 文档侧边栏 scrollspy ---------- */
+        /* ---------- 文档侧边栏 scrollspy（自动滚动定位） ---------- */
         var headings = document.querySelectorAll('.docs-content h2[id], .docs-content h3[id]');
         var sideLinks = document.querySelectorAll('.docs-sidebar a[href^="#"]');
+        // 滚动容器：桌面端是 .docs-sidebar，移动端抽屉打开时是 .docs-sidebar-body
+        var sidebarEl = document.querySelector('.docs-sidebar');
+        var sidebarBodyEl = document.querySelector('.docs-sidebar-body');
+
+        function getScrollContainer() {
+            // 优先返回实际可滚动的容器
+            if (sidebarBodyEl && sidebarBodyEl.scrollHeight > sidebarBodyEl.clientHeight) {
+                return sidebarBodyEl;
+            }
+            return sidebarEl;
+        }
+
+        // 将 active 链接滚动到侧边栏可视区域
+        function scrollLinkIntoSidebar(link) {
+            var container = getScrollContainer();
+            if (!container || !link) return;
+            var linkRect = link.getBoundingClientRect();
+            var containerRect = container.getBoundingClientRect();
+            // 链接已在容器可视区域内，无需滚动
+            if (linkRect.top >= containerRect.top && linkRect.bottom <= containerRect.bottom) return;
+            // 计算目标 scrollTop：让 active 链接位于容器上 1/3 处
+            var offset = linkRect.top - containerRect.top + container.scrollTop;
+            offset -= container.clientHeight / 3;
+            container.scrollTo({ top: Math.max(0, offset), behavior: 'smooth' });
+        }
+
         if (headings.length && sideLinks.length && 'IntersectionObserver' in window) {
             var spy = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         var id = entry.target.id;
                         sideLinks.forEach(function (l) {
-                            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+                            var isActive = l.getAttribute('href') === '#' + id;
+                            l.classList.toggle('active', isActive);
+                            if (isActive) scrollLinkIntoSidebar(l);
                         });
                     }
                 });

@@ -41,8 +41,30 @@
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --t: 0.4s var(--ease);
 
-    --font-sans: 'STZhongsong', '华文中宋', 'Songti SC', 'SimSun', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+    --font-sans: 'STZhongsong', '华文中宋', 'Songti SC', 'STSong', 'SimSun', 'Noto Serif CJK SC', 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Noto Serif SC Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, serif;
     --font-mono: 'JetBrains Mono', 'SFMono-Regular', 'Fira Code', Consolas, monospace;
+}
+
+/* ---------- 手机端华文中宋字体适配（加载思源宋体作为兜底） ---------- */
+/* 桌面端 macOS/Windows 系统通常已有 STZhongsong/Songti SC/SimSun 直接命中；
+   手机端 Android 系统通常无华文中宋，回退到 Noto Serif CJK SC（Android 7+ 自带）；
+   若系统也无 Noto Serif CJK SC，再回退到 jsDelivr CDN 加载的 Noto Serif SC（思源宋体，开源，风格接近华文中宋）。
+   font-display: swap 让文字先用 fallback 显示，字体加载完再切换，避免长时间空白。 */
+@font-face {
+    font-family: 'Noto Serif SC Web';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Serif CJK SC'), local('Noto Serif SC'), local('Source Han Serif SC'),
+         url('https://cdn.jsdelivr.net/npm/cn-fontsource-noto-serif-sc-regular/font.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Noto Serif SC Web';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Noto Serif CJK SC Bold'), local('Noto Serif SC Bold'), local('Source Han Serif SC Bold'),
+         url('https://cdn.jsdelivr.net/npm/cn-fontsource-noto-serif-sc-bold/font.woff2') format('woff2');
 }
 
 [data-theme="dark"] {
@@ -476,7 +498,7 @@ img { max-width: 100%; display: block; }
 .t-pastel { background: linear-gradient(135deg, #ffd9e7 0%, #d6c7fb 100%); color: #9b6fb8; }
 .t-ink { background: linear-gradient(135deg, #f3ece0 0%, #ddccb0 100%); color: #b23a3a; }
 
-.theme-card-body { padding: 20px 22px 22px; }
+.theme-card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; }
 .theme-card-body h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
 .theme-card-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
 .theme-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 13px; }
@@ -488,6 +510,32 @@ img { max-width: 100%; display: block; }
     color: var(--lavender-deep);
     font-weight: 500;
 }
+
+/* 主题卡片下载按钮 — 右下角对齐 */
+.theme-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm, 10px);
+    background: var(--grad-lavender, linear-gradient(135deg, #9C8FDA 0%, #B7A8F0 100%));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(124, 108, 201, 0.25);
+    transition: transform var(--t, 0.2s), box-shadow var(--t, 0.2s), opacity var(--t, 0.2s);
+    align-self: flex-end;
+}
+.theme-download-btn svg { width: 14px; height: 14px; }
+.theme-download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(124, 108, 201, 0.4);
+    color: #fff;
+    text-decoration: none;
+}
+.theme-download-btn:active { transform: translateY(0); opacity: 0.88; }
 
 /* ---------- Comparison Table ---------- */
 .comparison-table {

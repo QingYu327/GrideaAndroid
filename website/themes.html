@@ -7,7 +7,22 @@
 <meta name="description" content="Gridea Android 内置 6 款精心设计的主题，覆盖杂志、复古、瀑布流、双栏、终端、水墨等风格，适配手机、平板、电脑三端。">
 <meta name="theme-color" content="#9C8FDA">
 <link rel="icon" href="assets/icon.png">
-<link rel="stylesheet" href="css/style.css?v=20260803">
+<style>
+/* Critical CSS - 内联首屏样式，避免 FOUC（Flash of Unstyled Content） */
+:root{--lavender:#9C8FDA;--lavender-deep:#7B6CC9;--ink:#1C1B29;--ink-soft:#4A4860;--ink-mute:#807D96;--line:#ECEAF3;--bg:#FFFFFF;--bg-subtle:#FAF9FD;--nav-h:68px;--font-sans:'STZhongsong','华文中宋','Songti SC','STSong','SimSun','Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Noto Serif SC Web',serif;--grad-lavender:linear-gradient(135deg,#9C8FDA 0%,#B7A8F0 100%)}
+[data-theme="dark"]{--ink:#ECEAF4;--ink-soft:#B4B0C9;--bg:#14131F;--bg-subtle:#191826}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+[data-theme="dark"] .navbar{background:rgba(20,19,31,.78)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:1120px;margin:0 auto;padding:0 28px}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;color:var(--ink)}
+.navbar-brand img{width:36px;height:36px;border-radius:9px}
+.container{max-width:1120px;margin:0 auto;padding:0 28px}
+img{max-width:100%;display:block}
+</style>
+<link rel="stylesheet" href="css/style.css?v=20260803c">
 </head>
 <body class="page-transition">
 
@@ -50,7 +65,7 @@ Gridea Android
 <!-- 主题展示区 -->
 <section class="section" style="padding-top:24px;">
 <div class="container">
-<p class="theme-preview-hint">以下为主题真实预览截图</p>
+<p class="theme-preview-hint">以下主题的Preview预览图均为AI渲染😚</p>
 <div class="theme-gallery theme-gallery--live">
 
 <div class="theme-card reveal">
@@ -61,6 +76,10 @@ Gridea Android
 <h3>Magazine · 杂志编辑</h3>
 <p>大图封面、网格布局、衬线标题、首字下沉。借鉴印刷杂志的版式语言，适合图文并茂的长篇专栏。</p>
 <div class="theme-tags"><span class="theme-tag">杂志</span><span class="theme-tag">侧边栏</span><span class="theme-tag">衬线</span></div>
+<a class="theme-download-btn" href="Download/magazine.zip" download title="下载 Magazine 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -72,6 +91,10 @@ Gridea Android
 <h3>Retro · 复古打字机</h3>
 <p>米色纸张、打字机字体、虚线边框、光标闪烁。还原老式打字机的质感与节奏，让字符带着时光的温度。</p>
 <div class="theme-tags"><span class="theme-tag">复古</span><span class="theme-tag">打字机</span><span class="theme-tag">怀旧</span></div>
+<a class="theme-download-btn" href="Download/retro.zip" download title="下载 Retro 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -83,6 +106,10 @@ Gridea Android
 <h3>Masonry · 瀑布流卡片</h3>
 <p>Pinterest 风格瀑布流、图片为主、CSS columns 实现。不规则高度的卡片排列，适合摄影与视觉类博客。</p>
 <div class="theme-tags"><span class="theme-tag">瀑布流</span><span class="theme-tag">图片</span><span class="theme-tag">卡片</span></div>
+<a class="theme-download-btn" href="Download/masonry.zip" download title="下载 Masonry 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -94,6 +121,10 @@ Gridea Android
 <h3>Sidebar · 经典双栏</h3>
 <p>固定侧边栏、主内容区、桌面双栏手机堆叠。经典博客布局，结构清晰，适合长期更新的技术博客。</p>
 <div class="theme-tags"><span class="theme-tag">双栏</span><span class="theme-tag">侧边栏</span><span class="theme-tag">经典</span></div>
+<a class="theme-download-btn" href="Download/sidebar.zip" download title="下载 Sidebar 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -105,6 +136,10 @@ Gridea Android
 <h3>Terminal · 极客终端</h3>
 <p>黑底绿字、等宽字体、CRT 扫描线、命令行提示符。致敬命令行美学，极客与开发者专属的数字风格。</p>
 <div class="theme-tags"><span class="theme-tag">终端</span><span class="theme-tag">极客</span><span class="theme-tag">CRT</span></div>
+<a class="theme-download-btn" href="Download/terminal.zip" download title="下载 Terminal 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -116,6 +151,10 @@ Gridea Android
 <h3>Ink · 水墨中国风</h3>
 <p>宣纸纹理、楷书标题、朱砂红强调、竖排装饰、印章标签。东方水墨意境，适合诗文随笔与文人气质的书写。</p>
 <div class="theme-tags"><span class="theme-tag">中国风</span><span class="theme-tag">水墨</span><span class="theme-tag">宣纸</span></div>
+<a class="theme-download-btn" href="Download/ink.zip" download title="下载 Ink 主题包">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<span>下载主题</span>
+</a>
 </div>
 </div>
 
@@ -129,7 +168,7 @@ Gridea Android
 <div class="cta reveal">
 <h2>找到你喜欢的主题了吗？</h2>
 <p>下载 Gridea Android，在 App 内一键切换主题，所有配置即时预览。</p>
-<a class="btn" href="https://github.com/QingYu327/GrideaAndriod/releases">免费下载</a>
+<a class="btn" href="https://gridea.cc.cd/Download/app-release.apk">免费下载</a>
 </div>
 </div>
 </section>
@@ -140,7 +179,7 @@ Gridea Android
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="navbar-brand" href="index.html"><img src="assets/icon.png" alt="Gridea Android"> Gridea Android</a>
-<p>把静态博客装进口袋。一款专为 Android 设计的静态博客写作客户端。</p>
+<p>把静态博客装进口袋。一款适配 Android 平台的静态博客写作客户端。</p>
 </div>
 <div class="footer-col">
 <h4>产品</h4>
@@ -167,7 +206,7 @@ Gridea Android
 </div>
 </div>
 <div class="footer-bottom">
-<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span></p>
+<p><span>© 2026 Gridea Android</span><span class="sep">·</span><span>基于 GPL-3.0 许可证开源</span><span class="sep">·</span><span>Powered by <a href="https://cjhong.top/">XIUHONG</a></span></p>
 </div>
 </div>
 </footer>

@@ -164,8 +164,11 @@ gridea-old (Electron + Vue 2)          ← 2019 年初版，10k+ Stars
 #### 2.3.2 渲染层（`renderer/`）
 
 - **[SiteRenderer.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/SiteRenderer.kt)**：静态站点生成核心，支持**增量构建**（MD5 content hash + config hash）
-- **[TemplateEngine.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/TemplateEngine.kt)**：3900+ 行内置模板引擎，生成首页/归档/标签/详情/友链/404/RSS/sitemap
+- **[PebbleTemplateEngine.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/PebbleTemplateEngine.kt)**：基于 Pebble 4.x 的模板引擎，加载 `.peb` 模板生成首页/归档/标签/详情/友链/404/RSS/sitemap；支持自定义过滤器、`striptags`、`https_upgrade`、模板缓存预热
+- **[DefaultCssGenerator.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/DefaultCssGenerator.kt)**：处理 `custom.css` 中的 `{{变量}}` 占位符替换，生成 `styles/main.css`
 - **[MarkdownConverter.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/MarkdownConverter.kt)**：基于 Markwon 的 Markdown 转换
+- **[CommentRenderer.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/CommentRenderer.kt)**：评论系统（Gitalk/Giscus/Disqus/Valine/Twikoo/Waline）渲染注入
+- **[RenderData.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/RenderData.kt)**：渲染数据模型（Post/Tag/Menu/FriendLink/Pagination/PostStats 等）
 
 #### 2.3.3 部署层（`deploy/`）
 
@@ -232,7 +235,7 @@ interface Deployer {
 | GiteeDeployer | token 参数 | PUT + DELETE | 404 增强 diagnose |
 | SftpDeployer | 密码/私钥 | 全量替换 | JSch mwiede fork |
 | NetlifyDeployer | Bearer token | SHA1 增量 | 仅上传缺失文件 |
-| VercelDeployer | Bearer token | SHA 去重 | SHA 去重优化 |
+| VercelDeployer | Bearer token | SHA 去重 | 替代 Gitee Pages |
 
 #### GrideaApp（Compose 入口）
 
@@ -252,14 +255,18 @@ interface Deployer {
 
 #### assets/themes 主题系统
 
-每个主题含三件套：`theme.json`（元数据 + customConfig）+ `custom.css`（`{{变量}}` 占位符）+ `custom.js`（增强脚本）
+每个主题含三件套：`theme.json`（元数据 + customConfig）+ `custom.css`（`{{变量}}` 占位符）+ `custom.js`（增强脚本）。模板文件使用 Pebble 4.x 引擎渲染，后缀为 `.peb`，包含 `base.peb`（基础布局）、`index.peb`（首页/分页）、`post.peb`（文章详情）、`archives.peb`（归档）、`tags.peb`（标签云）、`tag.peb`（标签详情）、`friends.peb`（友链）、`404.peb`（错误页）共 8 个模板 + `preview.jpg` 预览图。
 
-| 主题 | 风格 | 主色 | 字体 | 内容宽度 |
-|------|------|------|------|---------|
-| default-theme（墨韵） | 衬线书卷气 | `#2d5a3d` 墨绿 | serif | 720px |
-| firefly-theme（流萤） | 清新现代 | `#2da89a` 青绿 | Inter | 1200px |
-| magazine-theme（澜玥） | 杂志风 | `#8b1f2c` 酒红 | serif | 720px |
-| sakura-theme（樱花） | 日系二次元 | `#e67474` 珊瑚红 | Georgia | 800px |
+> **重要**：每个主题必须同时适配手机端（≤768px）、平板端（769-1024px）、电脑端（>1024px）三端。
+
+| 主题 | 风格 | 描述 |
+|------|------|------|
+| magazine（杂志编辑） | 杂志风 | 大图封面、网格布局、衬线标题、首字下沉 |
+| retro（复古打字机） | 复古 | 米色纸张、打字机字体、虚线边框、光标闪烁 |
+| masonry（瀑布流卡片） | 瀑布流 | Pinterest 风格、CSS columns、图片为主 |
+| sidebar（经典双栏） | 双栏 | 固定侧边栏、桌面双栏、手机堆叠 |
+| terminal（极客终端） | 极客 | 黑底绿字、等宽字体、CRT 扫描线 |
+| ink（水墨中国风） | 中国风 | 宣纸纹理、楷书标题、朱砂红强调、印章标签 |
 
 ### 2.6 运行方式
 
@@ -755,7 +762,7 @@ yarn electron:build
 
 | 项目 | 模板引擎 | Markdown 引擎 | 增量构建 |
 |------|---------|--------------|---------|
-| APP | 内置 TemplateEngine（Kotlin） | Markwon | ✅ MD5 content hash |
+| APP | Pebble 4.x（`.peb` 模板） | Markwon | ✅ MD5 content hash |
 | gridea-pro | Pongo2/EJS/Go Templates | goldmark | ✅ manifest diff |
 | gridea-old | EJS + Less | markdown-it（13 插件） | ❌ 全量渲染 |
 
@@ -763,18 +770,20 @@ yarn electron:build
 
 三者均支持主题自定义配置（`customConfig`），通过配置项动态生成样式：
 
-| 项目 | 主题配置类型 | 样式覆盖机制 |
-|------|------------|------------|
-| APP | `theme.json` customConfig 数组 | `{{变量}}` 占位符替换 |
-| gridea-pro | 主题 `config.json` customConfig | style-override + 后处理 |
-| gridea-old | 主题 `config.json` customConfig | `style-override.js` 函数 |
+| 项目 | 主题配置类型 | 样式覆盖机制 | 模板引擎 | 主题包格式 |
+|------|------------|------------|---------|-----------|
+| APP | `theme.json` customConfig 数组（9 种控件：color/switch/select/slider/input/textarea/radio/number/code） | `{{变量}}` 占位符替换 | Pebble 4.x（`.peb`） | `.zip`（根目录平铺） |
+| gridea-pro | 主题 `config.json` customConfig | style-override + 后处理 | Pongo2/EJS/Go Templates | 目录 |
+| gridea-old | 主题 `config.json` customConfig | `style-override.js` 函数 | EJS + Less | 目录 |
+
+> **Gridea Android 主题统计字段统一**：所有主题的统计组（group=统计）必须包含四项配置：`ga`（Google Analytics）、`baidu`（百度统计 Token）、`tencent`（腾讯分析 ID）、`view`（不蒜子访客）。
 
 ### 5.3 多平台部署
 
 | 平台 | APP | gridea-pro | gridea-old |
 |------|-----|-----------|-----------|
 | GitHub Pages | ✅ Contents API | ✅ go-git | ✅ isomorphic-git |
-| Gitee + EdgeOne | ✅ | - | ✅ |
+| Gitee Pages | ✅ | - | ✅ |
 | Coding Pages | - | - | ✅ |
 | SFTP | ✅ JSch | ✅ pkg/sftp | ✅ node-ssh |
 | Netlify | ✅ SHA1 增量 | ✅ | ✅ SHA1 增量 |
@@ -810,7 +819,7 @@ MainActivity
             ├─ DeployViewModel → DeployService (Singleton)
             │    ├─ SiteRenderer.renderAll
             │    │    ├─ MarkdownConverter (Markwon)
-            │    │    ├─ TemplateEngine
+            │    │    ├─ PebbleTemplateEngine（Pebble 4.x）
             │    │    └─ 7 Repositories
             │    ├─ DeployManager.publish
             │    │    └─ 5 Deployers
@@ -939,7 +948,7 @@ yarn electron:build
 | MainActivity | [MainActivity.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/MainActivity.kt) |
 | Compose 入口 | [ui/GrideaApp.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/ui/GrideaApp.kt) |
 | 渲染核心 | [renderer/SiteRenderer.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/SiteRenderer.kt) |
-| 模板引擎 | [renderer/TemplateEngine.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/TemplateEngine.kt) |
+| 模板引擎 | [renderer/PebbleTemplateEngine.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/renderer/PebbleTemplateEngine.kt) |
 | 部署接口 | [deploy/Deployer.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/deploy/Deployer.kt) |
 | 部署服务 | [deploy/DeployService.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/deploy/DeployService.kt) |
 | DI 模块 | [di/DatabaseModule.kt](file:///c:/Users/Lime/Desktop/test/APP/app/src/main/java/com/gridea/android/di/DatabaseModule.kt) |
